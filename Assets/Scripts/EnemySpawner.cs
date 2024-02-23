@@ -6,11 +6,33 @@ public class EnemySpawner : MonoBehaviour
 {
     public GameObject[] enemyPrefabs; 
     public Transform[] spawnPoints;
+    public Transform gameStart;
     public float spawnInterval = 20.0f;
+    private bool initialSpawn;
 
     void Start()
     {
-        InvokeRepeating("SpawnEnemies", spawnInterval, spawnInterval);
+        initialSpawn = true;
+        // InvokeRepeating("SpawnEnemies", spawnInterval, spawnInterval);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        // Check if the player entered the trigger zone
+        if (other.CompareTag("Player"))
+        {
+            if (initialSpawn)
+            {
+                foreach (Transform spawnPoint in spawnPoints)
+                {
+                    int randomIndex = Random.Range(0, enemyPrefabs.Length);
+                    Instantiate(enemyPrefabs[randomIndex], spawnPoint.position, spawnPoint.rotation);
+                }
+
+                initialSpawn = false;
+                InvokeRepeating("SpawnEnemies", spawnInterval, spawnInterval);
+            }
+        }
     }
 
     void SpawnEnemies()
@@ -18,7 +40,6 @@ public class EnemySpawner : MonoBehaviour
         foreach (Transform spawnPoint in spawnPoints)
         {
             int randomIndex = Random.Range(0, enemyPrefabs.Length);
-
             Instantiate(enemyPrefabs[randomIndex], spawnPoint.position, spawnPoint.rotation);
         }
     }
