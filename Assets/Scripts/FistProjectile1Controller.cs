@@ -2,9 +2,8 @@ using UnityEngine;
 
 public class FistProjectile1Controller : MonoBehaviour
 {
-    private float movementSpeed = 15.0f; // Adjust the speed as needed
-    private float destroyTime = 1.5f; // Adjust the time before destroying the projectile
-
+    private float movementSpeed = 15.0f; 
+    private float destroyTime = 1.5f;
     private Rigidbody rb;
 
     private void Start()

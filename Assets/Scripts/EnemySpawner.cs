@@ -18,12 +18,21 @@ public class EnemySpawner : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // Check if the player entered the trigger zone
         if (other.CompareTag("Player"))
         {
             if (initialSpawn)
             {
-                foreach (Transform spawnPoint in spawnPoints)
+                List<Transform> selectedSpawnPoints = new List<Transform>();
+                List<Transform> availableSpawnPoints = new List<Transform>(spawnPoints);
+
+                for (int i = 0; i < 3; i++)
+                {
+                    int randomIndex = Random.Range(0, availableSpawnPoints.Count);
+                    selectedSpawnPoints.Add(availableSpawnPoints[randomIndex]);
+                    availableSpawnPoints.RemoveAt(randomIndex);
+                }
+
+                foreach (Transform spawnPoint in selectedSpawnPoints)
                 {
                     int randomIndex = Random.Range(0, enemyPrefabs.Length);
                     Instantiate(enemyPrefabs[randomIndex], spawnPoint.position, spawnPoint.rotation);
@@ -37,7 +46,17 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemies()
     {
-        foreach (Transform spawnPoint in spawnPoints)
+        List<Transform> selectedSpawnPoints = new List<Transform>();
+        List<Transform> availableSpawnPoints = new List<Transform>(spawnPoints);
+
+        for (int i = 0; i < 3; i++)
+        {
+            int randomIndex = Random.Range(0, availableSpawnPoints.Count);
+            selectedSpawnPoints.Add(availableSpawnPoints[randomIndex]);
+            availableSpawnPoints.RemoveAt(randomIndex);
+        }
+
+        foreach (Transform spawnPoint in selectedSpawnPoints)
         {
             int randomIndex = Random.Range(0, enemyPrefabs.Length);
             Instantiate(enemyPrefabs[randomIndex], spawnPoint.position, spawnPoint.rotation);
