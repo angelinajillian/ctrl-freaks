@@ -29,8 +29,8 @@ public class PlayerControllerExtended : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy") & canTakeDamage)
         {
             canTakeDamage = false;
-            Debug.Log($"Health: {health}");
             health -= 1;
+            Debug.Log($"Health: {health}");
             
             if (health <= 0)
             {
