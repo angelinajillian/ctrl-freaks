@@ -6,9 +6,32 @@ using UnityEngine.SceneManagement;
 
 public class PlayerControllerExtended : MonoBehaviour
 {
-    [SerializeField] private int health = 3;
+    // Declaring a variable of type HealthBar
+    public HealthBar healthBar;
+    // Player max health value
+    [SerializeField] private int maxHealth = 100;
+    // Player current health
+    public int playerHealth;
     private bool canTakeDamage = true;
     public float damageCooldown = 2.0f;
+
+    // This ReduceHealth function updates playerHealth and the healthbar
+    // damage can different depending on which enemy did damage
+    void ReduceHealth(int damage)
+    {
+        // Deduct damage from playerHealth
+        playerHealth -= damage;
+        // Update health bar
+        healthBar.SetHealth(playerHealth);
+    }
+
+    void Start()
+    {
+        // Health is initially set to max value
+        playerHealth = maxHealth;
+        // Update heath bar
+        healthBar.SetMaxHealth(maxHealth);
+    }
 
     void Update()
     {
@@ -29,12 +52,13 @@ public class PlayerControllerExtended : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy") & canTakeDamage)
         {
             canTakeDamage = false;
-            health -= 1;
-            Debug.Log($"Health: {health}");
+            // Health is decremented by 1 and bar is updated
+            ReduceHealth(1);
+            Debug.Log($"Health: {playerHealth}");
             
-            if (health <= 0)
+            if (playerHealth <= 0)
             {
-                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
     }
