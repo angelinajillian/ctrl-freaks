@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
     private Rigidbody rb;
     [SerializeField] private int health = 3;
     [SerializeField] private float movementSpeed = 2.0f;
+    [SerializeField] private GameObject xpOrbPrefab;
     public Color originalColor;
     public Color hitColor;
     private GameObject player;
@@ -34,9 +35,11 @@ public class EnemyController : MonoBehaviour
             
             if (health <= 0)
             {
+                Instantiate(xpOrbPrefab, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
         }
+
     }
 
     void MoveTowardsPlayer()

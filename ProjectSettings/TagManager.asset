@@ -7,6 +7,8 @@ TagManager:
   - CinemachineTarget
   - Enemy
   - Projectile
+  - XPOrb
+  - Ground
   layers:
   - Default
   - TransparentFX

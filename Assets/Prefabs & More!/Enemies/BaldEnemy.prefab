@@ -149,5 +149,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 14
   movementSpeed: 3
+  xpOrbPrefab: {fileID: 1972077602081053956, guid: ed2403cf7029a2b4e8fe93dccdd0d3a4, type: 3}
   originalColor: {r: 1, g: 1, b: 1, a: 1}
   hitColor: {r: 0.6415094, g: 0, b: 0, a: 1}
