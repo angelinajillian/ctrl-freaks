@@ -66,4 +66,9 @@ public class PlayerControllerExtended : MonoBehaviour
             levelUp();
         }
     }
+
+    public void setCanTakeDamage(bool damageTF)
+    {
+        canTakeDamage = damageTF;
+    }
 }

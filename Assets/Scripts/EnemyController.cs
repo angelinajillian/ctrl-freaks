@@ -42,6 +42,22 @@ public class EnemyController : MonoBehaviour
 
     }
 
+    public void Kicked(float dam, Vector3 direction, float forceOfKick)
+    {
+        Debug.Log("Ouch you kicked me!!");
+        // StartCoroutine(FlashWhite());
+        health -= (int)dam;
+        
+        if (rb != null)
+        {
+            float scaledPower = movementSpeed - Mathf.Log10(movementSpeed);
+
+            // scale kick based off force and enemy movement speed
+            rb.AddForce(direction * scaledPower * forceOfKick, ForceMode.Impulse);
+        }
+
+    }
+
     void MoveTowardsPlayer()
     {
         if (player != null)
