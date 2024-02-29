@@ -6,13 +6,28 @@ using UnityEngine.SceneManagement;
 
 public class PlayerControllerExtended : MonoBehaviour
 {
-    [SerializeField] private int health = 3;
+    [SerializeField] private int maxHealth = 10;
+    public int currHealth;
+
     private bool canTakeDamage = true;
     public float damageCooldown = 2.0f;
+
+    // Declaring a variable of type HealthBar
+    public HealthBar healthBar;
+
     
     // Start at level 1 and 0 XP
     private float level = 1;
     private float currXP = 0;
+
+    void Start()
+    {
+        // Health is initially set to max value
+        currHealth = maxHealth;
+        // Update heath bar
+        healthBar.SetMaxHealth(maxHealth);
+
+    }
 
     void Update()
     {
@@ -42,10 +57,10 @@ public class PlayerControllerExtended : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy") & canTakeDamage)
         {
             canTakeDamage = false;
-            health -= 1;
-            Debug.Log($"Health: {health}");
+            ReduceHealth(1);
+            Debug.Log($"Health: {currHealth}");
             
-            if (health <= 0)
+            if (currHealth <= 0)
             {
                 currXP = 0;
                 level = 1;
@@ -71,4 +86,15 @@ public class PlayerControllerExtended : MonoBehaviour
     {
         canTakeDamage = damageTF;
     }
+
+    // This ReduceHealth function updates playerHealth and the healthbar
+    // damage can different depending on which enemy did damage
+    void ReduceHealth(int damage)
+    {
+        // Deduct damage from playerHealth
+        currHealth -= damage;
+        // Update health bar
+        healthBar.SetHealth(currHealth);
+    }
+
 }

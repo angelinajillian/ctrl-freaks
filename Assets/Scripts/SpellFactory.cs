@@ -20,7 +20,7 @@ public class SpellFactory : MonoBehaviour
     // Kicking variables
     private float kickDamage = 0.0f; // no dam so far, maybe up it through upgrades in shop
     private float kickRange = 2.0f; // the max range kick reaches out to
-    private float kickCooldownTime = 1.0f;
+    private float kickCooldownTime = 0.8f;
     private bool canKick = true;
 
     void Start()
@@ -37,13 +37,13 @@ public class SpellFactory : MonoBehaviour
 
     private void Fire1Punch()
     {
-        if (Input.GetButtonDown("Fire1") & canFire & mana >= 10f)
+        if (Input.GetButtonDown("Fire1") & canFire & mana >= 7f)
         {
-            mana -= 10f;
+            mana -= 7f;
             Debug.Log($"Mana: {mana}");
             canFire = false;
             animator.SetTrigger("Fire1Trigger");
-            Fire1Projectile();
+            // Fire1Projectile();
         }
     }
 
@@ -66,40 +66,47 @@ public class SpellFactory : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire2") && canKick)
         {
-            playerControllerExtended.setCanTakeDamage(false);
-
-            Debug.Log("kicking!!");
-
-            canKick = false;
-
-            // TODO: play kicking noise, maybe find kick animation.
-
-            // get the direction the player is facing
-            Vector3 playerDirection = transform.forward;
-
-            // detect enemies in front of the player
-            RaycastHit[] hits = Physics.RaycastAll(transform.position, playerDirection, kickRange);
-
-            // loop through all the hit things
-            foreach (RaycastHit hit in hits)
-            {
-                // check that we hit an enemy
-                EnemyController enemyController = hit.collider.GetComponent<EnemyController>();
-                if (enemyController != null)
-                {
-                    // kick the enemy
-                    enemyController.Kicked(kickDamage, playerDirection, 5.0f);
-                }
-            }
-            
-            playerControllerExtended.setCanTakeDamage(true);
-            StartCoroutine(KickCooldown());
+            // calls kickAttack in animator (in unity editor).
+            animator.SetTrigger("PunchTrigger");
         }
         else if (Input.GetButtonDown("Fire2"))
         {
             Debug.Log("Kick is on CD!");
         }
     }
+
+    public void kickAttack()
+    {
+        playerControllerExtended.setCanTakeDamage(false);
+
+        Debug.Log("kicking!!");
+
+        canKick = false;
+
+        // TODO: play kicking noise, maybe find kick animation.
+
+        // get the direction the player is facing
+        Vector3 playerDirection = transform.forward;
+
+        // detect enemies in front of the player
+        RaycastHit[] hits = Physics.RaycastAll(transform.position, playerDirection, kickRange);
+
+        // loop through all the hit things
+        foreach (RaycastHit hit in hits)
+        {
+            // check that we hit an enemy
+            EnemyController enemyController = hit.collider.GetComponent<EnemyController>();
+            if (enemyController != null)
+            {
+                // kick the enemy
+                enemyController.Kicked(kickDamage, playerDirection, 5.0f);
+            }
+        }
+        
+        playerControllerExtended.setCanTakeDamage(true);
+        StartCoroutine(KickCooldown());
+    }
+
     private IEnumerator KickCooldown()
     {
         yield return new WaitForSeconds(kickCooldownTime);
