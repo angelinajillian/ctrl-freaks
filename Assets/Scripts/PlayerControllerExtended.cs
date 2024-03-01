@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using StarterAssets;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class PlayerControllerExtended : MonoBehaviour
 {
@@ -15,7 +17,8 @@ public class PlayerControllerExtended : MonoBehaviour
     // Declaring a variable of type HealthBar
     public HealthBar healthBar;
 
-    
+    public XPBar xpBar;
+
     // Start at level 1 and 0 XP
     private float level = 1;
     private float currXP = 0;
@@ -49,6 +52,9 @@ public class PlayerControllerExtended : MonoBehaviour
         {
             level++;
             currXP = currXP - 100;
+            Text levelText = GameObject.Find("LevelTextBox").GetComponent<Text>();
+            levelText.text = "level: " + level.ToString();
+            xpBar.SetXP(currXP);
         }
     }
 
@@ -64,6 +70,8 @@ public class PlayerControllerExtended : MonoBehaviour
             {
                 currXP = 0;
                 level = 1;
+                Text levelText = GameObject.Find("LevelTextBox").GetComponent<Text>();
+                levelText.text = "level: " + level.ToString();
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
@@ -76,7 +84,7 @@ public class PlayerControllerExtended : MonoBehaviour
         {
             // Handle XP Orb collision logic here
             Destroy(other.gameObject);
-            currXP += 10;
+            UpdateXP();
             Debug.Log($"Collected XP Orb. Current XP: {currXP}");
             levelUp();
         }
@@ -97,4 +105,9 @@ public class PlayerControllerExtended : MonoBehaviour
         healthBar.SetHealth(currHealth);
     }
 
+    void UpdateXP()
+    {
+        currXP += 50.0f;
+        xpBar.SetXP(currXP);
+    }
 }
