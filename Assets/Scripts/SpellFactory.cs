@@ -11,16 +11,18 @@ public class SpellFactory : MonoBehaviour
     private float fireCooldown = 0.6f; 
     private float mana = 100f;
     private float manaRegenerationRate = 2.5f;
-
+    
     [SerializeField] private GameObject fistProjectile1;
 
     [SerializeField] private GameObject fistProjectile1Point;
+    [SerializeField] private GameObject AOEPrefab;
+
     [SerializeField] private PlayerControllerExtended playerControllerExtended;
 
     // Kicking variables
     private float kickDamage = 0.0f; // no dam so far, maybe up it through upgrades in shop
     private float kickRange = 2.0f; // the max range kick reaches out to
-    private float kickCooldownTime = 0.8f;
+    private float kickCooldownTime = 0.0f;
     private bool canKick = true;
 
     void Start()
@@ -33,6 +35,7 @@ public class SpellFactory : MonoBehaviour
     {
         Fire1Punch();
         Fire2Kick();
+        AOESpell();
     }
 
     private void Fire1Punch()
@@ -47,12 +50,6 @@ public class SpellFactory : MonoBehaviour
         }
     }
 
-    private IEnumerator FireCooldown()
-    {
-        yield return new WaitForSeconds(fireCooldown);
-        canFire = true; 
-    }
-
     void Fire1Projectile()
     {
         Vector3 cameraForward = Camera.main.transform.forward;
@@ -60,6 +57,13 @@ public class SpellFactory : MonoBehaviour
 
         GameObject fist1 = Instantiate(fistProjectile1, fistProjectile1Point.transform.position, Quaternion.LookRotation(cameraForward) * Quaternion.Euler(0, 180f, 0));
         StartCoroutine(FireCooldown());
+    }
+
+    
+    private IEnumerator FireCooldown()
+    {
+        yield return new WaitForSeconds(fireCooldown);
+        canFire = true; 
     }
 
     private void Fire2Kick()
@@ -113,6 +117,26 @@ public class SpellFactory : MonoBehaviour
         canKick = true; 
     }
 
+    public void AOESpell()
+    {
+        if (Input.GetButtonDown("k") & canFire & mana >= 40f)
+        {
+            mana -= 40f;
+            Debug.Log($"Mana: {mana}");
+            canFire = false;
+            animator.SetTrigger("AOETrigger");
+            // AOEAttack();
+        }
+    }
+
+    void AOEAttack()
+    {
+        Vector3 circlePosition = new Vector3(transform.position.x, 0.0f, transform.position.z);
+
+        GameObject AOEspell = Instantiate(AOEPrefab, circlePosition, Quaternion.identity);
+        StartCoroutine(FireCooldown());
+    }
+
     IEnumerator RegenerateMana()
     {
         while (true)
@@ -121,8 +145,6 @@ public class SpellFactory : MonoBehaviour
             mana += 1;
 
             mana = Mathf.Clamp(mana, 0f, 100f);
-
-            // yield return null;
         }
     }
 }

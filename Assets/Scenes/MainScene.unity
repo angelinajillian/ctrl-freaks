@@ -569,7 +569,7 @@ Transform:
   m_GameObject: {fileID: 32407067}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.212, y: 0, z: 0.27}
+  m_LocalPosition: {x: -0.212, y: 0, z: 0.271}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22861,6 +22861,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fistProjectile1: {fileID: 5741626183851688304, guid: e873a71120aa1bb418bc4f0f154fbe73, type: 3}
   fistProjectile1Point: {fileID: 32407067}
+  AOEPrefab: {fileID: 0}
   playerControllerExtended: {fileID: 135756641613574990}
 --- !u!114 &135756641613574990
 MonoBehaviour:
