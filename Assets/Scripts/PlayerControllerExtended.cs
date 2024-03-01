@@ -107,7 +107,7 @@ public class PlayerControllerExtended : MonoBehaviour
 
     void UpdateXP()
     {
-        currXP += 50.0f;
+        currXP += 10.0f;
         xpBar.SetXP(currXP);
     }
 }
