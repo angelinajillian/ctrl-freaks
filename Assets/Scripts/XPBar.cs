@@ -11,18 +11,6 @@ public class XPBar : MonoBehaviour
     public Gradient gradient;
     // Image to change the different health colors
     public Image barColor;
-    
-
-
-    //public void SetMaxXP(int maxXP)
-    //{
-    //    // Set Max health in the beginning
-    //    xpBar.maxValue = Max;
-    //    xpBar.value = maxHealth;
-    //    // First color is the full value on the gradient
-    //    gradient.Evaluate(1f);
-    //}
-    
 
     public void SetXP(float xpValue)
     {
