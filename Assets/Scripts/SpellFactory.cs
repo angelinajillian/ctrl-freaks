@@ -25,10 +25,16 @@ public class SpellFactory : MonoBehaviour
     private float kickCooldownTime = 0.0f;
     private bool canKick = true;
 
+    // Declaring a variable of type ManaBar
+    public ManaBar manaBar;
+
     void Start()
     {
         animator = GetComponent<Animator>();
         StartCoroutine(RegenerateMana());
+
+        // Intialize value for mana bar
+        manaBar.SetMaxMana(mana);
     }
 
     void Update()
@@ -42,7 +48,7 @@ public class SpellFactory : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1") & canFire & mana >= 7f)
         {
-            mana -= 7f;
+            ReduceMana(7f);
             Debug.Log($"Mana: {mana}");
             canFire = false;
             animator.SetTrigger("Fire1Trigger");
@@ -121,7 +127,7 @@ public class SpellFactory : MonoBehaviour
     {
         if (Input.GetButtonDown("k") & canFire & mana >= 40f)
         {
-            mana -= 40f;
+            ReduceMana(40f);
             Debug.Log($"Mana: {mana}");
             canFire = false;
             animator.SetTrigger("AOETrigger");
@@ -142,9 +148,26 @@ public class SpellFactory : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(1f / manaRegenerationRate);
-            mana += 1;
+            IncreaseMana(1f);
 
             mana = Mathf.Clamp(mana, 0f, 100f);
         }
     }
+
+    void ReduceMana(float manaReduce)
+    {
+        // Deduct mana from playerMana
+        mana -= manaReduce;
+        // Update mana bar
+        manaBar.SetMana(mana);
+    }
+
+    void IncreaseMana(float manaIncrease)
+    {
+        // Increase mana on playerMana
+        mana += manaIncrease;
+        // Update mana bar
+        manaBar.SetMana(mana);
+    }
 }
+
