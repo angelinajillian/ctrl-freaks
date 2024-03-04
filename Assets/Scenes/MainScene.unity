@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 8900000, guid: 619e305f5165a9946b7f72464e44ca4a, type: 3}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.23151612, g: 0.27315083, b: 0.33304298, a: 1}
+  m_IndirectSpecularColor: {r: 0.23151645, g: 0.2731515, b: 0.33304313, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2206,6 +2206,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6997505058406003664, guid: f7315e96585d195459d4d5634481e773, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997505058406003664, guid: f7315e96585d195459d4d5634481e773, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 18
       objectReference: {fileID: 0}
@@ -2770,6 +2774,10 @@ PrefabInstance:
     - target: {fileID: 6345375326479054072, guid: f7315e96585d195459d4d5634481e773, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997505058406003664, guid: f7315e96585d195459d4d5634481e773, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6997505058406003664, guid: f7315e96585d195459d4d5634481e773, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7591,6 +7599,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6454821969068309906, guid: 9fd89c45bf7e1304088137c6ba34dbb0, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6454821969068309906, guid: 9fd89c45bf7e1304088137c6ba34dbb0, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 18
       objectReference: {fileID: 0}
@@ -11076,6 +11088,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8859884534788206421, guid: d890e6bbaa2beb548b26a869f51f693f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 8859884534788206421, guid: d890e6bbaa2beb548b26a869f51f693f, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 18
       objectReference: {fileID: 0}
@@ -13526,6 +13542,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6997505058406003664, guid: f7315e96585d195459d4d5634481e773, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997505058406003664, guid: f7315e96585d195459d4d5634481e773, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 18
       objectReference: {fileID: 0}
@@ -13772,6 +13792,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6997505058406003664, guid: f7315e96585d195459d4d5634481e773, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997505058406003664, guid: f7315e96585d195459d4d5634481e773, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 18
       objectReference: {fileID: 0}
@@ -13906,6 +13930,10 @@ PrefabInstance:
     - target: {fileID: 6345375326479054072, guid: f7315e96585d195459d4d5634481e773, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997505058406003664, guid: f7315e96585d195459d4d5634481e773, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6997505058406003664, guid: f7315e96585d195459d4d5634481e773, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -14955,6 +14983,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6997505058406003664, guid: f7315e96585d195459d4d5634481e773, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997505058406003664, guid: f7315e96585d195459d4d5634481e773, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 18
       objectReference: {fileID: 0}
@@ -15287,6 +15319,10 @@ PrefabInstance:
     - target: {fileID: 6345375326479054072, guid: 9fd89c45bf7e1304088137c6ba34dbb0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6454821969068309906, guid: 9fd89c45bf7e1304088137c6ba34dbb0, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6454821969068309906, guid: 9fd89c45bf7e1304088137c6ba34dbb0, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -18318,9 +18354,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1652608446}
+  - component: {fileID: 1652608447}
   m_Layer: 0
   m_Name: RockWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18365,6 +18402,28 @@ Transform:
   - {fileID: 2092728406}
   m_Father: {fileID: 1316106750}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &1652608447
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652608445}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1001 &1653166447
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20846,6 +20905,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8859884534788206421, guid: d890e6bbaa2beb548b26a869f51f693f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 8859884534788206421, guid: d890e6bbaa2beb548b26a869f51f693f, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 18
       objectReference: {fileID: 0}
@@ -21791,6 +21854,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8859884534788206421, guid: d890e6bbaa2beb548b26a869f51f693f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 8859884534788206421, guid: d890e6bbaa2beb548b26a869f51f693f, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 18
       objectReference: {fileID: 0}
@@ -22257,6 +22324,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6997505058406003664, guid: f7315e96585d195459d4d5634481e773, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997505058406003664, guid: f7315e96585d195459d4d5634481e773, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 18
       objectReference: {fileID: 0}
@@ -22284,7 +22355,7 @@ GameObject:
   - component: {fileID: 2070089415}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22586,6 +22657,10 @@ PrefabInstance:
     - target: {fileID: 6345375326479054072, guid: d890e6bbaa2beb548b26a869f51f693f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8859884534788206421, guid: d890e6bbaa2beb548b26a869f51f693f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 8859884534788206421, guid: d890e6bbaa2beb548b26a869f51f693f, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -23163,6 +23238,7 @@ MonoBehaviour:
   currHealth: 0
   damageCooldown: 2
   healthBar: {fileID: 1608495560}
+  xpBar: {fileID: 0}
 --- !u!1001 &5393215579111688471
 PrefabInstance:
   m_ObjectHideFlags: 0
