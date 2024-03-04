@@ -61,8 +61,11 @@ public class PlayerControllerExtended : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") & canTakeDamage)
+        if (collision.gameObject.CompareTag("Enemy") && canTakeDamage)
         {
+            var enemyAnimator = collision.gameObject.GetComponent<Animator>();
+            enemyAnimator.SetTrigger("attack");
+
             canTakeDamage = false;
             ReduceHealth(1);
             Debug.Log($"Health: {currHealth}");
