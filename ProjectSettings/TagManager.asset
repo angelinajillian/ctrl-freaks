@@ -9,6 +9,7 @@ TagManager:
   - Projectile
   - XPOrb
   - Ground
+  - Wall
   layers:
   - Default
   - TransparentFX
