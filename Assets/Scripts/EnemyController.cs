@@ -39,7 +39,18 @@ public class EnemyController : MonoBehaviour
         if (collision.gameObject.CompareTag("Projectile"))
         {
             StartCoroutine(FlashWhite());
+            health -= 2;
+            
+            if (health <= 0)
+            {
+                StartCoroutine(Die());
+            }
+        }
+        else if (collision.gameObject.CompareTag("AOEProjectile"))
+        {
+            StartCoroutine(FlashWhite());
             health -= 5;
+            rb.AddForce(Vector3.up * 10f, ForceMode.Impulse); // Adjust the force as needed
             
             if (health <= 0)
             {

@@ -9,7 +9,7 @@ public class SpellFactory : MonoBehaviour
     private Animator animator;
     private bool canFire = true;
     private float fireCooldown = 0.6f; 
-    private float mana = 100f;
+    private float mana;
     private float manaRegenerationRate = 2.5f;
     
     [SerializeField] private GameObject fistProjectile1;
@@ -22,7 +22,6 @@ public class SpellFactory : MonoBehaviour
     // Kicking variables
     private float kickDamage = 0.0f; // no dam so far, maybe up it through upgrades in shop
     private float kickRange = 2.0f; // the max range kick reaches out to
-    private float kickCooldownTime = 0.0f;
     private bool canKick = true;
 
     // Declaring a variable of type ManaBar
@@ -32,12 +31,12 @@ public class SpellFactory : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         StartCoroutine(RegenerateMana());
-    
-        manaBar.SetMaxMana(mana);
     }
 
     void Update()
     {
+        mana = playerControllerExtended.currMana;
+
         Fire1Punch();
         Fire2Kick();
         AOESpell();
@@ -45,10 +44,10 @@ public class SpellFactory : MonoBehaviour
 
     private void Fire1Punch()
     {
-        if (Input.GetButtonDown("Fire1") & canFire & mana >= 7f)
+        if (Input.GetButtonDown("Fire1") & canFire & playerControllerExtended.currMana >= 7f)
         {
             ReduceMana(7);
-            Debug.Log($"Mana: {mana}");
+            Debug.Log($"Mana: {playerControllerExtended.currMana}");
             canFire = false;
             animator.SetTrigger("Fire1Trigger");
             // Fire1Projectile();
@@ -78,17 +77,13 @@ public class SpellFactory : MonoBehaviour
             // calls kickAttack in animator (in unity editor).
             animator.SetTrigger("PunchTrigger");
         }
-        else if (Input.GetButtonDown("Fire2"))
-        {
-            Debug.Log("Kick is on CD!");
-        }
     }
 
     public void kickAttack()
     {
         playerControllerExtended.setCanTakeDamage(false);
 
-        Debug.Log("kicking!!");
+        Debug.Log("punching!!");
 
         canKick = false;
 
@@ -111,20 +106,14 @@ public class SpellFactory : MonoBehaviour
                 enemyController.Kicked(kickDamage, playerDirection, 5.0f);
             }
         }
-        
-        playerControllerExtended.setCanTakeDamage(true);
-        StartCoroutine(KickCooldown());
-    }
 
-    private IEnumerator KickCooldown()
-    {
-        yield return new WaitForSeconds(kickCooldownTime);
-        canKick = true; 
+        playerControllerExtended.setCanTakeDamage(true);
+        canKick = true;
     }
 
     public void AOESpell()
     {
-        if (Input.GetButtonDown("k") & canFire & mana >= 40f)
+        if (Input.GetButtonDown("k") & canFire & playerControllerExtended.currMana >= 40f)
         {
             ReduceMana(40f);
             Debug.Log($"Mana: {mana}");
@@ -148,24 +137,23 @@ public class SpellFactory : MonoBehaviour
         {
             yield return new WaitForSeconds(1f / manaRegenerationRate);
             IncreaseMana(1);
-
-            mana = Mathf.Clamp(mana, 0f, 100f);
+            playerControllerExtended.currMana = Mathf.Clamp(playerControllerExtended.currMana, 0f, 100f);
         }
     }
 
     void ReduceMana(float manaReduce)
     {
         // Deduct mana from playerMana
-        mana -= manaReduce;
+        playerControllerExtended.currMana -= manaReduce;
         // Update mana bar
-        manaBar.SetMana(mana);
+        manaBar.SetMana(playerControllerExtended.currMana);
     }
 
     void IncreaseMana(float manaIncrease)
     {
         // Increase mana on playerMana
-        mana += manaIncrease;
+        playerControllerExtended.currMana += manaIncrease;
         // Update mana bar
-        manaBar.SetMana(mana);
+        manaBar.SetMana(playerControllerExtended.currMana);
     }
 }

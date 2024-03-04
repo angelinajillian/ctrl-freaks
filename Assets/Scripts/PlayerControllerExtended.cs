@@ -10,11 +10,16 @@ public class PlayerControllerExtended : MonoBehaviour
     [SerializeField] private int maxHealth = 10;
     public int currHealth;
 
+    private float maxMana = 100f;
+    public float currMana;
+
     private bool canTakeDamage = true;
     public float damageCooldown = 2.0f;
 
     // Declaring a variable of type HealthBar
     public HealthBar healthBar;
+
+    public ManaBar manaBar;
 
     public XPBar xpBar;
 
@@ -30,6 +35,8 @@ public class PlayerControllerExtended : MonoBehaviour
         // Update heath bar
         healthBar.SetMaxHealth(maxHealth);
 
+        currMana = maxMana;
+        manaBar.SetMaxMana(maxMana);
     }
 
     void Update()
@@ -52,6 +59,15 @@ public class PlayerControllerExtended : MonoBehaviour
         {
             level++;
             currXP = currXP - 100;
+            
+            // Reset health to max when leveling up
+            currHealth = maxHealth;
+            healthBar.SetMaxHealth(maxHealth);
+
+            // Reset mana to max when leveling up
+            currMana = maxMana;
+            manaBar.SetMaxMana(maxMana);
+
             Text levelText = GameObject.Find("LevelTextBox").GetComponent<Text>();
             levelText.text = "level: " + level.ToString();
             xpBar.SetXP(currXP);
