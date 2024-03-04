@@ -21,7 +21,7 @@ public class SpellFactory : MonoBehaviour
 
     // Kicking variables
     private float kickDamage = 0.0f; // no dam so far, maybe up it through upgrades in shop
-    private float kickRange = 2.0f; // the max range kick reaches out to
+    private float kickRange = 3.0f; // the max range kick reaches out to
     private float kickCooldownTime = 0.0f;
     private bool canKick = true;
 
