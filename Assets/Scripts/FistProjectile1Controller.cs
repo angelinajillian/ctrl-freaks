@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FistProjectile1Controller : MonoBehaviour
 {
-    [SerializeField] private float movementSpeed = 20.0f; 
+    [SerializeField] private float movementSpeed = 25.0f; 
     private float destroyTime = 1.5f;
     private Rigidbody rb;
 
