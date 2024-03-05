@@ -24,7 +24,8 @@ public class TrapController : MonoBehaviour
 
         activeCovers = GameObject.FindGameObjectsWithTag("TrapCover").ToList();
 
-        if (((wave % 2 == 0) && wave > 0) && (curWave != wave))
+        // Reveal floor pits every 2 waves
+        if (((wave % 2 == 0) && wave > 0 && (curWave != wave)) || Input.GetKeyDown(KeyCode.T))
         {
             if (activeCovers.Count > 0)
             {
@@ -32,11 +33,15 @@ public class TrapController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.T))
+        // Shoot barrels into arena every 3 waves
+        if ((wave % 3 == 0) && wave > 0 && (curWave != wave))
         {
-            if (activeCovers.Count > 0)
+            var cannonList = GameObject.FindGameObjectsWithTag("Cannon").ToList();
+
+            foreach (var cannon in cannonList)
             {
-                RevealTrap(activeCovers);
+                var control = cannon.GetComponent<CannonController>();
+                control.SpawnBarrel();
             }
         }
 

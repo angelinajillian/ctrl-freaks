@@ -34,6 +34,15 @@ public class PlayerControllerExtended : MonoBehaviour
 
     void Update()
     {
+        if (currHealth <= 0)
+        {
+            currXP = 0;
+            level = 1;
+            Text levelText = GameObject.Find("LevelTextBox").GetComponent<Text>();
+            levelText.text = "level: " + level.ToString();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
         if (!canTakeDamage)
         {
             damageCooldown -= Time.deltaTime;
@@ -66,18 +75,7 @@ public class PlayerControllerExtended : MonoBehaviour
             canTakeDamage = false;
             ReduceHealth(1);
             Debug.Log($"Health: {currHealth}");
-
-            if (currHealth <= 0)
-            {
-                currXP = 0;
-                level = 1;
-                Text levelText = GameObject.Find("LevelTextBox").GetComponent<Text>();
-                levelText.text = "level: " + level.ToString();
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            }
         }
-
-
     }
 
     void OnTriggerEnter(Collider other)
@@ -101,6 +99,12 @@ public class PlayerControllerExtended : MonoBehaviour
             Text levelText = GameObject.Find("LevelTextBox").GetComponent<Text>();
             levelText.text = "level: " + level.ToString();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        if (other.CompareTag("Explosion"))
+        {
+            Debug.Log("You were caught in the barrel explosion!");
+            ReduceHealth(4);
         }
     }
 

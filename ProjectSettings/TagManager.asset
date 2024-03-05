@@ -11,6 +11,10 @@ TagManager:
   - Ground
   - TrapCover
   - KillPlane
+  - Ceiling
+  - Barrel
+  - Explosion
+  - Cannon
   layers:
   - Default
   - TransparentFX

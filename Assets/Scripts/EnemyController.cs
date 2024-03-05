@@ -23,6 +23,11 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        if (health <= 0)
+        {
+            Instantiate(xpOrbPrefab, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
         MoveTowardsPlayer();
     }
 
@@ -32,14 +37,7 @@ public class EnemyController : MonoBehaviour
         {
             StartCoroutine(FlashWhite());
             health -= 1;
-
-            if (health <= 0)
-            {
-                Instantiate(xpOrbPrefab, transform.position, Quaternion.identity);
-                Destroy(gameObject);
-            }
         }
-
     }
 
     void OnTriggerEnter(Collider other)
@@ -47,7 +45,13 @@ public class EnemyController : MonoBehaviour
         if (other.CompareTag("KillPlane"))
         {
             Debug.Log("Enemy fell down hole and died");
-            Destroy(gameObject);
+            health = 0;
+        }
+
+        if (other.CompareTag("Explosion"))
+        {
+            Debug.Log("Enemy caught in barrel explosion!");
+            health -= 8;
         }
     }
 
