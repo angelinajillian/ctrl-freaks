@@ -8,15 +8,15 @@ public class SpellFactory : MonoBehaviour
     // Animator class for handling animations (obviously)
     private Animator animator;
     private bool canFire = true;
-    private float fireCooldown = 0.6f; 
+    // private float fireCooldown = 0.6f; 
     private float mana;
     private float manaRegenerationRate = 2.5f;
     
     [SerializeField] private GameObject fistProjectile1;
 
     [SerializeField] private GameObject fistProjectile1Point;
+    [SerializeField] private GameObject proj1CrossHair;
     [SerializeField] private GameObject AOEPrefab;
-
     [SerializeField] private PlayerControllerExtended playerControllerExtended;
 
     // Kicking variables
@@ -47,7 +47,7 @@ public class SpellFactory : MonoBehaviour
         if (Input.GetButtonDown("Fire1") & canFire & playerControllerExtended.currMana >= 7f)
         {
             ReduceMana(7);
-            Debug.Log($"Mana: {playerControllerExtended.currMana}");
+            // Debug.Log($"Mana: {playerControllerExtended.currMana}");
             canFire = false;
             animator.SetTrigger("Fire1Trigger");
             // Fire1Projectile();
@@ -59,16 +59,23 @@ public class SpellFactory : MonoBehaviour
         Vector3 cameraForward = Camera.main.transform.forward;
         cameraForward.Normalize();
 
-        GameObject fist1 = Instantiate(fistProjectile1, fistProjectile1Point.transform.position, Quaternion.LookRotation(cameraForward) * Quaternion.Euler(0, 180f, 0));
-        StartCoroutine(FireCooldown());
+        GameObject fistProjectile = Instantiate(fistProjectile1, fistProjectile1Point.transform.position, Quaternion.LookRotation(cameraForward) * Quaternion.Euler(0, 180f, 0));
+        
+        FistProjectile1Controller projectileController = fistProjectile.GetComponent<FistProjectile1Controller>();
+
+        // Set the target for the projectile
+        projectileController.SetTarget(proj1CrossHair);
+        
+        canFire = true;
+        // StartCoroutine(FireCooldown());
     }
 
     
-    private IEnumerator FireCooldown()
-    {
-        yield return new WaitForSeconds(fireCooldown);
-        canFire = true; 
-    }
+    // private IEnumerator FireCooldown()
+    // {
+    //     yield return new WaitForSeconds(fireCooldown);
+    //     canFire = true; 
+    // }
 
     private void Fire2Kick()
     {
@@ -83,7 +90,7 @@ public class SpellFactory : MonoBehaviour
     {
         playerControllerExtended.setCanTakeDamage(false);
 
-        Debug.Log("punching!!");
+        // Debug.Log("punching!!");
 
         canKick = false;
 
@@ -128,7 +135,8 @@ public class SpellFactory : MonoBehaviour
         Vector3 circlePosition = new Vector3(transform.position.x, 0.0f, transform.position.z);
 
         GameObject AOEspell = Instantiate(AOEPrefab, circlePosition, Quaternion.identity);
-        StartCoroutine(FireCooldown());
+        // StartCoroutine(FireCooldown());
+        canFire = true;
     }
 
     IEnumerator RegenerateMana()

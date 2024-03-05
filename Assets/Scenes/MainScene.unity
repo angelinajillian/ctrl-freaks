@@ -569,7 +569,7 @@ Transform:
   m_GameObject: {fileID: 32407067}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.212, y: 0, z: 0.271}
+  m_LocalPosition: {x: 0, y: 0, z: 0.271}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8378,6 +8378,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3932621775964159441, guid: 66831092d73b1d341945dc9532823fb5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 32407068}
+    - targetCorrespondingSourceObject: {fileID: 3932621775964159441, guid: 66831092d73b1d341945dc9532823fb5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1708712059}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66831092d73b1d341945dc9532823fb5, type: 3}
 --- !u!4 &736342251 stripped
@@ -9164,7 +9167,7 @@ MonoBehaviour:
   gradient:
     serializedVersion: 2
     key0: {r: 0.007843138, g: 0.16862746, b: 0.49019608, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 0.17194732, g: 0.29352713, b: 0.5283019, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -18927,6 +18930,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6345375326479054072, guid: f7315e96585d195459d4d5634481e773, type: 3}
   m_PrefabInstance: {fileID: 1688404707}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1708712058
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1708712059}
+  m_Layer: 5
+  m_Name: travelTo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1708712059
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708712058}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.6, y: 0.1, z: 15}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 736342251}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1708997664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22789,7 +22823,7 @@ GameObject:
   - component: {fileID: 2070089415}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23650,6 +23684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fistProjectile1: {fileID: 5741626183851688304, guid: e873a71120aa1bb418bc4f0f154fbe73, type: 3}
   fistProjectile1Point: {fileID: 32407067}
+  proj1CrossHair: {fileID: 1708712058}
   AOEPrefab: {fileID: 6195759855335996912, guid: 3cd6e2d261f8a4940ab6d3350fb84508, type: 3}
   playerControllerExtended: {fileID: 135756641613574990}
   manaBar: {fileID: 1453227316}

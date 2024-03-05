@@ -49,8 +49,8 @@ public class EnemyController : MonoBehaviour
         else if (collision.gameObject.CompareTag("AOEProjectile"))
         {
             StartCoroutine(FlashWhite());
-            health -= 5;
-            rb.AddForce(Vector3.up * 10f, ForceMode.Impulse); // Adjust the force as needed
+            health -= 6;
+            rb.AddForce(Vector3.up * 12.5f, ForceMode.Impulse); // Adjust the force as needed
             
             if (health <= 0)
             {
@@ -86,7 +86,7 @@ public class EnemyController : MonoBehaviour
         isStunned = true; // confusing code but it won't cause stun animation, only stops enemy movement 
         animator.SetTrigger("die");
 
-        yield return new WaitForSeconds(1.75f);
+        yield return new WaitForSeconds(1.5f);
 
         Instantiate(xpOrbPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);

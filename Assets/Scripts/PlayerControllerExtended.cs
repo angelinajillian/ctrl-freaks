@@ -14,7 +14,7 @@ public class PlayerControllerExtended : MonoBehaviour
     public float currMana;
 
     private bool canTakeDamage = true;
-    public float damageCooldown = 2.0f;
+    public float damageCooldown = 3.0f;
 
     // Declaring a variable of type HealthBar
     public HealthBar healthBar;
@@ -41,6 +41,7 @@ public class PlayerControllerExtended : MonoBehaviour
 
     void Update()
     {
+        // Debug.Log($"Health: {currHealth}, Mana: {currMana}, xp: {currXP}");
         if (!canTakeDamage)
         {
             damageCooldown -= Time.deltaTime;
@@ -48,7 +49,7 @@ public class PlayerControllerExtended : MonoBehaviour
             if (damageCooldown <= 0.0f)
             {
                 canTakeDamage = true;
-                damageCooldown = 2.0f;
+                damageCooldown = 3.0f;
             }
         }
     }
@@ -94,18 +95,18 @@ public class PlayerControllerExtended : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
-    {   
-        Debug.Log("COLLIDED W XP");
-        if (other.CompareTag("XPOrb"))
-        {
-            // Handle XP Orb collision logic here
-            Destroy(other.gameObject);
-            UpdateXP();
-            Debug.Log($"Collected XP Orb. Current XP: {currXP}");
-            levelUp();
-        }
-    }
+    // void OnTriggerEnter(Collider other)
+    // {   
+    //     Debug.Log("COLLIDED W XP");
+    //     if (other.CompareTag("XPOrb"))
+    //     {
+    //         // Handle XP Orb collision logic here
+    //         Destroy(other.gameObject);
+    //         UpdateXP();
+    //         Debug.Log($"Collected XP Orb. Current XP: {currXP}");
+    //         levelUp();
+    //     }
+    // }
 
     public void setCanTakeDamage(bool damageTF)
     {
@@ -122,9 +123,10 @@ public class PlayerControllerExtended : MonoBehaviour
         healthBar.SetHealth(currHealth);
     }
 
-    void UpdateXP()
+    public void UpdateXP(float xpValue)
     {
-        currXP += 20.0f;
+        currXP += xpValue;
         xpBar.SetXP(currXP);
+        levelUp();
     }
 }
