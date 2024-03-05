@@ -32,6 +32,14 @@ public class TrapController : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            if (activeCovers.Count > 0)
+            {
+                RevealTrap(activeCovers);
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             if (inactiveCovers.Count > 0)
