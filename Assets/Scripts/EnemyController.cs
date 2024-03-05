@@ -32,7 +32,7 @@ public class EnemyController : MonoBehaviour
         {
             StartCoroutine(FlashWhite());
             health -= 1;
-            
+
             if (health <= 0)
             {
                 Instantiate(xpOrbPrefab, transform.position, Quaternion.identity);
@@ -42,12 +42,21 @@ public class EnemyController : MonoBehaviour
 
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("KillPlane"))
+        {
+            Debug.Log("Enemy fell down hole and died");
+            Destroy(gameObject);
+        }
+    }
+
     public void Kicked(float dam, Vector3 direction, float forceOfKick)
     {
         Debug.Log("Ouch you kicked me!!");
         // StartCoroutine(FlashWhite());
         health -= (int)dam;
-        
+
         if (rb != null)
         {
             float scaledPower = movementSpeed - Mathf.Log10(movementSpeed);

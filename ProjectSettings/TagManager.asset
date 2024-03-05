@@ -9,6 +9,8 @@ TagManager:
   - Projectile
   - XPOrb
   - Ground
+  - TrapCover
+  - KillPlane
   layers:
   - Default
   - TransparentFX

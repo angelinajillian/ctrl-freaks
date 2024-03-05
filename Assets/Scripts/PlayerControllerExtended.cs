@@ -18,7 +18,7 @@ public class PlayerControllerExtended : MonoBehaviour
 
     public XPBar xpBar;
 
-    
+
     // Start at level 1 and 0 XP
     private float level = 1;
     private float currXP = 0;
@@ -66,7 +66,7 @@ public class PlayerControllerExtended : MonoBehaviour
             canTakeDamage = false;
             ReduceHealth(1);
             Debug.Log($"Health: {currHealth}");
-            
+
             if (currHealth <= 0)
             {
                 currXP = 0;
@@ -76,18 +76,31 @@ public class PlayerControllerExtended : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
+
+
     }
 
     void OnTriggerEnter(Collider other)
-    {   
-        Debug.Log("COLLIDED W XP");
+    {
+
         if (other.CompareTag("XPOrb"))
         {
             // Handle XP Orb collision logic here
+            Debug.Log("COLLIDED W XP");
             Destroy(other.gameObject);
             UpdateXP();
             Debug.Log($"Collected XP Orb. Current XP: {currXP}");
             levelUp();
+        }
+
+        if (other.CompareTag("KillPlane"))
+        {
+            Debug.Log("Touched killplane");
+            currXP = 0;
+            level = 1;
+            Text levelText = GameObject.Find("LevelTextBox").GetComponent<Text>();
+            levelText.text = "level: " + level.ToString();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 

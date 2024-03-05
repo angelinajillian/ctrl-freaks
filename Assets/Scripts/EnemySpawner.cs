@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject[] enemyPrefabs; 
+    public GameObject[] enemyPrefabs;
     public Transform[] spawnPoints;
     public Transform gameStart;
     public float spawnInterval = 20.0f;
     private bool initialSpawn;
+
+    private int wave = 0;
 
     void Start()
     {
@@ -61,5 +63,14 @@ public class EnemySpawner : MonoBehaviour
             int randomIndex = Random.Range(0, enemyPrefabs.Length);
             Instantiate(enemyPrefabs[randomIndex], spawnPoint.position, spawnPoint.rotation);
         }
+
+        wave += 1;
+
+        Debug.Log("Wave:" + wave);
+    }
+
+    public int GetWave()
+    {
+        return wave;
     }
 }
