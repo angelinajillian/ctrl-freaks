@@ -41,7 +41,6 @@ public class CannonController : MonoBehaviour
 
     public void SpawnBarrel()
     {
-        var torqueVector = CreateRandomTorque();
         var newRotation = CreateRandomRotation();
         var spawn = gameObject.transform.GetChild(0);
         var newBarrel = Instantiate(barrel, spawn.position, newRotation);
