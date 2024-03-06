@@ -70,7 +70,7 @@ public class PlayerControllerExtended : MonoBehaviour
             manaBar.SetMaxMana(maxMana);
 
             Text levelText = GameObject.Find("LevelTextBox").GetComponent<Text>();
-            levelText.text = "level: " + level.ToString();
+            levelText.text = "level " + level.ToString();
             xpBar.SetXP(currXP);
         }
     }
