@@ -112,6 +112,13 @@ public class SpellFactory : MonoBehaviour
                 // kick the enemy
                 enemyController.Kicked(kickDamage, playerDirection, 5.0f);
             }
+
+            if (hit.collider.tag == "Barrel")
+            {
+                var barrel = hit.transform.gameObject;
+                var rb = barrel.GetComponent<Rigidbody>();
+                rb.AddForce(playerDirection * 1000f);
+            }
         }
 
         playerControllerExtended.setCanTakeDamage(true);

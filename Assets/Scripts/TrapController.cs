@@ -37,12 +37,17 @@ public class TrapController : MonoBehaviour
         if ((wave % 3 == 0) && wave > 0 && (curWave != wave))
         {
             var cannonList = GameObject.FindGameObjectsWithTag("Cannon").ToList();
+            int volleyAmount = Random.Range(1, wave);
 
-            foreach (var cannon in cannonList)
+            for (int i = 0; i < volleyAmount; i++)
             {
-                var control = cannon.GetComponent<CannonController>();
-                control.SpawnBarrel();
+                foreach (var cannon in cannonList)
+                {
+                    var control = cannon.GetComponent<CannonController>();
+                    control.SpawnBarrel();
+                }
             }
+
         }
 
         if (Input.GetKeyDown(KeyCode.R))

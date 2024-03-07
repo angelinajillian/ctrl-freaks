@@ -65,12 +65,14 @@ public class EnemyController : MonoBehaviour
         if (other.CompareTag("KillPlane"))
         {
             Debug.Log("Enemy fell down hole and died");
+            StartCoroutine(FlashWhite());
             health = 0;
         }
 
         if (other.CompareTag("Explosion"))
         {
             Debug.Log("Enemy caught in barrel explosion!");
+            StartCoroutine(FlashWhite());
             health -= 8;
         }
     }

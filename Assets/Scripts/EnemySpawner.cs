@@ -12,10 +12,12 @@ public class EnemySpawner : MonoBehaviour
     private bool initialSpawn;
     public int waveNumber = 1;
 
+    [SerializeField] private GameObject entranceBlock;
 
     void Start()
     {
         initialSpawn = true;
+        entranceBlock.SetActive(false);
     }
 
     void Update()
@@ -47,6 +49,8 @@ public class EnemySpawner : MonoBehaviour
                 SpawnWave();
                 initialSpawn = false;
             }
+
+            entranceBlock.SetActive(true);
         }
     }
 
@@ -120,46 +124,69 @@ public class EnemySpawner : MonoBehaviour
         List<Transform> selectedSpawnPoints = new List<Transform>();
         List<Transform> availableSpawnPoints = new List<Transform>(spawnPoints);
 
-        if (waveNumber == 1)
+        int redCount = 1;
+        int grayCount = 0;
+        int baldCount = 0;
+        int purpleCount = 0;
+
+        if (waveNumber < 5)
         {
-            SpawnEnemies(0, 0, 1, 0);
+            redCount += waveNumber;
+            purpleCount = Random.Range(0, waveNumber);
+            baldCount = Random.Range(0, waveNumber);
         }
-        else if (waveNumber == 2)
+
+        else
         {
-            SpawnEnemies(0, 0, 1, 0);
+            redCount = Random.Range(4 - waveNumber, 11 - waveNumber + 1);
+            grayCount = Random.Range(3 - waveNumber, waveNumber + 1);
+            baldCount = Random.Range(4, waveNumber + 1);
+            purpleCount = Random.Range(4, 5);
+
         }
-        else if (waveNumber == 3)
-        {
-            SpawnEnemies(0, 0, 1, 0);
-        }
-        else if (waveNumber == 4)
-        {
-            SpawnEnemies(0, 0, 1, 0);
-        }
-        else if (waveNumber == 5)
-        {
-            SpawnEnemies(0, 0, 1, 0);
-        }
-        else if (waveNumber == 6)
-        {
-            SpawnEnemies(0, 0, 1, 0);
-        }
-        else if (waveNumber == 7)
-        {
-            SpawnEnemies(0, 0, 1, 0);
-        }
-        else if (waveNumber == 8)
-        {
-            SpawnEnemies(0, 0, 1, 0);
-        }
-        else if (waveNumber == 9)
-        {
-            SpawnEnemies(0, 0, 1, 0);
-        }
-        else if (waveNumber == 10)
-        {
-            SpawnEnemies(0, 0, 1, 0);
-        }
+
+        SpawnEnemies(grayCount, baldCount, redCount, purpleCount);
+
+        // if (waveNumber == 1)
+        // {
+        //     SpawnEnemies(0, 0, 1, 0);
+        // }
+        // else if (waveNumber == 2)
+        // {
+        //     SpawnEnemies(0, 0, 1, 0);
+        // }
+        // else if (waveNumber == 3)
+        // {
+        //     SpawnEnemies(0, 0, 1, 0);
+        // }
+        // else if (waveNumber == 4)
+        // {
+        //     SpawnEnemies(0, 0, 1, 0);
+        // }
+        // else if (waveNumber == 5)
+        // {
+        //     SpawnEnemies(0, 0, 1, 0);
+        // }
+        // else if (waveNumber == 6)
+        // {
+        //     SpawnEnemies(0, 0, 1, 0);
+        // }
+        // else if (waveNumber == 7)
+        // {
+        //     SpawnEnemies(0, 0, 1, 0);
+        // }
+        // else if (waveNumber == 8)
+        // {
+        //     SpawnEnemies(0, 0, 1, 0);
+        // }
+        // else if (waveNumber == 9)
+        // {
+        //     SpawnEnemies(0, 0, 1, 0);
+        // }
+        // else if (waveNumber == 10)
+        // {
+        //     SpawnEnemies(0, 0, 1, 0);
+        // }
     }
 
     bool AreAllEnemiesKilled()

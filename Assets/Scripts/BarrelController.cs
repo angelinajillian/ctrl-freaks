@@ -5,20 +5,37 @@ using UnityEngine;
 
 public class BarrelController : MonoBehaviour
 {
-    [SerializeField] private int health = 2;
+    private float health = 3f;
     [SerializeField] private GameObject explosion;
+    private float fuseTimer = 6f;
+    private bool fuseActive = false;
 
     void Start()
     {
-
+        // Randomly activate the fuse of a new barrel
+        float fuseProb = Random.Range(0f, 1f);
+        if (fuseProb <= 0.05f)
+        {
+            fuseActive = true;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (health <= 0)
+        if (health <= 0 || fuseTimer <= 0)
         {
             Explode();
+        }
+
+        if (fuseActive)
+        {
+            var barrelRend = gameObject.GetComponent<Renderer>();
+            var barrelMat = barrelRend.material;
+
+            barrelMat.color = Color.red;
+            fuseTimer -= Time.deltaTime;
+            Debug.Log("Time left: " + Mathf.Round(fuseTimer));
         }
 
         if (Input.GetKeyDown(KeyCode.V))
@@ -31,7 +48,16 @@ public class BarrelController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Projectile"))
         {
-            health -= 1;
+            health -= 1f;
+            fuseActive = true;
+        }
+
+        if (collision.gameObject.CompareTag("AOEProjectile"))
+        {
+            var rb = gameObject.GetComponent<Rigidbody>();
+            rb.AddForce(Vector3.up * 12.5f, ForceMode.Impulse);
+            health -= 2f;
+            fuseActive = true;
         }
     }
 
