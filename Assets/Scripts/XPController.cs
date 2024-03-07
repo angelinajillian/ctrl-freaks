@@ -8,12 +8,14 @@ public class XPController : MonoBehaviour
     private Transform playerTransform;
     public float movementSpeed = 0.5f;
     public float activationDistance = 5.0f;
-    public float pickUpRadius = 0.35f;
+    public float pickUpRadius = 0.4f;
+    public TrailRenderer trailRenderer;
 
     void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         playerControllerExtended = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerExtended>();
+        trailRenderer.enabled = false;
     }
 
     void Update()
@@ -25,7 +27,13 @@ public class XPController : MonoBehaviour
         {
             Vector3 targetPosition = new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z);
             transform.position = Vector3.Lerp(transform.position, targetPosition, movementSpeed * Time.deltaTime);
+            trailRenderer.enabled = true;
         }
+        else
+        {
+            trailRenderer.enabled = false;
+        }
+
         if (distanceToPlayer < pickUpRadius)
         {
             // Debug.Log("PLAYER");

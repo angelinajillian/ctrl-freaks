@@ -24,8 +24,7 @@ public class EnemySpawner : MonoBehaviour
         if (!initialSpawn & nextWave)
         {
             waveNumber++;
-            Text waveText = GameObject.Find("WaveNumber").GetComponent<Text>();
-            waveText.text = "Wave " + waveNumber.ToString();
+            displayWave();
 
             NextWaveDelay();
             Debug.Log("SPAWNING NEXT WAVE");
@@ -44,6 +43,7 @@ public class EnemySpawner : MonoBehaviour
         {
             if (initialSpawn)
             {
+                displayWave();
                 SpawnWave();
                 initialSpawn = false;
             }
@@ -166,5 +166,11 @@ public class EnemySpawner : MonoBehaviour
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         return enemies.Length == 0;
+    }
+
+    void displayWave()
+    {
+        Text waveText = GameObject.Find("WaveNumber").GetComponent<Text>();
+        waveText.text = "Wave " + waveNumber.ToString();
     }
 }
