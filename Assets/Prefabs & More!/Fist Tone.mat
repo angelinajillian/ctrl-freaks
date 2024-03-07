@@ -30,7 +30,7 @@ Material:
   - _GLOSSYREFLECTIONS_OFF
   - _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
   m_InvalidKeywords: []
-  m_LightmapFlags: 2
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -51,5 +51,5 @@ Material:
     - _SmoothnessTextureChannel: 1
     m_Colors:
     - _Color: {r: 1, g: 0.7019608, b: 0.5137255, a: 1}
-    - _EmissionColor: {r: 0.32987696, g: 0.20583022, b: 0.14870386, a: 1}
+    - _EmissionColor: {r: 0.6597539, g: 0.41166043, b: 0.29740772, a: 1}
   m_BuildTextureStacks: []

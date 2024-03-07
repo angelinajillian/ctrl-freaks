@@ -173,4 +173,9 @@ public class EnemySpawner : MonoBehaviour
         Text waveText = GameObject.Find("WaveNumber").GetComponent<Text>();
         waveText.text = "Wave " + waveNumber.ToString();
     }
+    
+    public int GetWave()
+    {
+        return waveNumber;
+    }
 }
