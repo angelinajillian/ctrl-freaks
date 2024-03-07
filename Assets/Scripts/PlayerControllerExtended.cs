@@ -10,11 +10,16 @@ public class PlayerControllerExtended : MonoBehaviour
     [SerializeField] private int maxHealth = 10;
     public int currHealth;
 
+    private float maxMana = 100f;
+    public float currMana;
+
     private bool canTakeDamage = true;
-    public float damageCooldown = 2.0f;
+    public float damageCooldown = 3.0f;
 
     // Declaring a variable of type HealthBar
     public HealthBar healthBar;
+
+    public ManaBar manaBar;
 
     public XPBar xpBar;
 
@@ -30,10 +35,13 @@ public class PlayerControllerExtended : MonoBehaviour
         // Update heath bar
         healthBar.SetMaxHealth(maxHealth);
 
+        currMana = maxMana;
+        manaBar.SetMaxMana(maxMana);
     }
 
     void Update()
     {
+        // Debug.Log($"Health: {currHealth}, Mana: {currMana}, xp: {currXP}");
         if (currHealth <= 0)
         {
             currXP = 0;
@@ -50,7 +58,7 @@ public class PlayerControllerExtended : MonoBehaviour
             if (damageCooldown <= 0.0f)
             {
                 canTakeDamage = true;
-                damageCooldown = 2.0f;
+                damageCooldown = 3.0f;
             }
         }
     }
@@ -61,8 +69,17 @@ public class PlayerControllerExtended : MonoBehaviour
         {
             level++;
             currXP = currXP - 100;
+
+            // Reset health to max when leveling up
+            currHealth = maxHealth;
+            healthBar.SetMaxHealth(maxHealth);
+
+            // Reset mana to max when leveling up
+            currMana = maxMana;
+            manaBar.SetMaxMana(maxMana);
+
             Text levelText = GameObject.Find("LevelTextBox").GetComponent<Text>();
-            levelText.text = "level: " + level.ToString();
+            levelText.text = "level " + level.ToString();
             xpBar.SetXP(currXP);
         }
     }
@@ -80,17 +97,6 @@ public class PlayerControllerExtended : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-
-        if (other.CompareTag("XPOrb"))
-        {
-            // Handle XP Orb collision logic here
-            Debug.Log("COLLIDED W XP");
-            Destroy(other.gameObject);
-            UpdateXP();
-            Debug.Log($"Collected XP Orb. Current XP: {currXP}");
-            levelUp();
-        }
-
         if (other.CompareTag("KillPlane"))
         {
             Debug.Log("Touched killplane");
@@ -123,9 +129,10 @@ public class PlayerControllerExtended : MonoBehaviour
         healthBar.SetHealth(currHealth);
     }
 
-    void UpdateXP()
+    public void UpdateXP(float xpValue)
     {
-        currXP += 20.0f;
+        currXP += xpValue;
         xpBar.SetXP(currXP);
+        levelUp();
     }
 }

@@ -40,7 +40,12 @@ public class BarrelController : MonoBehaviour
         if (other.CompareTag("KillPlane"))
         {
             Debug.Log("Barrel fell out of the map");
-            Explode();
+            health = 0;
+        }
+
+        if (other.CompareTag("Explosion"))
+        {
+            health = 0;
         }
     }
 
