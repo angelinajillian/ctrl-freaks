@@ -2943,6 +2943,7 @@ MonoBehaviour:
   gameStart: {fileID: 674493337}
   spawnInterval: 25
   waveNumber: 1
+  entranceBlock: {fileID: 1867757557}
 --- !u!135 &225756002
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4007,7 +4008,7 @@ Transform:
   m_GameObject: {fileID: 323507259}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.93503, y: -44.663116, z: -53.002922}
+  m_LocalPosition: {x: -11.93503, y: -44.6631, z: -53.002922}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22625,6 +22626,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6345375326479054072, guid: 9fd89c45bf7e1304088137c6ba34dbb0, type: 3}
   m_PrefabInstance: {fileID: 1856914560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1867757557 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2600488934439525406, guid: d890e6bbaa2beb548b26a869f51f693f, type: 3}
+  m_PrefabInstance: {fileID: 1570390044}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1892779029
 PrefabInstance:

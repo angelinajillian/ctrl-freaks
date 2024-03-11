@@ -95,6 +95,26 @@ public class PlayerControllerExtended : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("KillPlane"))
+        {
+            Debug.Log("Touched killplane");
+            currXP = 0;
+            level = 1;
+            Text levelText = GameObject.Find("LevelTextBox").GetComponent<Text>();
+            levelText.text = "level: " + level.ToString();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        if (other.CompareTag("Explosion"))
+        {
+            Debug.Log("You were caught in the barrel explosion!");
+            ReduceHealth(4);
+        }
+    }
+
+
     // void OnTriggerEnter(Collider other)
     // {   
     //     Debug.Log("COLLIDED W XP");

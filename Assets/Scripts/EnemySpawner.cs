@@ -11,6 +11,8 @@ public class EnemySpawner : MonoBehaviour
     public float spawnInterval = 5.0f;
     private bool initialSpawn;
     public int waveNumber = 1;
+
+    [SerializeField] private GameObject entranceBlock;
     
 
     void Start()
@@ -46,6 +48,8 @@ public class EnemySpawner : MonoBehaviour
                 displayWave();
                 SpawnWave();
                 initialSpawn = false;
+
+                entranceBlock.SetActive(true);
             }
         }
     }
@@ -122,11 +126,11 @@ public class EnemySpawner : MonoBehaviour
 
         if (waveNumber == 1)
         {
-            SpawnEnemies(0, 0, 1, 0);
+            SpawnEnemies(0, 0, 3, 0);
         } 
         else if (waveNumber == 2)
         {
-            SpawnEnemies(0, 0, 1, 0);
+            SpawnEnemies(0, 1, 3, 2);
         }
         else if (waveNumber == 3)
         {
@@ -173,7 +177,7 @@ public class EnemySpawner : MonoBehaviour
         Text waveText = GameObject.Find("WaveNumber").GetComponent<Text>();
         waveText.text = "Wave " + waveNumber.ToString();
     }
-    
+
     public int GetWave()
     {
         return waveNumber;

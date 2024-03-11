@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
 
     private Animator animator;
     private bool isStunned = false; // flag for if enemy is stunned or not
+    private bool isPunched = false; // flag for if enemy was punched
 
 
     void Start()
@@ -31,6 +32,11 @@ public class EnemyController : MonoBehaviour
         // prohibits movement only, need to change how enemy attacks to stop that
         if (isStunned) return;
 
+        if (health <= 0)
+        {
+            StartCoroutine(Die());
+        }
+
         MoveTowardsPlayer();
     }
 
@@ -40,24 +46,14 @@ public class EnemyController : MonoBehaviour
         {
             StartCoroutine(FlashWhite());
             health -= 2;
-            
-            if (health <= 0)
-            {
-                StartCoroutine(Die());
-            }
         }
         else if (collision.gameObject.CompareTag("AOEProjectile"))
         {
             StartCoroutine(FlashWhite());
             health -= 6;
             rb.AddForce(Vector3.up * 12.5f, ForceMode.Impulse); // Adjust the force as needed
-            
-            if (health <= 0)
-            {
-                StartCoroutine(Die());
-            }
         }
-        else if (collision.gameObject.CompareTag("Wall"))
+        else if (collision.gameObject.CompareTag("Wall") & isPunched)
         {
             Debug.Log("I hit the wall I'm stunned!");
             StartCoroutine(this.Stunned(2.5f));
@@ -65,12 +61,30 @@ public class EnemyController : MonoBehaviour
 
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("KillPlane"))
+        {
+            Debug.Log("Enemy fell down hole and died");
+            StartCoroutine(FlashWhite());
+            health = 0;
+        }
+
+        if (other.CompareTag("Explosion"))
+        {
+            Debug.Log("Enemy caught in barrel explosion!");
+            StartCoroutine(FlashWhite());
+            health -= 8;
+        }
+    }
+
     public void Kicked(float dam, Vector3 direction, float forceOfKick)
     {
         Debug.Log("Ouch you kicked me!!");
-        // StartCoroutine(FlashWhite());
-        health -= (int)dam;
         
+        StartCoroutine(PunchedCo());
+        health -= (int)dam;
+
         if (rb != null)
         {
             float scaledPower = movementSpeed - Mathf.Log10(movementSpeed) + 5;
@@ -102,6 +116,16 @@ public class EnemyController : MonoBehaviour
 
         animator.SetBool("stunned", false);
         isStunned = false;
+    }
+
+    IEnumerator PunchedCo()
+    {
+        isPunched = true;
+        
+        // Stays "Punched" for 5s
+        yield return new WaitForSeconds(5f);
+
+        isPunched = false;
     }
 
     void MoveTowardsPlayer()
