@@ -13,6 +13,7 @@ public class EnemySpawner : MonoBehaviour
     public int waveNumber = 1;
 
     [SerializeField] private GameObject entranceBlock;
+    [SerializeField] private GameObject circle;
 
     void Start()
     {
@@ -48,9 +49,12 @@ public class EnemySpawner : MonoBehaviour
             {
                 SpawnWave();
                 initialSpawn = false;
+                var circleAnim = circle.GetComponent<Animator>();
+                circleAnim.enabled = true;
             }
 
             entranceBlock.SetActive(true);
+
         }
     }
 
