@@ -8,6 +8,8 @@ public class AOESpellController : MonoBehaviour
     private float destroyTime = 5.0f;
     [SerializeField] private GameObject fistProjectilePrefab;
     public Transform[] spellSpawnPoints;
+    private Transform playerTransform;
+
     // private int fistNumber = 8;
    
     private void Start()
@@ -23,9 +25,18 @@ public class AOESpellController : MonoBehaviour
         //     availableSpawnPoints.RemoveAt(randomIndex);
         // }
 
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+
+
         foreach (Transform spellSpawnPoint in spellSpawnPoints)
         {
-            Quaternion rotation = spellSpawnPoint.rotation * Quaternion.Euler(90f, 0f, 0f);
+            Vector3 directionToPlayer = -1 * (playerTransform.position - spellSpawnPoint.position).normalized;
+            
+            Quaternion rotation = Quaternion.LookRotation(directionToPlayer, Vector3.up);
+
+            rotation *= Quaternion.Euler(90f, 0f, 0f);
+            
+            // Quaternion rotation = spellSpawnPoint.rotation * Quaternion.Euler(90f, 0f, 0f);
             Instantiate(fistProjectilePrefab, spellSpawnPoint.position, rotation);
         }
 

@@ -11,14 +11,20 @@ TagManager:
   - Ground
   - AOEProjectile
   - Wall
+  - KillPlane
+  - Ceiling
+  - Cannon
+  - Barrel
+  - Explosion
+  - TrapCover
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
+  - AOEFist
   - 
   - 
   - 
