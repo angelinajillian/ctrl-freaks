@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 8900000, guid: 619e305f5165a9946b7f72464e44ca4a, type: 3}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.009192548, g: 0.0033762322, b: 0.00039363024, a: 1}
+  m_IndirectSpecularColor: {r: 0.009192558, g: 0.003376238, b: 0.0003936296, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -17509,6 +17509,7 @@ MonoBehaviour:
   fistProjectile1Point: {fileID: 2048641202}
   proj1CrossHair: {fileID: 614435930}
   AOEPrefab: {fileID: 6195759855335996912, guid: 3cd6e2d261f8a4940ab6d3350fb84508, type: 3}
+  HandGrenadePrefab: {fileID: 5741626183851688304, guid: a3c73ed47129c2040b737623a43f1b81, type: 3}
   playerControllerExtended: {fileID: 1423436758}
   manaBar: {fileID: 35640618}
 --- !u!1001 &1435766359
