@@ -41,6 +41,9 @@ public class CannonController : MonoBehaviour
 
     public void SpawnBarrel()
     {
+        // play cannon audio
+        FindObjectOfType<SoundManager>().PlayCannonSound(this.transform.position);
+
         var newRotation = CreateRandomRotation();
         var spawn = gameObject.transform.GetChild(0);
         var newBarrel = Instantiate(barrel, spawn.position, newRotation);

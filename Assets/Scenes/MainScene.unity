@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 8900000, guid: 619e305f5165a9946b7f72464e44ca4a, type: 3}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.009192548, g: 0.0033762322, b: 0.00039363024, a: 1}
+  m_IndirectSpecularColor: {r: 0.009192558, g: 0.003376238, b: 0.0003936296, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15687,6 +15687,62 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6345375326479054072, guid: d890e6bbaa2beb548b26a869f51f693f, type: 3}
   m_PrefabInstance: {fileID: 1155326499}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1156822056
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1156822058}
+  - component: {fileID: 1156822057}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1156822057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156822056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced1722d371e7ff4984be653c2bd8126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ambienceMixerGroup: {fileID: 0}
+  walkingSFX: []
+  runningSFX: []
+  throwSound: {fileID: 0}
+  explosionSound: {fileID: 8300000, guid: d4aee29185389894b9cc0d8873904a49, type: 3}
+  punchSound: {fileID: 8300000, guid: e1a75776f005439469f89a17a986c567, type: 3}
+  punchWhooshSound: {fileID: 8300000, guid: 482611fe6bc559142a00be6e726b4862, type: 3}
+  walkingSound: {fileID: 0}
+  runningSound: {fileID: 0}
+  cannonFireSound: {fileID: 8300000, guid: bb2e2714f962491428dcb0b38598b251, type: 3}
+  fire1Sound: {fileID: 8300000, guid: 6739c01659ad96d47987f4ddee226b36, type: 3}
+  caveAmbience: {fileID: 8300000, guid: f74396619b7154fa5a38a1959cfa67ae, type: 3}
+--- !u!4 &1156822058
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156822056}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.4854054, y: 4.83611, z: -10.067485}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1160390758
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16665,6 +16721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1e7cd43b23047440a6ecf15536f249a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenuSceneName: MainMenu
 --- !u!1001 &1228454542
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27978,3 +28035,4 @@ SceneRoots:
   - {fileID: 1227218669}
   - {fileID: 913875736}
   - {fileID: 1512361749}
+  - {fileID: 1156822058}

@@ -70,6 +70,7 @@ public class SpellFactory : MonoBehaviour
             // Debug.Log($"Mana: {playerControllerExtended.currMana}");
             canFire = false;
             animator.SetTrigger("Fire1Trigger");
+            FindObjectOfType<SoundManager>().PlayFire1Sound(this.transform.position);
             // Fire1Projectile();
         }
     }
@@ -103,6 +104,7 @@ public class SpellFactory : MonoBehaviour
         {
             // calls kickAttack in animator (in unity editor).
             animator.SetTrigger("PunchTrigger");
+            FindObjectOfType<SoundManager>().PlayPunchWooshSound(this.transform.position);
         }
     }
 
@@ -130,6 +132,7 @@ public class SpellFactory : MonoBehaviour
             if (enemyController != null)
             {
                 // kick the enemy
+                FindObjectOfType<SoundManager>().PlayPunchSound(this.transform.position);
                 enemyController.Kicked(kickDamage, playerDirection, 5.0f);
             }
 
