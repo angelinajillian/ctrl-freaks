@@ -3297,7 +3297,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0.75
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &226533668
 PrefabInstance:
@@ -15316,6 +15316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1227218665}
   UICanvas: {fileID: 1415061341}
+  redFlash: {fileID: 1512361745}
   player: {fileID: 1423436756}
 --- !u!224 &1126806386
 RectTransform:
@@ -16665,6 +16666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1e7cd43b23047440a6ecf15536f249a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenuSceneName: MainMenu
 --- !u!1001 &1228454542
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19829,7 +19831,7 @@ MonoBehaviour:
   healthBar: {fileID: 499306272}
   manaBar: {fileID: 35640618}
   xpBar: {fileID: 2013157273}
-  redFlash: {fileID: 1512361745}
+  GameManagerObj: {fileID: 1126806384}
 --- !u!114 &1423436759
 MonoBehaviour:
   m_ObjectHideFlags: 0

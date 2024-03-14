@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject pauseMenuUI;
     public GameObject UICanvas;
+    public GameObject redFlash;
 
     public GameObject player;
     // private StarterAssetsInputs starterAssetsInputs;
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
         playerControllerExtended = player.GetComponent<PlayerControllerExtended>();
         // Ensure the pause menu is initially inactive
         ResumeGame();
+        redFlash.SetActive(false);
     }
 
     private void Update()
@@ -73,5 +75,20 @@ public class GameManager : MonoBehaviour
         playerControllerExtended.enabled = true;
         // Resume the game by setting time scale to 1
         
+    }
+
+    public void FlashRed()
+    {
+        StartCoroutine(FlashRedEnum(.4f));
+    }
+
+    IEnumerator FlashRedEnum(float flashLength)
+    {
+        Debug.Log("FLASH RED");
+        redFlash.SetActive(true);
+
+        yield return new WaitForSeconds(flashLength);
+
+        redFlash.SetActive(false);
     }
 }

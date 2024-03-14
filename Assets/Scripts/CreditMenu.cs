@@ -3,10 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class CreditMenu : MonoBehaviour
 {
-    public string mainSceneName = "MainScene";
+    public string mainMenuSceneName = "MainMenu";
 
     public void BackButton()
     {
-        SceneManager.LoadScene(mainSceneName);
+        SceneManager.LoadScene(mainMenuSceneName);
     }
 }

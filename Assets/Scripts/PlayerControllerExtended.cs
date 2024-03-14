@@ -23,7 +23,8 @@ public class PlayerControllerExtended : MonoBehaviour
 
     public XPBar xpBar;
 
-    public GameObject redFlash;
+    private GameManager gameManager;
+    public GameObject GameManagerObj;
 
     
     // Start at level 1 and 0 XP
@@ -39,6 +40,13 @@ public class PlayerControllerExtended : MonoBehaviour
 
         currMana = maxMana;
         manaBar.SetMaxMana(maxMana);
+
+        gameManager = GameManagerObj.GetComponent<GameManager>();
+
+        // if (gameManager != null)
+        // {
+        //     Debug.Log("Game Manager Loaded");
+        // }
     }
 
     void Update()
@@ -139,7 +147,8 @@ public class PlayerControllerExtended : MonoBehaviour
     // damage can different depending on which enemy did damage
     void ReduceHealth(int damage)
     {
-        FlashRed();
+        // FlashRed();
+        gameManager.FlashRed();
         // Deduct damage from playerHealth
         currHealth -= damage;
         // Update health bar
@@ -155,12 +164,13 @@ public class PlayerControllerExtended : MonoBehaviour
         levelUp();
     }
     
-    IEnumerator FlashRed()
-    {
-        redFlash.SetActive(true);
+    // IEnumerator FlashRed()
+    // {
+    //     Debug.Log("FLASH RED");
+    //     redFlash.SetActive(true);
 
-        yield return new WaitForSeconds(0.4f);
+    //     yield return new WaitForSeconds(0.4f);
 
-        redFlash.SetActive(false);
-    }
+    //     redFlash.SetActive(false);
+    // }
 }
