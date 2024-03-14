@@ -23,6 +23,8 @@ public class PlayerControllerExtended : MonoBehaviour
 
     public XPBar xpBar;
 
+    public GameObject redFlash;
+
     
     // Start at level 1 and 0 XP
     private float level = 1;
@@ -82,9 +84,13 @@ public class PlayerControllerExtended : MonoBehaviour
         {
             canTakeDamage = false;
             ReduceHealth(1);
-            Debug.Log($"Health: {currHealth}");
-            
-            if (currHealth <= 0)
+        }
+    }
+
+    void CheckDeath()
+    {
+        Debug.Log($"Health: {currHealth}");
+        if (currHealth <= 0)
             {
                 currXP = 0;
                 level = 1;
@@ -92,19 +98,15 @@ public class PlayerControllerExtended : MonoBehaviour
                 levelText.text = "level: " + level.ToString();
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
-        }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("KillPlane"))
+        if (other.CompareTag("KillPlane") & canTakeDamage)
         {
-            Debug.Log("Touched killplane");
-            currXP = 0;
-            level = 1;
-            Text levelText = GameObject.Find("LevelTextBox").GetComponent<Text>();
-            levelText.text = "level: " + level.ToString();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Debug.Log("Touching spikes");
+            canTakeDamage = false;
+            ReduceHealth(3);
         }
 
         if (other.CompareTag("Explosion"))
@@ -137,10 +139,13 @@ public class PlayerControllerExtended : MonoBehaviour
     // damage can different depending on which enemy did damage
     void ReduceHealth(int damage)
     {
+        FlashRed();
         // Deduct damage from playerHealth
         currHealth -= damage;
         // Update health bar
         healthBar.SetHealth(currHealth);
+
+        CheckDeath();
     }
 
     public void UpdateXP(float xpValue)
@@ -148,5 +153,14 @@ public class PlayerControllerExtended : MonoBehaviour
         currXP += xpValue;
         xpBar.SetXP(currXP);
         levelUp();
+    }
+    
+    IEnumerator FlashRed()
+    {
+        redFlash.SetActive(true);
+
+        yield return new WaitForSeconds(0.4f);
+
+        redFlash.SetActive(false);
     }
 }
