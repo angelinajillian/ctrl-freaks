@@ -17,12 +17,18 @@ public class SpellFactory : MonoBehaviour
     [SerializeField] private GameObject fistProjectile1Point;
     [SerializeField] private GameObject proj1CrossHair;
     [SerializeField] private GameObject AOEPrefab;
+    [SerializeField] private GameObject HandGrenadePrefab;
     [SerializeField] private PlayerControllerExtended playerControllerExtended;
 
     // Kicking variables
     private float kickDamage = 0.0f; // no dam so far, maybe up it through upgrades in shop
     private float kickRange = 3.5f; // the max range kick reaches out to
     private bool canKick = true;
+
+    //Grenade variables
+    private bool isGrenadeHeld = false;
+    private GameObject currentGrenade;
+    private HandGrenadeController hgc;
 
     // Declaring a variable of type ManaBar
     public ManaBar manaBar;
@@ -35,11 +41,25 @@ public class SpellFactory : MonoBehaviour
 
     void Update()
     {
+        if (hgc == null && isGrenadeHeld)
+        {
+            Debug.Log("held grenade too long!");
+            isGrenadeHeld = false;
+            animator.SetTrigger("ExplodeTrigger");
+        }
+
+        if (isGrenadeHeld)
+        {
+            //var pos = fistProjectile1Point.transform.position;
+            hgc.SetPosition(fistProjectile1Point);
+        }
+
         mana = playerControllerExtended.currMana;
 
         Fire1Punch();
         Fire2Kick();
         AOESpell();
+        HandGrenade();
     }
 
     private void Fire1Punch()
@@ -112,6 +132,13 @@ public class SpellFactory : MonoBehaviour
                 // kick the enemy
                 enemyController.Kicked(kickDamage, playerDirection, 5.0f);
             }
+
+            if (hit.collider.tag == "Barrel")
+            {
+                var barrel = hit.transform.gameObject;
+                var rb = barrel.GetComponent<Rigidbody>();
+                rb.AddForce(playerDirection * 1000f);
+            }
         }
 
         playerControllerExtended.setCanTakeDamage(true);
@@ -138,6 +165,37 @@ public class SpellFactory : MonoBehaviour
         // StartCoroutine(FireCooldown());
         canFire = true;
     }
+
+    private void HandGrenade()
+    {
+        if (Input.GetKeyDown(KeyCode.G) & mana >= 15f & !isGrenadeHeld)
+        {
+            Debug.Log("holding grenade...");
+            isGrenadeHeld = true;
+            ReduceMana(15f);
+            Debug.Log($"Mana: {mana}");
+            animator.SetTrigger("GrenadeTrigger");
+        }
+
+        if (isGrenadeHeld && Input.GetKeyUp(KeyCode.G))
+        {
+            Debug.Log("launching grenade!!!");
+            isGrenadeHeld = false;
+            animator.SetTrigger("GrenadeThrowTrigger");
+            hgc.Launch(fistProjectile1Point);
+        }
+    }
+
+    public void ThrowGrenade()
+    {
+        Vector3 cameraForward = Camera.main.transform.forward;
+        cameraForward.Normalize();
+
+        currentGrenade = Instantiate(HandGrenadePrefab, fistProjectile1Point.transform.position, Quaternion.LookRotation(cameraForward) * Quaternion.Euler(0, 180f, 0));
+        hgc = currentGrenade.GetComponent<HandGrenadeController>();
+        hgc.Hold();
+    }
+
 
     IEnumerator RegenerateMana()
     {
