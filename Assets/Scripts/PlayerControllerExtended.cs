@@ -91,6 +91,7 @@ public class PlayerControllerExtended : MonoBehaviour
             canTakeDamage = false;
             ReduceHealth(2);
         }
+
     }
 
     void CheckDeath()

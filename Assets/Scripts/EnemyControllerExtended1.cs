@@ -35,7 +35,7 @@ public class EnemyControllerExtended1 : MonoBehaviour
         Vector3 directionToPlayer = player.transform.position;
         directionToPlayer.Normalize();
         
-        GameObject fistProjectile = Instantiate(fistProjectile1, fistProjSpawn.transform.position, Quaternion.identity);
+        GameObject fistProjectile = Instantiate(fistProjectile1, fistProjSpawn.transform.position, Quaternion.LookRotation(directionToPlayer) * Quaternion.Euler(0, 180f, 0));
         FistProjectile1Controller projectileController = fistProjectile.GetComponent<FistProjectile1Controller>();
 
         // Set the target for the projectile
