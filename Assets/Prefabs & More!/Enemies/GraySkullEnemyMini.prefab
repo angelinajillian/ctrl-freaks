@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4593252341531506005
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 53631010689845678}
-  m_Layer: 0
-  m_Name: FistProjSpawn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &53631010689845678
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4593252341531506005}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.1106}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8556679254079187364}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5489041942596120354
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,10 +13,9 @@ GameObject:
   - component: {fileID: 2243442503142955241}
   - component: {fileID: 9083536416626571082}
   - component: {fileID: -7149875385748992061}
-  - component: {fileID: 5037368895633366864}
-  - component: {fileID: 664126752918720412}
+  - component: {fileID: -2067957021089325767}
   m_Layer: 0
-  m_Name: BaldEnemy
+  m_Name: GraySkullEnemyMini
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,10 +31,9 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 53631010689845678}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &219253293848852235
@@ -110,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -954874416, guid: 116a8d405bef9434c95d3733f1afb587, type: 3}
+  m_Sprite: {fileID: -716966005, guid: 23169ce5e7fee7b47a6fc462b5db6281, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -181,12 +148,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8d0edad577395f4da88e7e5fa328356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 14
-  movementSpeed: 3
+  health: 20
+  movementSpeed: 10
   xpOrbPrefab: {fileID: 1972077602081053956, guid: ed2403cf7029a2b4e8fe93dccdd0d3a4, type: 3}
   originalColor: {r: 1, g: 1, b: 1, a: 1}
   hitColor: {r: 0.6415094, g: 0, b: 0, a: 1}
---- !u!95 &5037368895633366864
+--- !u!95 &-2067957021089325767
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -196,7 +163,7 @@ Animator:
   m_GameObject: {fileID: 5489041942596120354}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ec6a8c0c2f664c47938f23b77917647, type: 2}
+  m_Controller: {fileID: 9100000, guid: 74e0c707cb981194195cc45f3fae948d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -207,17 +174,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &664126752918720412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5489041942596120354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 461bc55ff4a444de098e4011b9b573af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fistProjectile1: {fileID: 5741626183851688304, guid: 555d070c62a15324ea6e25ed4491cf8e, type: 3}
-  fistProjSpawn: {fileID: 4593252341531506005}

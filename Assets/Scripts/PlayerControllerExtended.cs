@@ -85,6 +85,12 @@ public class PlayerControllerExtended : MonoBehaviour
             canTakeDamage = false;
             ReduceHealth(1);
         }
+        if (collision.gameObject.CompareTag("EnemyProjectile") & canTakeDamage)
+        {
+            Debug.Log("Hit");
+            canTakeDamage = false;
+            ReduceHealth(2);
+        }
     }
 
     void CheckDeath()

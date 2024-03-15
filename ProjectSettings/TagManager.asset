@@ -17,6 +17,7 @@ TagManager:
   - Barrel
   - Explosion
   - TrapCover
+  - EnemyProjectile
   layers:
   - Default
   - TransparentFX
