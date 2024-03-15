@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
 
     public void FlashRed()
     {
-        StartCoroutine(FlashRedEnum(.4f));
+        StartCoroutine(FlashRedEnum(.3f));
     }
 
     IEnumerator FlashRedEnum(float flashLength)

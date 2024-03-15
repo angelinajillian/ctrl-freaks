@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private int health = 3;
     [SerializeField] private float movementSpeed = 2.0f;
     [SerializeField] private GameObject xpOrbPrefab;
+    [SerializeField] private int damageStat = 1;
     public Color originalColor;
     public Color hitColor;
     private GameObject player;
@@ -17,11 +18,13 @@ public class EnemyController : MonoBehaviour
     private bool isStunned = false; // flag for if enemy is stunned or not
     private bool isPunched = false; // flag for if enemy was punched
 
+    //  private PlayerControllerExtended playerController;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         player = GameObject.FindGameObjectWithTag("Player");
+        // playerController = player.GetComponent<PlayerControllerExtended>();
         originalColor = GetComponent<SpriteRenderer>().color;
         animator = GetComponent<Animator>();
     }
@@ -132,9 +135,25 @@ public class EnemyController : MonoBehaviour
     {
         if (player != null)
         {
+            // animator.SetBool("moving", true);
+            // Vector3 directionToPlayer = player.transform.position - transform.position;
+            // directionToPlayer.Normalize();
+            // rb.MovePosition(rb.position + directionToPlayer * movementSpeed * Time.deltaTime);
+            // transform.LookAt(player.transform);
+
             animator.SetBool("moving", true);
 
             Vector3 directionToPlayer = player.transform.position - transform.position;
+            float distanceToPlayer = directionToPlayer.magnitude;
+
+            if (distanceToPlayer <= 2.0f)
+            {
+                rb.velocity = Vector3.zero;
+                // animator.SetBool("moving", false);
+                transform.LookAt(player.transform);
+                AttackIfInRange(3f);
+                return;
+            }
 
             directionToPlayer.Normalize();
 
@@ -147,6 +166,47 @@ public class EnemyController : MonoBehaviour
             animator.SetBool("moving", false);
         }
     }
+
+    public void AttackIfInRange(float attackRange)
+    {
+        Vector3 directionToPlayer = player.transform.position - transform.position;
+        
+        RaycastHit[] hits = Physics.RaycastAll(transform.position, directionToPlayer, attackRange);
+
+        // RaycastHit hit;
+
+        // if (Physics.Raycast(transform.position, directionToPlayer, out hit, attackRange))
+        // {
+        //     Debug.Log("Raycast hit: " + hit.collider.gameObject.name);
+        //     PlayerControllerExtended playerController = hit.collider.gameObject.GetComponent<PlayerControllerExtended>();
+            
+        //     if (playerController != null)
+        //     {
+        //         Debug.Log("PlayerController found.");
+        //         playerController.TakeDamage(damageStat);
+        //     }
+        // }
+
+        foreach (RaycastHit hit in hits)
+        {   
+            PlayerControllerExtended playerController = hit.collider.GetComponent<PlayerControllerExtended>();
+            
+            if (playerController != null)
+            {
+                playerController.TakeDamage(damageStat);
+                Debug.Log("Player Attacked");
+            }
+        }
+
+            // Debug.Log("Attacking Player");
+            // if (hit.collider.gameObject.CompareTag("Player"))
+            // {
+            //     playerController.TakeDamage(damageStat);
+            //     Debug.Log("Player within attack range! Perform attack actions...");
+            // }
+        // }
+    }
+
 
     IEnumerator FlashWhite()
     {

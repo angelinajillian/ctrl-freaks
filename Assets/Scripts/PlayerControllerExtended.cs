@@ -14,7 +14,7 @@ public class PlayerControllerExtended : MonoBehaviour
     public float currMana;
 
     private bool canTakeDamage = true;
-    public float damageCooldown = 3.0f;
+    public float damageCooldown = 2.0f;
 
     // Declaring a variable of type HealthBar
     public HealthBar healthBar;
@@ -141,6 +141,14 @@ public class PlayerControllerExtended : MonoBehaviour
     public void setCanTakeDamage(bool damageTF)
     {
         canTakeDamage = damageTF;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if (!canTakeDamage) return; // Check if the player can take damage
+
+        canTakeDamage = false; // Prevent further damage for a cooldown period
+        ReduceHealth(damage);
     }
 
     // This ReduceHealth function updates playerHealth and the healthbar
