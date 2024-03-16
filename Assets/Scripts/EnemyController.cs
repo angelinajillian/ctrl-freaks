@@ -10,13 +10,14 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float movementSpeed = 2.0f;
     [SerializeField] private GameObject xpOrbPrefab;
     [SerializeField] private int damageStat = 1;
+    [SerializeField] private float walkDistance = 1.5f;
     public Color originalColor;
     public Color hitColor;
     private GameObject player;
 
     private Animator animator;
-    private bool isStunned = false; // flag for if enemy is stunned or not
-    private bool isPunched = false; // flag for if enemy was punched
+    public bool isStunned = false; // flag for if enemy is stunned or not
+    public bool isPunched = false; // flag for if enemy was punched
 
     //  private PlayerControllerExtended playerController;
 
@@ -47,8 +48,9 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Projectile"))
         {
+            FistProjectile1Controller fist = collision.gameObject.GetComponent<FistProjectile1Controller>();
             StartCoroutine(FlashWhite());
-            health -= 2;
+            health -= fist.damage;
         }
         else if (collision.gameObject.CompareTag("AOEProjectile"))
         {
@@ -146,7 +148,7 @@ public class EnemyController : MonoBehaviour
             Vector3 directionToPlayer = player.transform.position - transform.position;
             float distanceToPlayer = directionToPlayer.magnitude;
 
-            if (distanceToPlayer <= 2.0f)
+            if (distanceToPlayer <= walkDistance)
             {
                 rb.velocity = Vector3.zero;
                 // animator.SetBool("moving", false);

@@ -33,8 +33,11 @@ public class SpellFactory : MonoBehaviour
     // Declaring a variable of type ManaBar
     public ManaBar manaBar;
 
+    // public bool enabled;
+
     void Start()
     {
+        // enabled = true;
         animator = GetComponent<Animator>();
         StartCoroutine(RegenerateMana());
     }
@@ -64,12 +67,13 @@ public class SpellFactory : MonoBehaviour
 
     private void Fire1Punch()
     {
-        if (Input.GetButtonDown("Fire1") & canFire & playerControllerExtended.currMana >= 7f)
+        if (Input.GetButtonDown("Fire1") & canFire & playerControllerExtended.currMana >= 7f )
         {
             ReduceMana(7);
             // Debug.Log($"Mana: {playerControllerExtended.currMana}");
             canFire = false;
             animator.SetTrigger("Fire1Trigger");
+            FindObjectOfType<SoundManager>().PlayFire1Sound(this.transform.position);
             // Fire1Projectile();
         }
     }
@@ -85,6 +89,8 @@ public class SpellFactory : MonoBehaviour
 
         // Set the target for the projectile
         projectileController.SetTarget(proj1CrossHair);
+
+        projectileController.SetDamage(playerControllerExtended.fistDamage);
         
         canFire = true;
         // StartCoroutine(FireCooldown());
@@ -99,10 +105,12 @@ public class SpellFactory : MonoBehaviour
 
     private void Fire2Kick()
     {
-        if (Input.GetButtonDown("Fire2") && canKick)
+        if (Input.GetButtonDown("Fire2") & canKick )
         {
             // calls kickAttack in animator (in unity editor).
             animator.SetTrigger("PunchTrigger");
+            FindObjectOfType<SoundManager>().PlayPunchWooshSound(this.transform.position);
+
         }
     }
 
@@ -130,6 +138,7 @@ public class SpellFactory : MonoBehaviour
             if (enemyController != null)
             {
                 // kick the enemy
+                FindObjectOfType<SoundManager>().PlayPunchSound(this.transform.position);
                 enemyController.Kicked(kickDamage, playerDirection, 5.0f);
             }
 
@@ -147,7 +156,7 @@ public class SpellFactory : MonoBehaviour
 
     public void AOESpell()
     {
-        if (Input.GetButtonDown("k") & canFire & playerControllerExtended.currMana >= 40f)
+        if (Input.GetButtonDown("k") & canFire & playerControllerExtended.currMana >= 40f )
         {
             ReduceMana(40f);
             Debug.Log($"Mana: {mana}");
@@ -168,7 +177,7 @@ public class SpellFactory : MonoBehaviour
 
     private void HandGrenade()
     {
-        if (Input.GetKeyDown(KeyCode.G) & mana >= 15f & !isGrenadeHeld)
+        if (Input.GetKeyDown(KeyCode.G) & mana >= 15f & !isGrenadeHeld )
         {
             Debug.Log("holding grenade...");
             isGrenadeHeld = true;

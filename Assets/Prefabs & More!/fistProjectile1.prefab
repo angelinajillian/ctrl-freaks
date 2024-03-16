@@ -141,7 +141,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.15
+  m_Radius: 0.25
   m_Center: {x: -0.01, y: 0, z: -0.05}
 --- !u!114 &-2993728200312842544
 MonoBehaviour:
@@ -155,7 +155,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb940861584cb94fbe0e15545a7e8e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 25
+  movementSpeed: 30
+  destroyDistance: 1
+  damage: 2
 --- !u!33 &9182138489998260601
 MeshFilter:
   m_ObjectHideFlags: 0

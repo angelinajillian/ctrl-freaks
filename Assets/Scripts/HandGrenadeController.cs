@@ -71,6 +71,9 @@ public class HandGrenadeController : MonoBehaviour
 
     void Explode()
     {
+        FindObjectOfType<SoundManager>().PlayExplosionSound(this.transform.position);
+
+
         var position = gameObject.transform.position;
         var rotation = gameObject.transform.rotation;
         var newExplosion = Instantiate(explosion, position, rotation);

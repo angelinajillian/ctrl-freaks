@@ -17,6 +17,9 @@ TagManager:
   - Barrel
   - Explosion
   - TrapCover
+  - EnemyProjectile
+  - LevelText
+  - travelP2
   layers:
   - Default
   - TransparentFX

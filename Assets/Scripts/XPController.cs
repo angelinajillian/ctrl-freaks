@@ -6,9 +6,9 @@ public class XPController : MonoBehaviour
 {
     private PlayerControllerExtended playerControllerExtended;
     private Transform playerTransform;
-    public float movementSpeed = 2.75f;
+    public float movementSpeed = 3f;
     public float activationDistance = 10f;
-    public float pickUpRadius = 3.75f;
+    public float pickUpRadius = 4f;
     public TrailRenderer trailRenderer;
 
     void Start()

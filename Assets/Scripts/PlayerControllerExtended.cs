@@ -7,10 +7,10 @@ using UnityEngine.UI;
 
 public class PlayerControllerExtended : MonoBehaviour
 {
-    [SerializeField] private int maxHealth = 10;
+    public int maxHealth = 10;
     public int currHealth;
 
-    private float maxMana = 100f;
+    public float maxMana = 100f;
     public float currMana;
 
     private bool canTakeDamage = true;
@@ -22,9 +22,14 @@ public class PlayerControllerExtended : MonoBehaviour
     public ManaBar manaBar;
 
     public XPBar xpBar;
+    private Text levelText;
 
     private GameManager gameManager;
     public GameObject GameManagerObj;
+
+    public int fistDamage;
+
+    // public bool enabled;
 
     
     // Start at level 1 and 0 XP
@@ -40,6 +45,10 @@ public class PlayerControllerExtended : MonoBehaviour
 
         currMana = maxMana;
         manaBar.SetMaxMana(maxMana);
+
+        levelText = GameObject.FindGameObjectWithTag("LevelText").GetComponent<Text>();
+
+        fistDamage = 2;
 
         gameManager = GameManagerObj.GetComponent<GameManager>();
 
@@ -70,6 +79,8 @@ public class PlayerControllerExtended : MonoBehaviour
         {
             level++;
             currXP = currXP - 100;
+
+            gameManager.UpgradeMenu();
             
             // Reset health to max when leveling up
             currHealth = maxHealth;
@@ -79,7 +90,6 @@ public class PlayerControllerExtended : MonoBehaviour
             currMana = maxMana;
             manaBar.SetMaxMana(maxMana);
 
-            Text levelText = GameObject.Find("LevelTextBox").GetComponent<Text>();
             levelText.text = "level " + level.ToString();
             xpBar.SetXP(currXP);
         }
@@ -93,6 +103,7 @@ public class PlayerControllerExtended : MonoBehaviour
             canTakeDamage = false;
             ReduceHealth(1);
         }
+        
     }
 
     void CheckDeath()
@@ -121,6 +132,13 @@ public class PlayerControllerExtended : MonoBehaviour
         {
             Debug.Log("You were caught in the barrel explosion!");
             ReduceHealth(4);
+        }
+
+        if (other.gameObject.CompareTag("EnemyProjectile") & canTakeDamage)
+        {
+            Destroy(other);
+            canTakeDamage = false;
+            ReduceHealth(2);
         }
     }
 
