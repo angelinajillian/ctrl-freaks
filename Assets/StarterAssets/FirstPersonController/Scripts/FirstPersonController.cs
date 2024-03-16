@@ -196,10 +196,14 @@ namespace StarterAssets
 			if (_input.move != Vector2.zero)
 			{
                 // if we are grounded then play footsteps!
-                if (Grounded)
+                if (Grounded && targetSpeed == SprintSpeed)
                 {
-                    FindObjectOfType<SoundManager>().PlayWalkSound(this.transform.position);
+                    FindObjectOfType<SoundManager>().PlaySprintSound(this.transform.position);
                 }
+				else if (Grounded && targetSpeed == MoveSpeed)
+				{
+                    FindObjectOfType<SoundManager>().PlayRunSound(this.transform.position);
+				}
 
                 // move
                 inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;

@@ -140,6 +140,7 @@ public class PlayerControllerExtended : MonoBehaviour
     void ReduceHealth(int damage)
     {
         FlashRed();
+        FindObjectOfType<SoundManager>().PlayTakeDamageSound(this.transform.position);
         // Deduct damage from playerHealth
         currHealth -= damage;
         // Update health bar
