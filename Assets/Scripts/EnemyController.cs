@@ -155,7 +155,6 @@ public class EnemyController : MonoBehaviour
                 attackTimer = 0;
             }
 
-            if (distanceToPlayer <= 2.0f)
             if (distanceToPlayer <= walkDistance)
             {
                 rb.velocity = Vector3.zero;

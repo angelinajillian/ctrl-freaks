@@ -5966,7 +5966,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 913875737}
         m_TargetAssemblyTypeName: UpgradeSystem, Assembly-CSharp
-        m_MethodName: UpgradePunch
+        m_MethodName: UpgradeFists
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13128,7 +13128,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &913875733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21194,6 +21194,7 @@ MonoBehaviour:
   manaBar: {fileID: 35640618}
   xpBar: {fileID: 2013157273}
   GameManagerObj: {fileID: 1126806384}
+  fistDamage: 0
 --- !u!114 &1423436759
 MonoBehaviour:
   m_ObjectHideFlags: 0

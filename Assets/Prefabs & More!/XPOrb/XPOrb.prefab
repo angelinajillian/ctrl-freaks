@@ -154,8 +154,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 2
-  activationDistance: 5
-  pickUpRadius: 0.35
+  activationDistance: 7.5
+  pickUpRadius: 2
   trailRenderer: {fileID: 7626623516383184331}
 --- !u!54 &4472269087934365037
 Rigidbody:
