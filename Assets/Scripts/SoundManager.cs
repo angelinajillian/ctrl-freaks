@@ -33,21 +33,27 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioMixerGroup ambienceMixerGroup;
 
     // FX sounds
-    [SerializeField] private List<AudioClip> walkingSFX;
     [SerializeField] private List<AudioClip> runningSFX;
+    [SerializeField] private List<AudioClip> sprintingSFX;
+    [SerializeField] private List<AudioClip> takeDamageSFX;
+
     [SerializeField] private AudioClip throwSound;
     [SerializeField] private AudioClip explosionSound;
     [SerializeField] private AudioClip punchSound;
     [SerializeField] private AudioClip punchWhooshSound;
-    [SerializeField] private AudioClip walkingSound;
-    [SerializeField] private AudioClip runningSound;
     [SerializeField] private AudioClip cannonFireSound;
     [SerializeField] private AudioClip fire1Sound;
+    [SerializeField] private AudioClip aoeSpellSound;
 
     // Ambience
     [SerializeField] private AudioClip caveAmbience;
 
     // Music
+
+    // Footstep tracker
+    private float runStepTime = 0.33f;
+    private float sprintStepTime = 0.26f;
+    private float stepTimer = 0.33f;
 
     private void Awake()
     {
@@ -71,7 +77,43 @@ public class SoundManager : MonoBehaviour
 
     }
 
-    public void PlayPunchWooshSound(Vector3 position)
+    public void PlaySprintSound(Vector3 position)
+    {
+        if (stepTimer >= sprintStepTime)
+        {
+            int randomSound = Random.Range(0, 8);
+            SoundSettings soundSettings = new SoundSettings(sprintingSFX[randomSound], 0.75f, 1.0f, false, 1.0f, 75.0f, AudioRolloffMode.Linear);
+            PlaySound(soundSettings, position);
+            stepTimer = 0;
+        }
+        else
+        {
+            stepTimer += Time.deltaTime;
+        }
+    }
+
+    public void PlayRunSound(Vector3 position)
+    {
+        if (stepTimer >= runStepTime)
+        {
+            int randomSound = Random.Range(0, 8);
+            SoundSettings soundSettings = new SoundSettings(runningSFX[randomSound], 0.75f, 1.0f, false, 1.0f, 75.0f, AudioRolloffMode.Linear);
+            PlaySound(soundSettings, position);
+            stepTimer = 0;
+        }
+        else
+        {
+            stepTimer += Time.deltaTime;
+        }
+    }
+
+    public void PlayAOESpellSound(Vector3 position)
+    {
+        SoundSettings soundSettings = new SoundSettings(aoeSpellSound, 1.0f, 1.0f, false, 1.0f, 75.0f, AudioRolloffMode.Linear);
+        PlaySound(soundSettings, position); 
+    }	    
+
+public void PlayPunchWooshSound(Vector3 position)
     {
         SoundSettings soundSettings = new SoundSettings(punchWhooshSound, 1.0f, 1.0f, false, 1.0f, 75.0f, AudioRolloffMode.Linear);
         PlaySound(soundSettings, position);
@@ -90,7 +132,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlayCannonSound(Vector3 position)
     {
-        SoundSettings soundSettings = new SoundSettings(cannonFireSound, 1.0f, 1.0f, true, 1.0f, 75.0f, AudioRolloffMode.Linear);
+        SoundSettings soundSettings = new SoundSettings(cannonFireSound, 1.0f, 1.0f, true, 1.0f, 50.0f, AudioRolloffMode.Linear);
         PlaySound(soundSettings, position);
     }
 
@@ -102,9 +144,16 @@ public class SoundManager : MonoBehaviour
 
     public void PlayPunchSound(Vector3 position)
     {
-        SoundSettings soundSettings = new SoundSettings(punchSound, 0.9f, 1.0f, true, 1.0f, 10.0f, AudioRolloffMode.Logarithmic);
+        SoundSettings soundSettings = new SoundSettings(punchSound, 0.9f, 1.0f, true, 1.0f, 10.0f, AudioRolloffMode.Linear);
         PlaySound(soundSettings, position);
 
+    }
+
+    public void PlayTakeDamageSound(Vector3 position)
+    {
+        int randomSound = Random.Range(0, 8);
+        SoundSettings soundSettings = new SoundSettings(takeDamageSFX[randomSound], 0.9f, 1.0f, true, 1.0f, 10.0f, AudioRolloffMode.Logarithmic);
+        PlaySound(soundSettings, position);
     }
 
     private void PlaySound(SoundSettings settings, Vector3 position)

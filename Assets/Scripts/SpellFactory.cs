@@ -162,7 +162,7 @@ public class SpellFactory : MonoBehaviour
             Debug.Log($"Mana: {mana}");
             canFire = false;
             animator.SetTrigger("AOETrigger");
-            // AOEAttack();
+            FindObjectOfType<SoundManager>().PlayAOESpellSound(this.transform.position);
         }
     }
 

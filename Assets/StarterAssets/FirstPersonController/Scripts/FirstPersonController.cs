@@ -195,8 +195,18 @@ namespace StarterAssets
 			// if there is a move input rotate player when the player is moving
 			if (_input.move != Vector2.zero)
 			{
-				// move
-				inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
+                // if we are grounded then play footsteps
+                if (Grounded && targetSpeed == SprintSpeed)
+				{
+                    FindObjectOfType<SoundManager>().PlaySprintSound(this.transform.position);
+                }
+                else if (Grounded && targetSpeed == MoveSpeed)
+                {
+                    FindObjectOfType<SoundManager>().PlayRunSound(this.transform.position);
+                }
+
+                // move
+                inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
 			}
 
 			// move the player
