@@ -98,12 +98,11 @@ public class PlayerControllerExtended : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") & canTakeDamage)
-        {
-            canTakeDamage = false;
-            ReduceHealth(1);
-        }
-        
+        //if (collision.gameObject.CompareTag("Enemy") & canTakeDamage)
+        //{
+        //    canTakeDamage = false;
+        //    ReduceHealth(1);
+        //}
     }
 
     void CheckDeath()
@@ -163,9 +162,9 @@ public class PlayerControllerExtended : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (!canTakeDamage) return; // Check if the player can take damage
-
-        canTakeDamage = false; // Prevent further damage for a cooldown period
+        //if (!canTakeDamage) return; // Check if the player can take damage
+        Debug.Log("Taking Dam!");
+        //canTakeDamage = false; // Prevent further damage for a cooldown period
         ReduceHealth(damage);
     }
 

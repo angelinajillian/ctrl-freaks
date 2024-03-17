@@ -10,10 +10,13 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float movementSpeed = 2.0f;
     [SerializeField] private GameObject xpOrbPrefab;
     [SerializeField] private int damageStat = 1;
+    [SerializeField] private float attackSpeed = 1.0f;
     [SerializeField] private float walkDistance = 1.5f;
     public Color originalColor;
     public Color hitColor;
     private GameObject player;
+
+    private float attackTimer;
 
     private Animator animator;
     public bool isStunned = false; // flag for if enemy is stunned or not
@@ -28,6 +31,7 @@ public class EnemyController : MonoBehaviour
         // playerController = player.GetComponent<PlayerControllerExtended>();
         originalColor = GetComponent<SpriteRenderer>().color;
         animator = GetComponent<Animator>();
+        attackTimer = attackSpeed;
     }
 
     void Update()
@@ -135,25 +139,26 @@ public class EnemyController : MonoBehaviour
 
     void MoveTowardsPlayer()
     {
+        attackTimer += Time.deltaTime;
+
         if (player != null)
         {
-            // animator.SetBool("moving", true);
-            // Vector3 directionToPlayer = player.transform.position - transform.position;
-            // directionToPlayer.Normalize();
-            // rb.MovePosition(rb.position + directionToPlayer * movementSpeed * Time.deltaTime);
-            // transform.LookAt(player.transform);
-
+            transform.LookAt(player.transform);
             animator.SetBool("moving", true);
 
             Vector3 directionToPlayer = player.transform.position - transform.position;
             float distanceToPlayer = directionToPlayer.magnitude;
 
+            if (attackTimer >= attackSpeed)
+            {
+                AttackIfInRange(3.0f);
+                attackTimer = 0;
+            }
+
+            if (distanceToPlayer <= 2.0f)
             if (distanceToPlayer <= walkDistance)
             {
                 rb.velocity = Vector3.zero;
-                // animator.SetBool("moving", false);
-                transform.LookAt(player.transform);
-                AttackIfInRange(3f);
                 return;
             }
 
@@ -161,7 +166,6 @@ public class EnemyController : MonoBehaviour
 
             rb.MovePosition(rb.position + directionToPlayer * movementSpeed * Time.deltaTime);
 
-            transform.LookAt(player.transform);
         }
         else
         {
@@ -171,42 +175,23 @@ public class EnemyController : MonoBehaviour
 
     public void AttackIfInRange(float attackRange)
     {
-        Vector3 directionToPlayer = player.transform.position - transform.position;
+        // player is dead ahead because we are already looking at them
+        Vector3 directionToPlayer = transform.forward;
+
+        RaycastHit hit;
         
-        RaycastHit[] hits = Physics.RaycastAll(transform.position, directionToPlayer, attackRange);
+        // for testing, only visible in scene mode
+        Debug.DrawRay(transform.position, directionToPlayer * 3.0f, Color.green);
 
-        // RaycastHit hit;
-
-        // if (Physics.Raycast(transform.position, directionToPlayer, out hit, attackRange))
-        // {
-        //     Debug.Log("Raycast hit: " + hit.collider.gameObject.name);
-        //     PlayerControllerExtended playerController = hit.collider.gameObject.GetComponent<PlayerControllerExtended>();
-            
-        //     if (playerController != null)
-        //     {
-        //         Debug.Log("PlayerController found.");
-        //         playerController.TakeDamage(damageStat);
-        //     }
-        // }
-
-        foreach (RaycastHit hit in hits)
-        {   
-            PlayerControllerExtended playerController = hit.collider.GetComponent<PlayerControllerExtended>();
-            
-            if (playerController != null)
+        if (Physics.Raycast(transform.position, directionToPlayer, out hit, attackRange))
+        {
+            if (hit.collider.tag == "Player")
             {
+                animator.SetTrigger("attack");
+                PlayerControllerExtended playerController = hit.collider.GetComponent<PlayerControllerExtended>();
                 playerController.TakeDamage(damageStat);
-                Debug.Log("Player Attacked");
             }
         }
-
-            // Debug.Log("Attacking Player");
-            // if (hit.collider.gameObject.CompareTag("Player"))
-            // {
-            //     playerController.TakeDamage(damageStat);
-            //     Debug.Log("Player within attack range! Perform attack actions...");
-            // }
-        // }
     }
 
 
