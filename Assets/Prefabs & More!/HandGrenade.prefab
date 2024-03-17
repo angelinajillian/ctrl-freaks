@@ -141,7 +141,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.125
+  m_Radius: 0.135
   m_Center: {x: -0.01, y: 0, z: -0.05}
 --- !u!33 &9182138489998260601
 MeshFilter:

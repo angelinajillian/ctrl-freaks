@@ -7,8 +7,8 @@ public class HandGrenadeController : MonoBehaviour
 {
     [SerializeField] private GameObject explosion;
 
-    private float throwSpeed = 19.5f;
-    private float maxAngle = 95.0f;
+    private float throwSpeed = 18.0f;
+    private float maxAngle = 88.0f;
     private float totalFuseTime = 2.75f;
     private float fuseTime = 2.75f;
     private float holdStartTime;
@@ -56,7 +56,7 @@ public class HandGrenadeController : MonoBehaviour
         launchDirection.Normalize();
 
         // scale throwspeed up the longer we hold 
-        throwSpeed += (throwSpeed * (holdDuration / totalFuseTime)); 
+        throwSpeed += (throwSpeed * (holdDuration / totalFuseTime));
         rb.AddForce(launchDirection * throwSpeed, ForceMode.Impulse);
         
         // make it spin in random direction
@@ -99,6 +99,19 @@ public class HandGrenadeController : MonoBehaviour
         {
             this.Explode();
         }
+
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            // don't use ground as parent cause it leads to ugly shit
+            transform.position = collision.contacts[0].point; 
+        }
+        else
+        {
+            // this makes grenade stick and stay on moving target
+            transform.parent = collision.transform;
+        }
+
+        rb.isKinematic = true;
     }
 
     void OnTriggerEnter(Collider other)
