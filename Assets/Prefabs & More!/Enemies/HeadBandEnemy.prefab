@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9083536416626571082}
   - component: {fileID: -7149875385748992061}
   - component: {fileID: -3101945460203711760}
+  - component: {fileID: 4180627046007210265}
   m_Layer: 0
   m_Name: HeadBandEnemy
   m_TagString: Enemy
@@ -118,7 +119,7 @@ Rigidbody:
   m_GameObject: {fileID: 5489041942596120354}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.5
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -135,7 +136,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!114 &-7149875385748992061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,11 +149,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8d0edad577395f4da88e7e5fa328356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 4180627046007210265}
   health: 2
   movementSpeed: 6
   xpOrbPrefab: {fileID: 1972077602081053956, guid: ed2403cf7029a2b4e8fe93dccdd0d3a4, type: 3}
+  damageStat: 1
+  attackSpeed: 1
+  walkDistance: 1.5
   originalColor: {r: 1, g: 1, b: 1, a: 1}
   hitColor: {r: 0.6415094, g: 0, b: 0, a: 1}
+  isStunned: 0
+  isPunched: 0
 --- !u!95 &-3101945460203711760
 Animator:
   serializedVersion: 5
@@ -174,3 +181,25 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!195 &4180627046007210265
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5489041942596120354}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.099999994
+  m_Speed: 4
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 2.5
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 0
+  m_Height: 0.20999998
+  m_BaseOffset: 0.10499999
+  m_WalkableMask: 1
+  m_ObstacleAvoidanceType: 4

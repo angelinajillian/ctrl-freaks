@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class TrapController : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class TrapController : MonoBehaviour
     private List<GameObject> inactiveCovers = new List<GameObject>();
     private int curWave = 0;
     [SerializeField] private GameObject enemySpawner;
+    [SerializeField] private GameObject trapCutout;
+
     void Start()
     {
         var spawnScript = enemySpawner.GetComponent<EnemySpawner>();
@@ -68,6 +71,9 @@ public class TrapController : MonoBehaviour
         var selectedCover = actives[randomIndex];
         selectedCover.SetActive(false);
         inactiveCovers.Add(selectedCover);
+
+        // cutout this area from the nav mesh
+        Instantiate(trapCutout, selectedCover.transform.position, Quaternion.identity);
     }
 
     void HideTrap()

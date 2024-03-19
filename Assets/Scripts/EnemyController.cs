@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using StarterAssets;
 
 public class EnemyController : MonoBehaviour
 {
     private Rigidbody rb;
+
+    [SerializeField]
+    private NavMeshAgent agent;
+
     [SerializeField] private int health = 3;
     [SerializeField] private float movementSpeed = 2.0f;
     [SerializeField] private GameObject xpOrbPrefab;
@@ -32,6 +37,7 @@ public class EnemyController : MonoBehaviour
         originalColor = GetComponent<SpriteRenderer>().color;
         animator = GetComponent<Animator>();
         attackTimer = attackSpeed;
+        agent.speed = movementSpeed;
     }
 
     void Update()
@@ -39,10 +45,16 @@ public class EnemyController : MonoBehaviour
         // Stunned! prohibit any other actions!
         // prohibits movement only, need to change how enemy attacks to stop that
         if (isStunned) return;
+        attackTimer += Time.deltaTime;
 
         if (health <= 0)
         {
             StartCoroutine(Die());
+        }
+
+        if (attackTimer >= attackSpeed)
+        {
+            AttackIfInRange(2.5f);
         }
 
         MoveTowardsPlayer();
@@ -89,23 +101,26 @@ public class EnemyController : MonoBehaviour
 
     public void Kicked(float dam, Vector3 direction, float forceOfKick)
     {
-        Debug.Log("Ouch you kicked me!!");
-        
+        //Debug.Log("Ouch you kicked me!!");
+
         StartCoroutine(PunchedCo());
-        health -= (int)dam;
+        //health -= (int)dam;
 
-        if (rb != null)
-        {
-            float scaledPower = movementSpeed - Mathf.Log10(movementSpeed) + 5;
+        //if (rb != null)
+        //{
+        //    float scaledPower = movementSpeed - Mathf.Log10(movementSpeed) + 5;
 
-            // scale kick based off force and enemy movement speed
-            rb.AddForce(direction * scaledPower * forceOfKick, ForceMode.Impulse);
-        }
+        //    // scale kick based off force and enemy movement speed
+        //    rb.AddForce(direction * scaledPower * forceOfKick, ForceMode.Impulse);
+        //}
 
     }
 
     IEnumerator Die()
     {
+        //agent.isStopped = true;
+        agent.enabled = false;
+        rb.velocity = Vector3.zero;
         isStunned = true; // confusing code but it won't cause stun animation, only stops enemy movement 
         animator.SetTrigger("die");
 
@@ -117,54 +132,81 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator Stunned(float duration)
     {
-        isStunned = true;
+        agent.enabled = false;
         animator.SetBool("stunned", true);
+        isStunned = true;
 
         transform.position = transform.position; // stop movement?
         yield return new WaitForSeconds(2.5f);
 
         animator.SetBool("stunned", false);
         isStunned = false;
+        agent.enabled = true;
     }
 
     IEnumerator PunchedCo()
     {
+        Vector3 velocity = agent.velocity;
         isPunched = true;
-        
-        // Stays "Punched" for 5s
-        yield return new WaitForSeconds(5f);
+        agent.enabled = false;
+        rb.velocity = velocity;
 
+        // Stays "Punched" for 3.5s
+        yield return new WaitForSeconds(3.5f);
+
+        agent.enabled = true;
         isPunched = false;
+    }
+
+    private bool IsFalling()
+    {
+        float raycastDistance = 0.9f;
+
+        Debug.DrawRay(transform.position, Vector3.down * raycastDistance, Color.green);
+
+        // cast a ray downwards from the enemy position
+        if (!Physics.Raycast(transform.position, Vector3.down, raycastDistance))
+            return true;
+        else
+            return false;
     }
 
     void MoveTowardsPlayer()
     {
-        attackTimer += Time.deltaTime;
+        // if enemy is over hole then have them stop trying to move
+        // This just makes them look way less wonky and avoids a bug
+        if (IsFalling())
+        {
+            return; // do nothing!
+        }    
 
         if (player != null)
         {
             transform.LookAt(player.transform);
             animator.SetBool("moving", true);
 
-            Vector3 directionToPlayer = player.transform.position - transform.position;
-            float distanceToPlayer = directionToPlayer.magnitude;
-
-            if (attackTimer >= attackSpeed)
+            // swap to old movement method while punched so enemy can fall in hole
+            if (isPunched)
             {
-                AttackIfInRange(3.0f);
-                attackTimer = 0;
+                Vector3 directionToPlayer = player.transform.position - transform.position;
+                float distanceToPlayer = directionToPlayer.magnitude;
+
+                if (distanceToPlayer <= walkDistance)
+                {
+                    rb.velocity = Vector3.zero;
+                    return;
+                }
+
+                directionToPlayer.Normalize();
+
+                //DO THE NAVMESH STUFF HERE
+                rb.MovePosition(rb.position + directionToPlayer * movementSpeed * Time.deltaTime);
             }
 
-            if (distanceToPlayer <= walkDistance)
-            {
-                rb.velocity = Vector3.zero;
-                return;
+            if (agent.isOnNavMesh)
+            { 
+                this.agent.SetDestination(player.transform.position);
             }
-
-            directionToPlayer.Normalize();
-
-            rb.MovePosition(rb.position + directionToPlayer * movementSpeed * Time.deltaTime);
-
         }
         else
         {
@@ -186,6 +228,7 @@ public class EnemyController : MonoBehaviour
         {
             if (hit.collider.tag == "Player")
             {
+                attackTimer = 0;
                 animator.SetTrigger("attack");
                 PlayerControllerExtended playerController = hit.collider.GetComponent<PlayerControllerExtended>();
                 playerController.TakeDamage(damageStat);
