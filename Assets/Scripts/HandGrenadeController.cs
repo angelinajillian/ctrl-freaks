@@ -8,7 +8,6 @@ public class HandGrenadeController : MonoBehaviour
     [SerializeField] private GameObject explosion;
 
     private float throwSpeed = 18.0f;
-    private float maxAngle = 88.0f;
     private float totalFuseTime = 2.75f;
     private float fuseTime = 2.75f;
     private float holdStartTime;
@@ -46,19 +45,15 @@ public class HandGrenadeController : MonoBehaviour
     { 
         float holdDuration = Time.time - holdStartTime;
 
-        // increase angle of throw the longer we hold the grenade
-        float launchAngle = Mathf.Min(holdDuration / totalFuseTime, 1.0f) * maxAngle;
-
         this.gameObject.transform.parent = null; // stop tracking parent, now we are free
-   
-        // angle to launch our grenade, scales up with time as you hold
-        Vector3 launchDirection = Quaternion.AngleAxis(launchAngle, transform.right) * -transform.forward;
+
+        Vector3 launchDirection = -transform.forward;
         launchDirection.Normalize();
 
         // scale throwspeed up the longer we hold 
         throwSpeed += (throwSpeed * (holdDuration / totalFuseTime));
-        rb.AddForce(launchDirection * throwSpeed, ForceMode.Impulse);
-        
+        rb.velocity = throwSpeed * launchDirection;
+
         // make it spin in random direction
         var torqueVector = CreateRandomTorque();
         rb.AddRelativeTorque(torqueVector, ForceMode.Impulse);

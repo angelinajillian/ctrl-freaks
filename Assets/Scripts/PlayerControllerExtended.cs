@@ -163,7 +163,6 @@ public class PlayerControllerExtended : MonoBehaviour
     public void TakeDamage(int damage)
     {
         //if (!canTakeDamage) return; // Check if the player can take damage
-        Debug.Log("Taking Dam!");
         //canTakeDamage = false; // Prevent further damage for a cooldown period
         ReduceHealth(damage);
     }

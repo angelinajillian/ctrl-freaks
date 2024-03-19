@@ -110,7 +110,6 @@ public class GameManager : MonoBehaviour
 
     IEnumerator FlashRedEnum(float flashLength)
     {
-        Debug.Log("FLASH RED");
         redFlash.SetActive(true);
 
         yield return new WaitForSeconds(flashLength);
