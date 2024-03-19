@@ -170,5 +170,30 @@ public class UpgradeSystem : MonoBehaviour
         gameManager.ResumeGame();
     }
 
+    //  // Method called when the pointer enters the button area
+    // public void OnPointerEnter(PointerEventData eventData)
+    // {
+    //     ShowUpgradeText();
+    // }
+
+    // // Method called when the pointer exits the button area
+    // public void OnPointerExit(PointerEventData eventData)
+    // {
+    //     HideUpgradeText();
+    // }
+
+    // // Show upgrade information text
+    // private void ShowUpgradeText()
+    // {
+    //     upgradeText.text = $"{upgradeName}: {upgradeDescription}";
+    //     upgradeText.gameObject.SetActive(true);
+    // }
+
+    // // Hide upgrade information text
+    // private void HideUpgradeText()
+    // {
+    //     upgradeText.gameObject.SetActive(false);
+    // }
+
 }
 

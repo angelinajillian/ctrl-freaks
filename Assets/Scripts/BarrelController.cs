@@ -7,7 +7,7 @@ public class BarrelController : MonoBehaviour
 {
     private float health = 3f;
     [SerializeField] private GameObject explosion;
-    private float fuseTimer = 6f;
+    private float fuseTimer = 3f;
     private bool fuseActive = false;
 
     void Start()

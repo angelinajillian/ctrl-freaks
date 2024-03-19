@@ -4622,7 +4622,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 450}
-  m_SizeDelta: {x: 200, y: 100}
+  m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &294794243
 MonoBehaviour:
@@ -4651,7 +4651,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 100
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -21203,6 +21203,7 @@ MonoBehaviour:
   xpBar: {fileID: 2013157273}
   GameManagerObj: {fileID: 1126806384}
   fistDamage: 0
+  punchDamage: 0
 --- !u!114 &1423436759
 MonoBehaviour:
   m_ObjectHideFlags: 0
