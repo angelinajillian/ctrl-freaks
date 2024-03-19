@@ -14,11 +14,11 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] private GameObject entranceBlock;
     [SerializeField] private GameObject circle;
+    [SerializeField] private GameObject effect;
 
     void Start()
     {
         initialSpawn = true;
-        entranceBlock.SetActive(false);
     }
 
     void Update()
@@ -27,8 +27,7 @@ public class EnemySpawner : MonoBehaviour
         if (!initialSpawn & nextWave)
         {
             waveNumber++;
-            Text waveText = GameObject.Find("WaveNumber").GetComponent<Text>();
-            waveText.text = "Wave " + waveNumber.ToString();
+            displayWave();
 
             NextWaveDelay();
             Debug.Log("SPAWNING NEXT WAVE");
@@ -47,14 +46,13 @@ public class EnemySpawner : MonoBehaviour
         {
             if (initialSpawn)
             {
+                displayWave();
                 SpawnWave();
                 initialSpawn = false;
                 var circleAnim = circle.GetComponent<Animator>();
                 circleAnim.enabled = true;
+                entranceBlock.SetActive(true);
             }
-
-            entranceBlock.SetActive(true);
-
         }
     }
 
@@ -73,6 +71,8 @@ public class EnemySpawner : MonoBehaviour
 
         foreach (Transform spawnPoint in graySpawnPoints)
         {
+            // var newEffect = Instantiate(effect, spawnPoint.position, spawnPoint.rotation);
+            // Destroy(newEffect, 0.6f);
             Instantiate(enemyPrefabs[0], spawnPoint.position, spawnPoint.rotation);
         }
 
@@ -87,6 +87,8 @@ public class EnemySpawner : MonoBehaviour
 
         foreach (Transform spawnPoint in baldSpawnPoints)
         {
+            // var newEffect = Instantiate(effect, spawnPoint.position, spawnPoint.rotation);
+            // Destroy(newEffect, 0.6f);
             Instantiate(enemyPrefabs[1], spawnPoint.position, spawnPoint.rotation);
         }
 
@@ -101,6 +103,8 @@ public class EnemySpawner : MonoBehaviour
 
         foreach (Transform spawnPoint in redSpawnPoints)
         {
+            // var newEffect = Instantiate(effect, spawnPoint.position, spawnPoint.rotation);
+            // Destroy(newEffect, 0.6f);
             Instantiate(enemyPrefabs[2], spawnPoint.position, spawnPoint.rotation);
         }
 
@@ -115,11 +119,14 @@ public class EnemySpawner : MonoBehaviour
 
         foreach (Transform spawnPoint in purpleSpawnPoints)
         {
+            // var newEffect = Instantiate(effect, spawnPoint.position, spawnPoint.rotation);
+            // Destroy(newEffect, 0.6f);
             Instantiate(enemyPrefabs[3], spawnPoint.position, spawnPoint.rotation);
         }
     }
 
     // 0 = grayskull, 1 = bald, 2 = red, 3 = purple
+    // Commented out spawns test xp, scales with level
 
     void SpawnWave()
     {
@@ -128,75 +135,68 @@ public class EnemySpawner : MonoBehaviour
         List<Transform> selectedSpawnPoints = new List<Transform>();
         List<Transform> availableSpawnPoints = new List<Transform>(spawnPoints);
 
-        int redCount = 1;
-        int grayCount = 0;
-        int baldCount = 0;
-        int purpleCount = 0;
-
-        if (waveNumber < 5)
+        if (waveNumber == 1)
         {
-            redCount += waveNumber;
-            purpleCount = Random.Range(0, waveNumber);
-            baldCount = Random.Range(0, waveNumber);
+            // SpawnEnemies(0, 0, 5, 0);
+            SpawnEnemies(0, 0, 3, 0);
         }
-
-        else
+        else if (waveNumber == 2)
         {
-            redCount = Random.Range(4 - waveNumber, 11 - waveNumber + 1);
-            grayCount = Random.Range(3 - waveNumber, waveNumber + 1);
-            baldCount = Random.Range(4, waveNumber + 1);
-            purpleCount = Random.Range(4, 5);
-
+            // SpawnEnemies(0, 0, 6, 0);
+            SpawnEnemies(0, 1, 1, 2);
         }
-
-        SpawnEnemies(grayCount, baldCount, redCount, purpleCount);
-
-        // if (waveNumber == 1)
-        // {
-        //     SpawnEnemies(0, 0, 1, 0);
-        // }
-        // else if (waveNumber == 2)
-        // {
-        //     SpawnEnemies(0, 0, 1, 0);
-        // }
-        // else if (waveNumber == 3)
-        // {
-        //     SpawnEnemies(0, 0, 1, 0);
-        // }
-        // else if (waveNumber == 4)
-        // {
-        //     SpawnEnemies(0, 0, 1, 0);
-        // }
-        // else if (waveNumber == 5)
-        // {
-        //     SpawnEnemies(0, 0, 1, 0);
-        // }
-        // else if (waveNumber == 6)
-        // {
-        //     SpawnEnemies(0, 0, 1, 0);
-        // }
-        // else if (waveNumber == 7)
-        // {
-        //     SpawnEnemies(0, 0, 1, 0);
-        // }
-        // else if (waveNumber == 8)
-        // {
-        //     SpawnEnemies(0, 0, 1, 0);
-        // }
-        // else if (waveNumber == 9)
-        // {
-        //     SpawnEnemies(0, 0, 1, 0);
-        // }
-        // else if (waveNumber == 10)
-        // {
-        //     SpawnEnemies(0, 0, 1, 0);
-        // }
+        else if (waveNumber == 3)
+        {
+            // SpawnEnemies(0, 0, 7, 0);
+            SpawnEnemies(0, 1, 4, 2);
+        }
+        else if (waveNumber == 4)
+        {
+            // SpawnEnemies(0, 0, 8, 0);
+            SpawnEnemies(0, 2, 3, 4);
+        }
+        else if (waveNumber == 5)
+        {
+            // SpawnEnemies(0, 0, 9, 0);
+            SpawnEnemies(0, 2, 4, 2);
+        }
+        else if (waveNumber == 6)
+        {
+            // SpawnEnemies(0, 0, 10, 0);
+            SpawnEnemies(0, 3, 4, 2);
+        }
+        else if (waveNumber == 7)
+        {
+            // SpawnEnemies(0, 0, 11, 0);
+            SpawnEnemies(1, 3, 4, 3);
+        }
+        else if (waveNumber == 8)
+        {
+            // SpawnEnemies(0, 0, 12, 0);
+            SpawnEnemies(1, 3, 4, 3);
+        }
+        else if (waveNumber == 9)
+        {
+            // SpawnEnemies(0, 0, 13, 0);
+            SpawnEnemies(2, 3, 3, 3);
+        }
+        else if (waveNumber == 10)
+        {
+            // SpawnEnemies(0, 0, 14, 0);
+            SpawnEnemies(2, 4, 3, 3);
+        }
     }
 
     bool AreAllEnemiesKilled()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         return enemies.Length == 0;
+    }
+
+    void displayWave()
+    {
+        Text waveText = GameObject.Find("WaveNumber").GetComponent<Text>();
+        waveText.text = "Wave " + waveNumber.ToString();
     }
 
     public int GetWave()

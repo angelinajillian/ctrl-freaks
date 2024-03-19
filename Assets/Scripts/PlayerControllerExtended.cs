@@ -7,14 +7,14 @@ using UnityEngine.UI;
 
 public class PlayerControllerExtended : MonoBehaviour
 {
-    [SerializeField] private int maxHealth = 10;
+    public int maxHealth = 10;
     public int currHealth;
 
-    private float maxMana = 100f;
+    public float maxMana = 100f;
     public float currMana;
 
     private bool canTakeDamage = true;
-    public float damageCooldown = 3.0f;
+    public float damageCooldown = 2.0f;
 
     // Declaring a variable of type HealthBar
     public HealthBar healthBar;
@@ -22,8 +22,17 @@ public class PlayerControllerExtended : MonoBehaviour
     public ManaBar manaBar;
 
     public XPBar xpBar;
+    private Text levelText;
 
+    private GameManager gameManager;
+    public GameObject GameManagerObj;
 
+    public int fistDamage;
+    public int punchDamage;
+
+    // public bool enabled;
+
+    
     // Start at level 1 and 0 XP
     private float level = 1;
     private float currXP = 0;
@@ -37,20 +46,23 @@ public class PlayerControllerExtended : MonoBehaviour
 
         currMana = maxMana;
         manaBar.SetMaxMana(maxMana);
+
+        levelText = GameObject.FindGameObjectWithTag("LevelText").GetComponent<Text>();
+
+        fistDamage = 2;
+        punchDamage = 1;
+
+        gameManager = GameManagerObj.GetComponent<GameManager>();
+
+        // if (gameManager != null)
+        // {
+        //     Debug.Log("Game Manager Loaded");
+        // }
     }
 
     void Update()
     {
         // Debug.Log($"Health: {currHealth}, Mana: {currMana}, xp: {currXP}");
-        if (currHealth <= 0)
-        {
-            currXP = 0;
-            level = 1;
-            Text levelText = GameObject.Find("LevelTextBox").GetComponent<Text>();
-            levelText.text = "level: " + level.ToString();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-
         if (!canTakeDamage)
         {
             damageCooldown -= Time.deltaTime;
@@ -65,11 +77,17 @@ public class PlayerControllerExtended : MonoBehaviour
 
     void levelUp()
     {
-        if (currXP >= 100)
+        float xpRequiredForNextLevel = 100 + (20*(level-1));
+        if (currXP >= xpRequiredForNextLevel)
         {
+            float xpRequiredForNextLevel2 = 100 + (20*(level));
             level++;
-            currXP = currXP - 100;
-
+            currXP = currXP - xpRequiredForNextLevel;
+            if (level < 12)
+            {
+                gameManager.UpgradeMenu();
+            }
+            
             // Reset health to max when leveling up
             currHealth = maxHealth;
             healthBar.SetMaxHealth(maxHealth);
@@ -78,8 +96,8 @@ public class PlayerControllerExtended : MonoBehaviour
             currMana = maxMana;
             manaBar.SetMaxMana(maxMana);
 
-            Text levelText = GameObject.Find("LevelTextBox").GetComponent<Text>();
             levelText.text = "level " + level.ToString();
+            xpBar.SetMaxXP(xpRequiredForNextLevel2);
             xpBar.SetXP(currXP);
         }
     }
@@ -87,24 +105,33 @@ public class PlayerControllerExtended : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") & canTakeDamage)
-        {
-            canTakeDamage = false;
-            ReduceHealth(1);
-            Debug.Log($"Health: {currHealth}");
-        }
+        //if (collision.gameObject.CompareTag("Enemy") & canTakeDamage)
+        //{
+        //    canTakeDamage = false;
+        //    ReduceHealth(1);
+        //}
+    }
+
+    void CheckDeath()
+    {
+        Debug.Log($"Health: {currHealth}");
+        if (currHealth <= 0)
+            {
+                currXP = 0;
+                level = 1;
+                Text levelText = GameObject.Find("LevelTextBox").GetComponent<Text>();
+                levelText.text = "level: " + level.ToString();
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("KillPlane"))
+        if (other.CompareTag("KillPlane") & canTakeDamage)
         {
-            Debug.Log("Touched killplane");
-            currXP = 0;
-            level = 1;
-            Text levelText = GameObject.Find("LevelTextBox").GetComponent<Text>();
-            levelText.text = "level: " + level.ToString();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Debug.Log("Touching spikes");
+            canTakeDamage = false;
+            ReduceHealth(3);
         }
 
         if (other.CompareTag("Explosion"))
@@ -112,21 +139,54 @@ public class PlayerControllerExtended : MonoBehaviour
             Debug.Log("You were caught in the barrel explosion!");
             ReduceHealth(4);
         }
+
+        if (other.gameObject.CompareTag("EnemyProjectile") & canTakeDamage)
+        {
+            Destroy(other);
+            canTakeDamage = false;
+            ReduceHealth(2);
+        }
     }
+
+
+    // void OnTriggerEnter(Collider other)
+    // {   
+    //     Debug.Log("COLLIDED W XP");
+    //     if (other.CompareTag("XPOrb"))
+    //     {
+    //         // Handle XP Orb collision logic here
+    //         Destroy(other.gameObject);
+    //         UpdateXP();
+    //         Debug.Log($"Collected XP Orb. Current XP: {currXP}");
+    //         levelUp();
+    //     }
+    // }
 
     public void setCanTakeDamage(bool damageTF)
     {
         canTakeDamage = damageTF;
     }
 
+    public void TakeDamage(int damage)
+    {
+        //if (!canTakeDamage) return; // Check if the player can take damage
+        //canTakeDamage = false; // Prevent further damage for a cooldown period
+        ReduceHealth(damage);
+    }
+
     // This ReduceHealth function updates playerHealth and the healthbar
     // damage can different depending on which enemy did damage
     void ReduceHealth(int damage)
     {
+        // FlashRed();
+        FindObjectOfType<SoundManager>().PlayTakeDamageSound(this.transform.position);
+        gameManager.FlashRed();
         // Deduct damage from playerHealth
         currHealth -= damage;
         // Update health bar
         healthBar.SetHealth(currHealth);
+
+        CheckDeath();
     }
 
     public void UpdateXP(float xpValue)
@@ -135,4 +195,14 @@ public class PlayerControllerExtended : MonoBehaviour
         xpBar.SetXP(currXP);
         levelUp();
     }
+    
+    // IEnumerator FlashRed()
+    // {
+    //     Debug.Log("FLASH RED");
+    //     redFlash.SetActive(true);
+
+    //     yield return new WaitForSeconds(0.4f);
+
+    //     redFlash.SetActive(false);
+    // }
 }

@@ -24,7 +24,7 @@ AnimationClip:
       value: {fileID: -508793073, guid: 4dac9ea8b1f304e42b63c8519818016d, type: 3}
     - time: 0.083333336
       value: {fileID: 1406936551, guid: 4dac9ea8b1f304e42b63c8519818016d, type: 3}
-    - time: 0.41666666
+    - time: 0.5
       value: {fileID: 1406936551, guid: 4dac9ea8b1f304e42b63c8519818016d, type: 3}
     attribute: m_Sprite
     path: PlayerCameraRoot/Hand
@@ -56,7 +56,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.43333334
+    m_StopTime: 0.51666665
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

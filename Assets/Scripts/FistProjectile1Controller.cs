@@ -2,7 +2,10 @@ using UnityEngine;
 
 public class FistProjectile1Controller : MonoBehaviour
 {
-    [SerializeField] private float movementSpeed = 25.0f; 
+    [SerializeField] private float movementSpeed = 30.0f; 
+    [SerializeField] private float destroyDistance = 0.1f;
+
+    public int damage = 2;
     private float destroyTime = 1.5f;
     private Rigidbody rb;
 
@@ -14,25 +17,39 @@ public class FistProjectile1Controller : MonoBehaviour
         target = newTarget.transform;
     }
 
+    public void SetDamage(int damage)
+    {
+        this.damage = damage;
+    }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
 
         if (target != null)
         {
-            // Calculate the direction towards the target
             Vector3 direction = (target.position - transform.position).normalized;
 
-            // Set the velocity towards the target
             rb.velocity = direction * movementSpeed;
         }
         else
         {
-            // If no target is specified, move forward based on the object's forward direction
             rb.velocity = -transform.forward * movementSpeed;
         }
 
         Destroy(gameObject, destroyTime);
+    }
+
+    void Update()
+    {
+        if (target != null)
+        {
+            // Check if the projectile is close enough to the target to be destroyed
+            if (Vector3.Distance(transform.position, target.position) <= destroyDistance)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -15,4 +15,12 @@ public class AOEFistController : MonoBehaviour
     {
         transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime * -1);
     }
+
+    // private void OnCollisionEnter(Collision collision)
+    // {
+    //     if (collision.gameObject.CompareTag("Player"))
+    //     {
+    //         Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
+    //     }
+    // }
 }

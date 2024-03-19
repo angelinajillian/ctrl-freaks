@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class TrapController : MonoBehaviour
 {
@@ -9,7 +10,9 @@ public class TrapController : MonoBehaviour
     private List<GameObject> inactiveCovers = new List<GameObject>();
     private int curWave = 0;
     [SerializeField] private GameObject enemySpawner;
-    [SerializeField] private GameObject coverParticle;
+    [SerializeField] private GameObject trapCutout;
+    [SerializeField] private GameObject trapEffect;
+
     void Start()
     {
         var spawnScript = enemySpawner.GetComponent<EnemySpawner>();
@@ -38,7 +41,7 @@ public class TrapController : MonoBehaviour
         if ((wave % 3 == 0) && wave > 0 && (curWave != wave))
         {
             var cannonList = GameObject.FindGameObjectsWithTag("Cannon").ToList();
-            int volleyAmount = Random.Range(1, wave);
+            int volleyAmount = Random.Range(0, wave / 3);
 
             for (int i = 0; i < volleyAmount; i++)
             {
@@ -71,8 +74,11 @@ public class TrapController : MonoBehaviour
         var rotation = Quaternion.identity;
         selectedCover.SetActive(false);
         inactiveCovers.Add(selectedCover);
-        var particleObj = Instantiate(coverParticle, position, rotation);
-        Destroy(particleObj, 2f);
+        var effect = Instantiate(trapEffect, position, rotation);
+        Destroy(effect, 2f);
+
+        // cutout this area from the nav mesh
+        Instantiate(trapCutout, position, rotation);
     }
 
     void HideTrap()

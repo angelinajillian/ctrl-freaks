@@ -44,12 +44,14 @@ Material:
     m_Floats:
     - _Cutoff: 1
     - _GlossMapScale: 0.461
-    - _Glossiness: 0
+    - _Glossiness: 0.412
     - _GlossyReflections: 0
-    - _Metallic: 0.612
+    - _Metallic: 0.862
+    - _Mode: 2
     - _Parallax: 0.005
     - _SmoothnessTextureChannel: 0
+    - _SrcBlend: 5
     m_Colors:
-    - _Color: {r: 0.06911068, g: 0.8301887, b: 0, a: 1}
+    - _Color: {r: 0.06911068, g: 0.8301887, b: 0, a: 0.7882353}
     - _EmissionColor: {r: 0.012962084, g: 0.22641516, b: 0, a: 1}
   m_BuildTextureStacks: []

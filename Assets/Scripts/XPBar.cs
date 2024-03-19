@@ -19,4 +19,12 @@ public class XPBar : MonoBehaviour
         // Change color according to a normalized value
         barColor.color = gradient.Evaluate(xpBar.normalizedValue);
     }
+
+    public void SetMaxXP(float maxXP)
+    {
+        // Set the maximum value of the XP bar
+        xpBar.maxValue = maxXP;
+        // Update the color of the XP bar based on the new value
+        barColor.color = gradient.Evaluate(xpBar.normalizedValue);
+    }
 }
