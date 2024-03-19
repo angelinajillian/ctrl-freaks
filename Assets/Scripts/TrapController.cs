@@ -9,6 +9,7 @@ public class TrapController : MonoBehaviour
     private List<GameObject> inactiveCovers = new List<GameObject>();
     private int curWave = 0;
     [SerializeField] private GameObject enemySpawner;
+    [SerializeField] private GameObject coverParticle;
     void Start()
     {
         var spawnScript = enemySpawner.GetComponent<EnemySpawner>();
@@ -66,8 +67,12 @@ public class TrapController : MonoBehaviour
         Debug.Log("Trap revealed!");
         var randomIndex = Random.Range(0, actives.Count);
         var selectedCover = actives[randomIndex];
+        var position = selectedCover.transform.position;
+        var rotation = Quaternion.identity;
         selectedCover.SetActive(false);
         inactiveCovers.Add(selectedCover);
+        var particleObj = Instantiate(coverParticle, position, rotation);
+        Destroy(particleObj, 2f);
     }
 
     void HideTrap()
