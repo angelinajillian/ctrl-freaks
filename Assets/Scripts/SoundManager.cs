@@ -113,15 +113,10 @@ public class SoundManager : MonoBehaviour
         PlaySound(soundSettings, position); 
     }	    
 
-public void PlayPunchWooshSound(Vector3 position)
+    public void PlayPunchWooshSound(Vector3 position)
     {
         SoundSettings soundSettings = new SoundSettings(punchWhooshSound, 1.0f, 1.0f, false, 1.0f, 75.0f, AudioRolloffMode.Linear);
         PlaySound(soundSettings, position);
-    }
-    
-    public void PlayWalkSound(Vector3 position)
-    {
-        //PlaySound(throwSoundClip, position);
     }
     
     public void PlayFire1Sound(Vector3 position)
@@ -144,7 +139,7 @@ public void PlayPunchWooshSound(Vector3 position)
 
     public void PlayPunchSound(Vector3 position)
     {
-        SoundSettings soundSettings = new SoundSettings(punchSound, 0.9f, 1.0f, true, 1.0f, 10.0f, AudioRolloffMode.Linear);
+        SoundSettings soundSettings = new SoundSettings(punchSound, 0.75f, 1.0f, true, 1.0f, 10.0f, AudioRolloffMode.Linear);
         PlaySound(soundSettings, position);
 
     }

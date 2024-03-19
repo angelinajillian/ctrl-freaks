@@ -109,20 +109,14 @@ public class UpgradeSystem : MonoBehaviour
             if (punchUpgrades == 1)
             {
                 upgradePunch.transform.GetChild(0).gameObject.SetActive(true);
-
-                playerControllerExtended.fistDamage = 3;
             } 
             else if (punchUpgrades == 2)
             {
                 upgradePunch.transform.GetChild(1).gameObject.SetActive(true);
-            
-                playerControllerExtended.fistDamage = 4;
             }
             else if (punchUpgrades == 3)
             {
                 upgradePunch.transform.GetChild(2).gameObject.SetActive(true);
-            
-                playerControllerExtended.fistDamage = 6;
             }
 
             StartCoroutine(timeBeforeClosing());
@@ -140,14 +134,17 @@ public class UpgradeSystem : MonoBehaviour
             if (fistsUpgrades == 1)
             {
                 upgradeFist.transform.GetChild(0).gameObject.SetActive(true);
+                playerControllerExtended.fistDamage = 3;
             } 
             else if (fistsUpgrades == 2)
             {
                 upgradeFist.transform.GetChild(1).gameObject.SetActive(true);
+                playerControllerExtended.fistDamage = 4;
             }
             else if (fistsUpgrades == 3)
             {
                 upgradeFist.transform.GetChild(2).gameObject.SetActive(true);
+                playerControllerExtended.fistDamage = 6;
             }
 
             StartCoroutine(timeBeforeClosing());

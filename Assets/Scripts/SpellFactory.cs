@@ -59,6 +59,10 @@ public class SpellFactory : MonoBehaviour
 
         mana = playerControllerExtended.currMana;
 
+        float offsetDistance = 1.0f;
+        Vector3 raycastOrigin = fistProjectile1Point.transform.position - fistProjectile1Point.transform.forward * offsetDistance;
+        Debug.DrawRay(raycastOrigin, fistProjectile1Point.transform.forward * 4.5f, Color.green);
+
         Fire1Punch();
         Fire2Kick();
         AOESpell();
@@ -125,28 +129,42 @@ public class SpellFactory : MonoBehaviour
         // TODO: play kicking noise, maybe find kick animation.
 
         // get the direction the player is facing
-        Vector3 playerDirection = transform.forward;
+        Vector3 playerDirection = fistProjectile1Point.transform.forward;
 
         // detect enemies in front of the player
-        RaycastHit[] hits = Physics.RaycastAll(transform.position, playerDirection, kickRange);
+        float offsetDistance = 1.0f;
+        Vector3 raycastOrigin = fistProjectile1Point.transform.position - fistProjectile1Point.transform.forward * offsetDistance;
+        RaycastHit[] hits = Physics.RaycastAll(raycastOrigin, playerDirection, kickRange);
 
         // loop through all the hit things
         foreach (RaycastHit hit in hits)
         {
+            Debug.Log(hit.collider.tag);
             // check that we hit an enemy
             EnemyController enemyController = hit.collider.GetComponent<EnemyController>();
-            if (enemyController != null)
-            {
-                // kick the enemy
-                FindObjectOfType<SoundManager>().PlayPunchSound(this.transform.position);
-                enemyController.Kicked(kickDamage, playerDirection, 5.0f);
-            }
+            //if (enemyController != null)
+            //{
+            //    // kick the enemy
+            //    FindObjectOfType<SoundManager>().PlayPunchSound(this.transform.position);
+            //    enemyController.Kicked(kickDamage, playerDirection, 5.0f);
+            //}
 
             if (hit.collider.tag == "Barrel")
             {
                 var barrel = hit.transform.gameObject;
                 var rb = barrel.GetComponent<Rigidbody>();
                 rb.AddForce(playerDirection * 1000f);
+            }
+
+            if (hit.collider.tag == "Enemy")
+            {
+                Debug.Log("Kick Connect!");
+
+                FindObjectOfType<SoundManager>().PlayPunchSound(this.transform.position);
+                var enemy = hit.transform.gameObject;
+                var rb = enemy.GetComponent<Rigidbody>();
+                rb.AddForce(playerDirection * 2000f);
+                enemyController.Kicked(kickDamage, playerDirection, 5.0f);
             }
         }
 

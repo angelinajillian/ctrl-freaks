@@ -78,13 +78,14 @@ public class PlayerControllerExtended : MonoBehaviour
         float xpRequiredForNextLevel = 100 + (20*(level-1));
         if (currXP >= xpRequiredForNextLevel)
         {
+            float xpRequiredForNextLevel2 = 100 + (20*(level));
             level++;
             currXP = currXP - xpRequiredForNextLevel;
             if (level <= 12)
             {
                 gameManager.UpgradeMenu();
             }
-
+            
             // Reset health to max when leveling up
             currHealth = maxHealth;
             healthBar.SetMaxHealth(maxHealth);
@@ -94,7 +95,7 @@ public class PlayerControllerExtended : MonoBehaviour
             manaBar.SetMaxMana(maxMana);
 
             levelText.text = "level " + level.ToString();
-            xpBar.SetMaxXP(xpRequiredForNextLevel);
+            xpBar.SetMaxXP(xpRequiredForNextLevel2);
             xpBar.SetXP(currXP);
         }
     }
@@ -167,7 +168,6 @@ public class PlayerControllerExtended : MonoBehaviour
     public void TakeDamage(int damage)
     {
         //if (!canTakeDamage) return; // Check if the player can take damage
-        Debug.Log("Taking Dam!");
         //canTakeDamage = false; // Prevent further damage for a cooldown period
         ReduceHealth(damage);
     }

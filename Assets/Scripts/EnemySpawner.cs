@@ -127,15 +127,18 @@ public class EnemySpawner : MonoBehaviour
 
         if (waveNumber == 1)
         {
-            SpawnEnemies(0, 0, 3, 0);
+            SpawnEnemies(0, 0, 5, 0);
+            // SpawnEnemies(0, 0, 3, 0);
         } 
         else if (waveNumber == 2)
         {
-            SpawnEnemies(0, 1, 1, 2);
+            SpawnEnemies(0, 0, 6, 0);
+            // SpawnEnemies(0, 1, 1, 2);
         }
         else if (waveNumber == 3)
         {
-            SpawnEnemies(0, 1, 4, 2);
+            SpawnEnemies(0, 0, 7, 0);
+            // SpawnEnemies(0, 1, 4, 2);
         }
         else if (waveNumber == 4)
         {

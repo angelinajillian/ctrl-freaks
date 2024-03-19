@@ -93,23 +93,6 @@ public class GameManager : MonoBehaviour
         
     }
 
-    // // Resume from Upgrading
-    // public void ResumeGame()
-    // {
-    //     Time.timeScale = 1f;
-    //     // Hide pause menu
-    //     upgradeSystemUI.SetActive(false);
-    //     UICanvas.SetActive(true);
-    //     Cursor.visible = false;
-    //     Cursor.lockState = CursorLockMode.Locked;
-    //     // starterAssetsInputs.enabled = true;
-    //     firstPersonController.enabled = true;
-    //     playerControllerExtended.enabled = true;
-    //     spellFactory.enabled = true;
-    //     // Resume the game by setting time scale to 1
-        
-    // }
-
     public void UpgradeMenu()
     {
         spellFactory.enabled = false;
@@ -132,7 +115,6 @@ public class GameManager : MonoBehaviour
 
     IEnumerator FlashRedEnum(float flashLength)
     {
-        Debug.Log("FLASH RED");
         redFlash.SetActive(true);
 
         yield return new WaitForSeconds(flashLength);
