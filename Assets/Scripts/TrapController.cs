@@ -11,6 +11,7 @@ public class TrapController : MonoBehaviour
     private int curWave = 0;
     [SerializeField] private GameObject enemySpawner;
     [SerializeField] private GameObject trapCutout;
+    [SerializeField] private GameObject trapEffect;
 
     void Start()
     {
@@ -40,7 +41,7 @@ public class TrapController : MonoBehaviour
         if ((wave % 3 == 0) && wave > 0 && (curWave != wave))
         {
             var cannonList = GameObject.FindGameObjectsWithTag("Cannon").ToList();
-            int volleyAmount = Random.Range(0, wave/3);
+            int volleyAmount = Random.Range(0, wave / 3);
 
             for (int i = 0; i < volleyAmount; i++)
             {
@@ -69,11 +70,15 @@ public class TrapController : MonoBehaviour
         Debug.Log("Trap revealed!");
         var randomIndex = Random.Range(0, actives.Count);
         var selectedCover = actives[randomIndex];
+        var position = selectedCover.transform.position;
+        var rotation = Quaternion.identity;
         selectedCover.SetActive(false);
         inactiveCovers.Add(selectedCover);
+        var effect = Instantiate(trapEffect, position, rotation);
+        Destroy(effect, 2f);
 
         // cutout this area from the nav mesh
-        Instantiate(trapCutout, selectedCover.transform.position, Quaternion.identity);
+        Instantiate(trapCutout, position, rotation);
     }
 
     void HideTrap()
