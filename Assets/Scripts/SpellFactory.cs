@@ -29,6 +29,8 @@ public class SpellFactory : MonoBehaviour
     private bool isGrenadeHeld = false;
     private GameObject currentGrenade;
     private HandGrenadeController hgc;
+    private PlayerControllerExtended player;
+
 
     // Declaring a variable of type ManaBar
     public ManaBar manaBar;
@@ -38,6 +40,7 @@ public class SpellFactory : MonoBehaviour
     void Start()
     {
         // enabled = true;
+        player = GetComponent<PlayerControllerExtended>();
         animator = GetComponent<Animator>();
         StartCoroutine(RegenerateMana());
     }
@@ -122,11 +125,7 @@ public class SpellFactory : MonoBehaviour
     {
         playerControllerExtended.setCanTakeDamage(false);
 
-        // Debug.Log("punching!!");
-
         canKick = false;
-
-        // TODO: play kicking noise, maybe find kick animation.
 
         // get the direction the player is facing
         Vector3 playerDirection = fistProjectile1Point.transform.forward;
@@ -153,7 +152,7 @@ public class SpellFactory : MonoBehaviour
             {
                 var barrel = hit.transform.gameObject;
                 var rb = barrel.GetComponent<Rigidbody>();
-                rb.AddForce(playerDirection * 1000f);
+                rb.AddForce(playerDirection * (500f * player.punchDamage));
             }
 
             if (hit.collider.tag == "Enemy")
@@ -163,7 +162,7 @@ public class SpellFactory : MonoBehaviour
                 FindObjectOfType<SoundManager>().PlayPunchSound(this.transform.position);
                 var enemy = hit.transform.gameObject;
                 var rb = enemy.GetComponent<Rigidbody>();
-                rb.AddForce(playerDirection * 2000f);
+                rb.AddForce(playerDirection * (1000f * player.punchDamage));
                 enemyController.Kicked(kickDamage, playerDirection, 5.0f);
             }
         }

@@ -28,6 +28,7 @@ public class PlayerControllerExtended : MonoBehaviour
     public GameObject GameManagerObj;
 
     public int fistDamage;
+    public int punchDamage;
 
     // public bool enabled;
 
@@ -49,6 +50,7 @@ public class PlayerControllerExtended : MonoBehaviour
         levelText = GameObject.FindGameObjectWithTag("LevelText").GetComponent<Text>();
 
         fistDamage = 2;
+        punchDamage = 1;
 
         gameManager = GameManagerObj.GetComponent<GameManager>();
 
@@ -81,7 +83,7 @@ public class PlayerControllerExtended : MonoBehaviour
             float xpRequiredForNextLevel2 = 100 + (20*(level));
             level++;
             currXP = currXP - xpRequiredForNextLevel;
-            if (level <= 12)
+            if (level < 12)
             {
                 gameManager.UpgradeMenu();
             }

@@ -109,14 +109,17 @@ public class UpgradeSystem : MonoBehaviour
             if (punchUpgrades == 1)
             {
                 upgradePunch.transform.GetChild(0).gameObject.SetActive(true);
+                playerControllerExtended.punchDamage = 2;
             } 
             else if (punchUpgrades == 2)
             {
                 upgradePunch.transform.GetChild(1).gameObject.SetActive(true);
+                playerControllerExtended.punchDamage = 3;
             }
             else if (punchUpgrades == 3)
             {
                 upgradePunch.transform.GetChild(2).gameObject.SetActive(true);
+                playerControllerExtended.punchDamage = 4;
             }
 
             StartCoroutine(timeBeforeClosing());
