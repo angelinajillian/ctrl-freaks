@@ -113,7 +113,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1517978453672697108}
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 2
   activationDistance: 7.5
-  pickUpRadius: 2
+  pickUpRadius: 1.75
   trailRenderer: {fileID: 7626623516383184331}
 --- !u!54 &4472269087934365037
 Rigidbody:

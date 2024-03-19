@@ -75,13 +75,16 @@ public class PlayerControllerExtended : MonoBehaviour
 
     void levelUp()
     {
-        if (currXP >= 100)
+        float xpRequiredForNextLevel = 100 + (20*(level-1));
+        if (currXP >= xpRequiredForNextLevel)
         {
             level++;
-            currXP = currXP - 100;
+            currXP = currXP - xpRequiredForNextLevel;
+            if (level <= 12)
+            {
+                gameManager.UpgradeMenu();
+            }
 
-            gameManager.UpgradeMenu();
-            
             // Reset health to max when leveling up
             currHealth = maxHealth;
             healthBar.SetMaxHealth(maxHealth);
@@ -91,6 +94,7 @@ public class PlayerControllerExtended : MonoBehaviour
             manaBar.SetMaxMana(maxMana);
 
             levelText.text = "level " + level.ToString();
+            xpBar.SetMaxXP(xpRequiredForNextLevel);
             xpBar.SetXP(currXP);
         }
     }

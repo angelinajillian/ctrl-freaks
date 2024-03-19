@@ -35,6 +35,11 @@ public class GameManager : MonoBehaviour
         // Check if the player presses the Escape key
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if (upgradeSystemUI.activeSelf)
+            {
+                return;
+            }
+
             // Toggle pause state
             isPaused = !isPaused;
 
@@ -87,6 +92,23 @@ public class GameManager : MonoBehaviour
         // Resume the game by setting time scale to 1
         
     }
+
+    // // Resume from Upgrading
+    // public void ResumeGame()
+    // {
+    //     Time.timeScale = 1f;
+    //     // Hide pause menu
+    //     upgradeSystemUI.SetActive(false);
+    //     UICanvas.SetActive(true);
+    //     Cursor.visible = false;
+    //     Cursor.lockState = CursorLockMode.Locked;
+    //     // starterAssetsInputs.enabled = true;
+    //     firstPersonController.enabled = true;
+    //     playerControllerExtended.enabled = true;
+    //     spellFactory.enabled = true;
+    //     // Resume the game by setting time scale to 1
+        
+    // }
 
     public void UpgradeMenu()
     {
