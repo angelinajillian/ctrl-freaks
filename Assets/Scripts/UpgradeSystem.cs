@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using StarterAssets;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class UpgradeSystem : MonoBehaviour
+
+public class UpgradeSystem : MonoBehaviour, IPointerEnterHandler
 {
     public GameManager gameManager;
     public PlayerControllerExtended playerControllerExtended;
@@ -18,6 +21,11 @@ public class UpgradeSystem : MonoBehaviour
     public GameObject upgradeHealth;
     public GameObject upgradePunch;
     public GameObject upgradeFist;
+
+    public Text upgradeManaText;
+    public Text upgradeHealthText;
+    public Text upgradePunchText;
+    public Text upgradeFistText;
 
     private bool upgradeable;
 
@@ -90,7 +98,7 @@ public class UpgradeSystem : MonoBehaviour
             {
                 upgradeHealth.transform.GetChild(2).gameObject.SetActive(true);
             
-                playerControllerExtended.maxHealth = 20;
+                playerControllerExtended.maxHealth = 22;
                 Debug.Log($"maxMana: {playerControllerExtended.maxHealth}");
                 Debug.Log($"currHealth: {playerControllerExtended.currHealth}");
             }
@@ -119,7 +127,7 @@ public class UpgradeSystem : MonoBehaviour
             else if (punchUpgrades == 3)
             {
                 upgradePunch.transform.GetChild(2).gameObject.SetActive(true);
-                playerControllerExtended.punchDamage = 4;
+                playerControllerExtended.punchDamage = 5;
             }
 
             StartCoroutine(timeBeforeClosing());
@@ -170,30 +178,124 @@ public class UpgradeSystem : MonoBehaviour
         gameManager.ResumeGame();
     }
 
-    //  // Method called when the pointer enters the button area
-    // public void OnPointerEnter(PointerEventData eventData)
-    // {
-    //     ShowUpgradeText();
-    // }
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (eventData.pointerEnter == upgradeMana)
+        {
+            // Ensure all the rest are off
+            upgradeHealthText.gameObject.SetActive(false);
+            upgradePunchText.gameObject.SetActive(false);
+            upgradeFistText.gameObject.SetActive(false);
 
-    // // Method called when the pointer exits the button area
+            if(manaUpgrades < 3)
+            {
+                if (manaUpgrades == 0)
+                {
+                    upgradeManaText.text = "Mana + 25%";
+                }
+                else if (manaUpgrades == 1)
+                {
+                    upgradeManaText.text = "Mana + 25%";
+                }
+                else if (manaUpgrades == 2)
+                {
+                    upgradeManaText.text = "Mana + 50%";
+                }
+                upgradeManaText.gameObject.SetActive(true);
+            }
+        }
+        else if (eventData.pointerEnter == upgradeHealth)
+        {
+            // Ensure all the rest are off
+            upgradeManaText.gameObject.SetActive(false);
+            upgradePunchText.gameObject.SetActive(false);
+            upgradeFistText.gameObject.SetActive(false);
+
+            if(healthUpgrades < 3)
+            {
+                if (healthUpgrades == 0)
+                {
+                    upgradeHealthText.text = "Health + 33%";
+                }
+                else if (healthUpgrades == 1)
+                {
+                    upgradeHealthText.text =  "Health + 33%";
+                }
+                else if (healthUpgrades == 2)
+                {
+                    upgradeHealthText.text =  "Health + 50%";
+                }
+                upgradeHealthText.gameObject.SetActive(true);
+            }
+        }
+        else if (eventData.pointerEnter == upgradePunch)
+        {
+            // Ensure all the rest are off
+            upgradeManaText.gameObject.SetActive(false);
+            upgradeHealthText.gameObject.SetActive(false);
+            upgradeFistText.gameObject.SetActive(false);
+
+            if(punchUpgrades < 3)
+            {
+                if (punchUpgrades == 0)
+                {
+                    upgradePunchText.text = "Punch Distance + 25%";
+                }
+                else if (punchUpgrades == 1)
+                {
+                    upgradePunchText.text = "Punch Distance + 25%";
+                }
+                else if (punchUpgrades == 2)
+                {
+                    upgradePunchText.text = "Punch Distance + 50%";
+                }
+                upgradePunchText.gameObject.SetActive(true);
+            }
+        }
+        else if (eventData.pointerEnter == upgradeFist)
+        {
+            // Ensure all the rest are off
+            upgradeManaText.gameObject.SetActive(false);
+            upgradePunchText.gameObject.SetActive(false);
+            upgradeHealthText.gameObject.SetActive(false);
+            
+            if (fistsUpgrades < 3)
+            {
+                if (fistsUpgrades == 0)
+                {
+                    upgradeFistText.text = "Fist Damage + 50%";
+                }
+                else if (punchUpgrades == 1)
+                {
+                    upgradeFistText.text = "Fist Damage + 25%";
+                }
+                else if (punchUpgrades == 2)
+                {
+                    upgradeFistText.text = "Fist Damage + 50%";
+                }
+                upgradeFistText.gameObject.SetActive(true);
+            }
+        }
+    }
+
     // public void OnPointerExit(PointerEventData eventData)
     // {
-    //     HideUpgradeText();
+    //     if (eventData.pointerEnter == upgradeMana)
+    //     {
+    //         upgradeManaText.gameObject.SetActive(false);
+    //     }
+    //     else if (eventData.pointerEnter == upgradeHealth)
+    //     {
+    //         upgradeHealthText.gameObject.SetActive(false);
+    //     }
+    //     else if (eventData.pointerEnter == upgradePunch)
+    //     {
+    //         upgradePunchText.gameObject.SetActive(false);
+    //     }
+    //     else if (eventData.pointerEnter == upgradeFist)
+    //     {
+    //         upgradeFistText.gameObject.SetActive(false);
+    //     }
     // }
-
-    // // Show upgrade information text
-    // private void ShowUpgradeText()
-    // {
-    //     upgradeText.text = $"{upgradeName}: {upgradeDescription}";
-    //     upgradeText.gameObject.SetActive(true);
-    // }
-
-    // // Hide upgrade information text
-    // private void HideUpgradeText()
-    // {
-    //     upgradeText.gameObject.SetActive(false);
-    // }
-
 }
 

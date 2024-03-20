@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
     public Transform gameStart;
     public float spawnInterval = 5.0f;
     private bool initialSpawn;
+    private bool isSpawningWave;
     public int waveNumber = 1;
 
     [SerializeField] private GameObject entranceBlock;
@@ -23,22 +24,36 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
         bool nextWave = AreAllEnemiesKilled();
-        if (!initialSpawn & nextWave)
+        if (!initialSpawn & nextWave & !isSpawningWave)
         {
-            waveNumber++;
-            displayWave();
-
-            NextWaveDelay();
+            
+            StartCoroutine(NextWaveDelay());
             Debug.Log("SPAWNING NEXT WAVE");
-            SpawnWave();
+            // SpawnWave();
         }
     }
 
     IEnumerator NextWaveDelay()
     {
-        yield return new WaitForSeconds(spawnInterval);
+        isSpawningWave = true; // Set flag to indicate that a wave is being spawned
+        
+        Text waveText = GameObject.Find("WaveNumber").GetComponent<Text>();
+        waveText.text = "3..."; // Display initial countdown
 
-        // SpawnWave();
+        yield return new WaitForSeconds(1f); // Wait for 1 second
+        waveText.text = "2..."; // Update countdown text
+
+        yield return new WaitForSeconds(1f); // Wait for 1 second
+        waveText.text = "1..."; // Update countdown text
+
+        yield return new WaitForSeconds(1f); // Wait for 1 second
+
+        isSpawningWave = false; // Reset flag after delay
+
+        waveNumber++;
+        displayWave();
+
+        SpawnWave();
     }
 
     void OnTriggerEnter(Collider other)
