@@ -80,6 +80,8 @@ public class PlayerControllerExtended : MonoBehaviour
         float xpRequiredForNextLevel = 100 + (20*(level-1));
         if (currXP >= xpRequiredForNextLevel)
         {
+            FindObjectOfType<SoundManager>().PlayLevelUpSound(this.transform.position);
+
             float xpRequiredForNextLevel2 = 100 + (20*(level));
             level++;
             currXP = currXP - xpRequiredForNextLevel;

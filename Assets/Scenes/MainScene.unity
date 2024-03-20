@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 8900000, guid: 619e305f5165a9946b7f72464e44ca4a, type: 3}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.009192548, g: 0.0033762322, b: 0.00039363024, a: 1}
+  m_IndirectSpecularColor: {r: 0.009192558, g: 0.003376238, b: 0.0003936296, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -25787,7 +25787,12 @@ MonoBehaviour:
   cannonFireSound: {fileID: 8300000, guid: bb2e2714f962491428dcb0b38598b251, type: 3}
   fire1Sound: {fileID: 8300000, guid: da396a16a7f24f64cbb0054f5a56b46a, type: 3}
   aoeSpellSound: {fileID: 8300000, guid: cc6699269b4c1d44ea1e860518b9bb73, type: 3}
+  trapOpenSound: {fileID: 8300000, guid: d25700444c68f9a45a8ea7fddc002012, type: 3}
+  enemySpawnSpellSound: {fileID: 8300000, guid: 9ae32f8e1a94c486c9929faca77ff03b, type: 3}
+  enemyShootSpellSound: {fileID: 8300000, guid: e5e553d6c53b7b046845a60889007b2a, type: 3}
   caveAmbience: {fileID: 8300000, guid: f74396619b7154fa5a38a1959cfa67ae, type: 3}
+  levelUpSound: {fileID: 8300000, guid: c0cabce778ad54792bba3a0ca6765417, type: 3}
+  winSound: {fileID: 8300000, guid: 9b1cde0c2a6be405ba097772a687b5ae, type: 3}
 --- !u!4 &1813757514
 Transform:
   m_ObjectHideFlags: 0

@@ -44,8 +44,9 @@ public class EnemyControllerExtended1 : MonoBehaviour
         Vector3 directionToPlayer = new Vector3 (player.transform.position.x, player.transform.position.y + 1.0f, player.transform.position.x);
         directionToPlayer.Normalize();
 
+        FindObjectOfType<SoundManager>().PlayEnemyShootSpellSound(this.transform.position);
         // Quaternion rotationToPlayer = Quaternion.LookRotation(directionToPlayer);
-        
+
         GameObject fistProjectile = Instantiate(fistProjectile1, fistProjSpawn.transform.position, Quaternion.identity);
         FistProjectileEnemyController projectileController = fistProjectile.GetComponent<FistProjectileEnemyController>();
 

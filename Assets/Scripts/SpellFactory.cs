@@ -173,7 +173,7 @@ public class SpellFactory : MonoBehaviour
 
     public void AOESpell()
     {
-        if (Input.GetButtonDown("k") & canFire & playerControllerExtended.currMana >= 40f )
+        if (Input.GetKeyDown(KeyCode.Alpha2) & canFire & playerControllerExtended.currMana >= 40f)
         {
             ReduceMana(40f);
             Debug.Log($"Mana: {mana}");
@@ -194,7 +194,7 @@ public class SpellFactory : MonoBehaviour
 
     private void HandGrenade()
     {
-        if (Input.GetKeyDown(KeyCode.G) & mana >= 15f & !isGrenadeHeld )
+        if (Input.GetKeyDown(KeyCode.Alpha1) & mana >= 15f & !isGrenadeHeld )
         {
             Debug.Log("holding grenade...");
             isGrenadeHeld = true;
@@ -203,7 +203,7 @@ public class SpellFactory : MonoBehaviour
             animator.SetTrigger("GrenadeTrigger");
         }
 
-        if (isGrenadeHeld && Input.GetKeyUp(KeyCode.G))
+        if (isGrenadeHeld && Input.GetKeyUp(KeyCode.Alpha1))
         {
             Debug.Log("launching grenade!!!");
             isGrenadeHeld = false;

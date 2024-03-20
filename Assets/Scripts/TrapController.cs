@@ -70,6 +70,9 @@ public class TrapController : MonoBehaviour
         Debug.Log("Trap revealed!");
         var randomIndex = Random.Range(0, actives.Count);
         var selectedCover = actives[randomIndex];
+
+        FindObjectOfType<SoundManager>().PlayTrapOpenSound(selectedCover.transform.position);
+
         var position = selectedCover.transform.position;
         var rotation = Quaternion.identity;
         selectedCover.SetActive(false);

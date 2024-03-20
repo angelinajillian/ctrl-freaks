@@ -44,11 +44,16 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip cannonFireSound;
     [SerializeField] private AudioClip fire1Sound;
     [SerializeField] private AudioClip aoeSpellSound;
+    [SerializeField] private AudioClip trapOpenSound;
+    [SerializeField] private AudioClip enemySpawnSpellSound;
+    [SerializeField] private AudioClip enemyShootSpellSound;
 
     // Ambience
     [SerializeField] private AudioClip caveAmbience;
 
     // Music
+    [SerializeField] private AudioClip levelUpSound;
+    [SerializeField] private AudioClip winSound;
 
     // Footstep tracker
     private float runStepTime = 0.33f;
@@ -68,6 +73,7 @@ public class SoundManager : MonoBehaviour
             return;
         }
 
+        // Play ambience on loop
         GameObject ambientObject = new GameObject("AudioSource");
         AudioSource ambientSource = ambientObject.AddComponent<AudioSource>();
 
@@ -121,13 +127,13 @@ public class SoundManager : MonoBehaviour
     
     public void PlayFire1Sound(Vector3 position)
     {
-        SoundSettings soundSettings = new SoundSettings(fire1Sound, 1.0f, 1.0f, false, 1.0f, 75.0f, AudioRolloffMode.Linear);
+        SoundSettings soundSettings = new SoundSettings(fire1Sound, 0.5f, 1.0f, false, 1.0f, 15.0f, AudioRolloffMode.Linear);
         PlaySound(soundSettings, position);
     }
 
     public void PlayCannonSound(Vector3 position)
     {
-        SoundSettings soundSettings = new SoundSettings(cannonFireSound, 1.0f, 1.0f, true, 1.0f, 50.0f, AudioRolloffMode.Linear);
+        SoundSettings soundSettings = new SoundSettings(cannonFireSound, 1.0f, 1.0f, true, 1.0f, 55.0f, AudioRolloffMode.Linear);
         PlaySound(soundSettings, position);
     }
 
@@ -148,6 +154,36 @@ public class SoundManager : MonoBehaviour
     {
         int randomSound = Random.Range(0, 8);
         SoundSettings soundSettings = new SoundSettings(takeDamageSFX[randomSound], 0.9f, 1.0f, true, 1.0f, 10.0f, AudioRolloffMode.Logarithmic);
+        PlaySound(soundSettings, position);
+    }
+
+    public void PlayTrapOpenSound(Vector3 position)
+    {
+        SoundSettings soundSettings = new SoundSettings(trapOpenSound, 1.0f, 1.0f, true, 1.0f, 90.0f, AudioRolloffMode.Logarithmic);
+        PlaySound(soundSettings, position);
+    }
+
+    public void PlayEnemyShootSpellSound(Vector3 position)
+    {
+        SoundSettings soundSettings = new SoundSettings(enemyShootSpellSound, 0.8f, 1.0f, true, 1.0f, 20.0f, AudioRolloffMode.Linear);
+        PlaySound(soundSettings, position);
+    }
+
+    public void PlayEnemySpawnSpellSound(Vector3 position)
+    {
+        SoundSettings soundSettings = new SoundSettings(enemySpawnSpellSound, 0.9f, 1.0f, true, 1.0f, 30.0f, AudioRolloffMode.Linear);
+        PlaySound(soundSettings, position);
+    }
+
+    public void PlayLevelUpSound(Vector3 position)
+    {
+        SoundSettings soundSettings = new SoundSettings(levelUpSound, 0.75f, 1.0f, false, 1.0f, 50.0f, AudioRolloffMode.Linear);
+        PlaySound(soundSettings, position);
+    }
+
+    public void PlayWinSound(Vector3 position)
+    {
+        SoundSettings soundSettings = new SoundSettings(winSound, 0.75f, 1.0f, false, 1.0f, 50.0f, AudioRolloffMode.Linear);
         PlaySound(soundSettings, position);
     }
 

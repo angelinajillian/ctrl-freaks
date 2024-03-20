@@ -25,6 +25,7 @@ public class EnemyControllerExtended2 : MonoBehaviour
 
     private void MakeMinions()
     {
+        FindObjectOfType<SoundManager>().PlayEnemySpawnSpellSound(this.transform.position);
         GameObject EnemyMinion1 = Instantiate(enemyMinion, enemySpawnOne.transform.position, Quaternion.identity);
         GameObject EnemyMinion2 = Instantiate(enemyMinion, enemySpawnTwo.transform.position, Quaternion.identity);
     }
