@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0, g: 0, b: 0, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.05
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0039957035, g: 0.00021792635, b: 0.000000051515347, a: 1}
+  m_IndirectSpecularColor: {r: 0.003995701, g: 0.00021792622, b: 0.000000051515347, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9486,7 +9486,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbf73ab9da32f0f4faf63b459cf50c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ambienceMixerGroup: {fileID: 0}
   runningSFX:
   - {fileID: 8300000, guid: 1f0199a4c6005ec4abbb302f71bc036d, type: 3}
   - {fileID: 8300000, guid: 53e2adf2ac488ef46bb2b4074de9e363, type: 3}
@@ -9529,8 +9528,6 @@ MonoBehaviour:
   enemyShootSpellSound: {fileID: 8300000, guid: e5e553d6c53b7b046845a60889007b2a, type: 3}
   levelUpSound: {fileID: 8300000, guid: c0cabce778ad54792bba3a0ca6765417, type: 3}
   winSound: {fileID: 8300000, guid: 9b1cde0c2a6be405ba097772a687b5ae, type: 3}
-  caveAmbience: {fileID: 8300000, guid: f74396619b7154fa5a38a1959cfa67ae, type: 3}
-  menuMusic: {fileID: 8300000, guid: 693553294ce34f24f93202bc847e69a8, type: 3}
 --- !u!4 &1309537134
 Transform:
   m_ObjectHideFlags: 0
