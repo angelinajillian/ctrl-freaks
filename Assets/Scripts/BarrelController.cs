@@ -71,7 +71,7 @@ public class BarrelController : MonoBehaviour
             health = 0;
         }
 
-        if (other.CompareTag("Explosion"))
+        if (other.CompareTag("Explosion") || other.CompareTag("ExplosionLarge"))
         {
             health = 0;
         }

@@ -173,9 +173,9 @@ public class SpellFactory : MonoBehaviour
 
     public void AOESpell()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha2) & canFire & playerControllerExtended.currMana >= 40f)
+        if (Input.GetKeyDown(KeyCode.Alpha2) & canFire & playerControllerExtended.currMana >= 35f)
         {
-            ReduceMana(40f);
+            ReduceMana(35f);
             Debug.Log($"Mana: {mana}");
             canFire = false;
             animator.SetTrigger("AOETrigger");
@@ -196,7 +196,6 @@ public class SpellFactory : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1) & mana >= 15f & !isGrenadeHeld )
         {
-            Debug.Log("holding grenade...");
             isGrenadeHeld = true;
             ReduceMana(15f);
             Debug.Log($"Mana: {mana}");
@@ -205,7 +204,6 @@ public class SpellFactory : MonoBehaviour
 
         if (isGrenadeHeld && Input.GetKeyUp(KeyCode.Alpha1))
         {
-            Debug.Log("launching grenade!!!");
             isGrenadeHeld = false;
             animator.SetTrigger("GrenadeThrowTrigger");
             hgc.Launch(fistProjectile1Point);

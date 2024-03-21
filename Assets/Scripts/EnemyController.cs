@@ -95,7 +95,14 @@ public class EnemyController : MonoBehaviour
         {
             Debug.Log("Enemy caught in barrel explosion!");
             StartCoroutine(FlashWhite());
-            health -= 8;
+            health -= 5;
+        }
+
+        if (other.CompareTag("ExplosionLarge"))
+        {
+            Debug.Log("Enemy caught in barrel explosion!");
+            StartCoroutine(FlashWhite());
+            health -= 7;
         }
     }
 

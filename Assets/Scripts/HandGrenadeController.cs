@@ -111,10 +111,11 @@ public class HandGrenadeController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Explosion"))
+        if (other.CompareTag("Explosion") || other.CompareTag("ExplosionLarge"))
         {
             this.Explode();
         }
+
         if (other.CompareTag("KillPlane"))
         {
             this.Explode();

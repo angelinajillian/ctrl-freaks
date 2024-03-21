@@ -138,8 +138,12 @@ public class PlayerControllerExtended : MonoBehaviour
 
         if (other.CompareTag("Explosion"))
         {
-            Debug.Log("You were caught in the barrel explosion!");
             ReduceHealth(4);
+        }
+
+        if (other.CompareTag("ExplosionLarge"))
+        {
+            ReduceHealth(5);
         }
 
         if (other.gameObject.CompareTag("EnemyProjectile") & canTakeDamage)
