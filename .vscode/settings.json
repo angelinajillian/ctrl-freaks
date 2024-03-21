@@ -51,6 +51,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "ctrl-freaks-1.sln",
+    "dotnet.defaultSolution": "ctrl-freaks.sln",
     "git.ignoreLimitWarning": true
 }

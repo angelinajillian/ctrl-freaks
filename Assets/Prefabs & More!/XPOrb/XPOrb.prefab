@@ -156,6 +156,7 @@ MonoBehaviour:
   movementSpeed: 2
   activationDistance: 7.5
   pickUpRadius: 2
+  xpValue: 20
   trailRenderer: {fileID: 7626623516383184331}
 --- !u!54 &4472269087934365037
 Rigidbody:
