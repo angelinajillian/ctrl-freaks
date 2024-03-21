@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 8900000, guid: 619e305f5165a9946b7f72464e44ca4a, type: 3}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.009192548, g: 0.0033762322, b: 0.00039363024, a: 1}
+  m_IndirectSpecularColor: {r: 0.009192558, g: 0.003376238, b: 0.0003936296, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3500,6 +3500,7 @@ MonoBehaviour:
   - {fileID: 647183704}
   gameStart: {fileID: 674493337}
   spawnInterval: 25
+  gameWon: 0
   waveNumber: 1
   entranceBlock: {fileID: 1867757557}
   circle: {fileID: 2079525440}
@@ -4178,6 +4179,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.15745503
       objectReference: {fileID: 0}
+    - target: {fileID: 1537334815838697388, guid: aa1d36e20e8df9c4bb98ea62364c31c2, type: 3}
+      propertyPath: enemySpawner
+      value: 
+      objectReference: {fileID: 225756001}
     - target: {fileID: 5852793698359487394, guid: aa1d36e20e8df9c4bb98ea62364c31c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 35.374123
@@ -6341,6 +6346,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.15745793
       objectReference: {fileID: 0}
+    - target: {fileID: 1537334815838697388, guid: aa1d36e20e8df9c4bb98ea62364c31c2, type: 3}
+      propertyPath: enemySpawner
+      value: 
+      objectReference: {fileID: 225756001}
     - target: {fileID: 5852793698359487394, guid: aa1d36e20e8df9c4bb98ea62364c31c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.504095
@@ -7716,6 +7725,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.18465124
       objectReference: {fileID: 0}
+    - target: {fileID: 1537334815838697388, guid: aa1d36e20e8df9c4bb98ea62364c31c2, type: 3}
+      propertyPath: enemySpawner
+      value: 
+      objectReference: {fileID: 225756001}
     - target: {fileID: 5852793698359487394, guid: aa1d36e20e8df9c4bb98ea62364c31c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 65.13503
@@ -14068,6 +14081,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.08888409
       objectReference: {fileID: 0}
+    - target: {fileID: 1537334815838697388, guid: aa1d36e20e8df9c4bb98ea62364c31c2, type: 3}
+      propertyPath: enemySpawner
+      value: 
+      objectReference: {fileID: 225756001}
     - target: {fileID: 5852793698359487394, guid: aa1d36e20e8df9c4bb98ea62364c31c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15.7526455
@@ -14691,6 +14708,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.18465479
       objectReference: {fileID: 0}
+    - target: {fileID: 1537334815838697388, guid: aa1d36e20e8df9c4bb98ea62364c31c2, type: 3}
+      propertyPath: enemySpawner
+      value: 
+      objectReference: {fileID: 225756001}
     - target: {fileID: 5852793698359487394, guid: aa1d36e20e8df9c4bb98ea62364c31c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -41.26497
@@ -17572,6 +17593,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.08888568
       objectReference: {fileID: 0}
+    - target: {fileID: 1537334815838697388, guid: aa1d36e20e8df9c4bb98ea62364c31c2, type: 3}
+      propertyPath: enemySpawner
+      value: 
+      objectReference: {fileID: 225756001}
     - target: {fileID: 5852793698359487394, guid: aa1d36e20e8df9c4bb98ea62364c31c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 39.622704

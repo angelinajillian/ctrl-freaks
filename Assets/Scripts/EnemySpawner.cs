@@ -148,75 +148,51 @@ public class EnemySpawner : MonoBehaviour
 
         if (waveNumber == 1)
         {
-            // SpawnEnemies(0, 0, 5, 0);
-            SpawnEnemies(0, 0, 1, 0);
-            // SpawnEnemies(0, 0, 3, 0);
+            SpawnEnemies(0, 0, 3, 0);
         } 
         else if (waveNumber == 2)
         {
-            // SpawnEnemies(0, 0, 6, 0);
-            SpawnEnemies(0, 0, 1, 0);
-            // SpawnEnemies(0, 1, 1, 2);
+            SpawnEnemies(0, 1, 1, 2);
         }
         else if (waveNumber == 3)
         {
-            // SpawnEnemies(0, 0, 7, 0);
-            SpawnEnemies(0, 0, 1, 0);
-            // SpawnEnemies(0, 1, 4, 2);
+            SpawnEnemies(0, 1, 4, 2);
         }
         else if (waveNumber == 4)
         {
-            // SpawnEnemies(0, 0, 8, 0);
-            SpawnEnemies(0, 0, 1, 0);
-            // SpawnEnemies(0, 2, 3, 4);
+            SpawnEnemies(0, 2, 3, 4);
         }
         else if (waveNumber == 5)
         {
-            // SpawnEnemies(0, 0, 9, 0);
-            SpawnEnemies(0, 0, 1, 0);
-            // SpawnEnemies(0, 2, 4, 2);
+            SpawnEnemies(0, 2, 4, 2);
         }
         else if (waveNumber == 6)
         {
-            // SpawnEnemies(0, 0, 10, 0);
-            SpawnEnemies(0, 0, 1, 0);
-            // SpawnEnemies(0, 3, 4, 2);
+            SpawnEnemies(0, 3, 4, 2);
         }
         else if (waveNumber == 7)
         {
-            // SpawnEnemies(0, 0, 11, 0);
-            SpawnEnemies(0, 0, 1, 0);
-            // SpawnEnemies(1, 3, 4, 3);
+            SpawnEnemies(1, 3, 4, 3);
         }
         else if (waveNumber == 8)
         {
-            // SpawnEnemies(0, 0, 12, 0);
-            SpawnEnemies(0, 0, 1, 0);
-            // SpawnEnemies(1, 3, 4, 3);
+            SpawnEnemies(1, 3, 5, 3);
         }
         else if (waveNumber == 9)
         {
-            // SpawnEnemies(0, 0, 13, 0);
-            SpawnEnemies(0, 0, 1, 0);
-            // SpawnEnemies(2, 3, 3, 3);
+            SpawnEnemies(2, 3, 3, 3);
         }
         else if (waveNumber == 10)
         {
-            // SpawnEnemies(0, 0, 14, 0);
-            SpawnEnemies(0, 0, 1, 0);
-            // SpawnEnemies(2, 4, 3, 3);
+            SpawnEnemies(2, 4, 3, 3);
         }
         else if (waveNumber == 11)
         {
-            // SpawnEnemies(0, 0, 14, 0);
-            SpawnEnemies(0, 0, 1, 0);
-            // SpawnEnemies(4, 4, 4, 4);
+            SpawnEnemies(4, 4, 4, 4);
         }
         else if (waveNumber == 12)
         {
-            // SpawnEnemies(0, 0, 14, 0);
-            SpawnEnemies(0, 0, 1, 0);
-            // SpawnEnemies(8, 5, 4, 4);
+            SpawnEnemies(8, 5, 4, 4);
         }
         else if (waveNumber > 12)
         {  
