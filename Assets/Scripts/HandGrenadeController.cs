@@ -115,6 +115,9 @@ public class HandGrenadeController : MonoBehaviour
         {
             this.Explode();
         }
+        if (other.CompareTag("KillPlane"))
+        {
+            this.Explode();
+        }
     }
-
 }

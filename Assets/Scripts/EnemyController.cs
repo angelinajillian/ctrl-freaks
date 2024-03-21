@@ -14,7 +14,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private int health = 3;
     [SerializeField] private float movementSpeed = 2.0f;
     [SerializeField] private GameObject xpOrbPrefab;
-    [SerializeField] private int damageStat = 1;
+    [SerializeField] private float damageStat = 1;
     [SerializeField] private float attackSpeed = 1.0f;
     [SerializeField] private float walkDistance = 1.5f;
     public Color originalColor;

@@ -29,7 +29,7 @@ public class TrapController : MonoBehaviour
         activeCovers = GameObject.FindGameObjectsWithTag("TrapCover").ToList();
 
         // Reveal floor pits every 2 waves
-        if (((wave % 2 == 0) && wave > 0 && (curWave != wave)) || Input.GetKeyDown(KeyCode.T))
+        if (((wave % 2 == 0) && wave > 0 && (curWave != wave)) || (spawnScript.gameWon & Input.GetKeyDown(KeyCode.T)))
         {
             if (activeCovers.Count > 0)
             {
@@ -54,7 +54,7 @@ public class TrapController : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (spawnScript.gameWon & Input.GetKeyDown(KeyCode.R))
         {
             if (inactiveCovers.Count > 0)
             {

@@ -8,6 +8,7 @@ public class CannonController : MonoBehaviour
     [SerializeField] private GameObject barrel;
     private float force = 1100f;
     private float coneSize = 10f;
+    public EnemySpawner enemySpawner;
     void Start()
     {
 
@@ -18,12 +19,12 @@ public class CannonController : MonoBehaviour
     {
         var newRotation = CreateRandomRotation();
 
-        if (Input.GetKeyDown(KeyCode.B))
+        if (enemySpawner.gameWon & Input.GetKeyDown(KeyCode.B))
         {
             SpawnBarrel();
         }
 
-        if (Input.GetKeyDown(KeyCode.Backspace))
+        if (enemySpawner.gameWon & Input.GetKeyDown(KeyCode.Backspace))
         {
             Cleanup();
         }

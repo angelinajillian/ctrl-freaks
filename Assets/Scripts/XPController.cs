@@ -9,6 +9,7 @@ public class XPController : MonoBehaviour
     public float movementSpeed = 4f;
     public float activationDistance = 12.5f;
     public float pickUpRadius = 5f;
+    public float xpValue = 20f;
     public TrailRenderer trailRenderer;
 
     void Start()
@@ -37,7 +38,7 @@ public class XPController : MonoBehaviour
         if (distanceToPlayer < pickUpRadius)
         {
             // Debug.Log("PLAYER");
-            playerControllerExtended.UpdateXP(20.0f);
+            playerControllerExtended.UpdateXP(xpValue);
             Destroy(gameObject);
         }
 

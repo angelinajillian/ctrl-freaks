@@ -12,7 +12,7 @@ public class HealthBar : MonoBehaviour
     // // Image to change the different health colors
     public Image barColor;
 
-    public void SetMaxHealth(int maxHealth)
+    public void SetMaxHealth(float maxHealth)
     {
         // Set Max health in the beginning
         healthBar.maxValue = maxHealth;
@@ -20,7 +20,7 @@ public class HealthBar : MonoBehaviour
         // First color is the full value on the gradient
         // gradient.Evaluate(1f);
     }
-    public void SetHealth(int healthValue)
+    public void SetHealth(float healthValue)
     {
         // Reassign health value on the bar
         healthBar.value = healthValue;

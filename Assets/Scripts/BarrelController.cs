@@ -9,6 +9,7 @@ public class BarrelController : MonoBehaviour
     [SerializeField] private GameObject explosion;
     private float fuseTimer = 3f;
     private bool fuseActive = false;
+    private EnemySpawner enemySpawner;
 
     void Start()
     {
@@ -18,6 +19,7 @@ public class BarrelController : MonoBehaviour
         {
             fuseActive = true;
         }
+        enemySpawner = FindObjectOfType<EnemySpawner>();
     }
 
     // Update is called once per frame
@@ -38,7 +40,7 @@ public class BarrelController : MonoBehaviour
             Debug.Log("Time left: " + Mathf.Round(fuseTimer));
         }
 
-        if (Input.GetKeyDown(KeyCode.V))
+        if (enemySpawner.gameWon & Input.GetKeyDown(KeyCode.V))
         {
             ExplodeAll();
         }

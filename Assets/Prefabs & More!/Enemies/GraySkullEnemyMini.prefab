@@ -152,10 +152,10 @@ MonoBehaviour:
   agent: {fileID: 7249198441331131891}
   health: 1
   movementSpeed: 10
-  xpOrbPrefab: {fileID: 1972077602081053956, guid: ed2403cf7029a2b4e8fe93dccdd0d3a4, type: 3}
-  damageStat: 1
+  xpOrbPrefab: {fileID: 1972077602081053956, guid: 51d8ea313dc8e0643ada7825834d8e4e, type: 3}
+  damageStat: 0.5
   attackSpeed: 1
-  walkDistance: 1.5
+  walkDistance: 1.25
   originalColor: {r: 1, g: 1, b: 1, a: 1}
   hitColor: {r: 0.6415094, g: 0, b: 0, a: 1}
   isStunned: 0

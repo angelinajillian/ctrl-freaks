@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class PlayerControllerExtended : MonoBehaviour
 {
-    public int maxHealth = 10;
-    public int currHealth;
+    public float maxHealth = 10f;
+    public float currHealth;
 
     public float maxMana = 100f;
     public float currMana;
@@ -85,7 +85,7 @@ public class PlayerControllerExtended : MonoBehaviour
             float xpRequiredForNextLevel2 = 100 + (20*(level));
             level++;
             currXP = currXP - xpRequiredForNextLevel;
-            if (level < 12)
+            if (level <= 12)
             {
                 gameManager.UpgradeMenu();
             }
@@ -169,7 +169,7 @@ public class PlayerControllerExtended : MonoBehaviour
         canTakeDamage = damageTF;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         //if (!canTakeDamage) return; // Check if the player can take damage
         //canTakeDamage = false; // Prevent further damage for a cooldown period
@@ -178,7 +178,7 @@ public class PlayerControllerExtended : MonoBehaviour
 
     // This ReduceHealth function updates playerHealth and the healthbar
     // damage can different depending on which enemy did damage
-    void ReduceHealth(int damage)
+    void ReduceHealth(float damage)
     {
         // FlashRed();
         FindObjectOfType<SoundManager>().PlayTakeDamageSound(this.transform.position);
