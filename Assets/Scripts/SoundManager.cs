@@ -30,13 +30,12 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    [SerializeField] private AudioMixerGroup ambienceMixerGroup;
-
-    // FX sounds
+    // SFX arrays (for variety between commonly happening sounds)
     [SerializeField] private List<AudioClip> runningSFX;
     [SerializeField] private List<AudioClip> sprintingSFX;
     [SerializeField] private List<AudioClip> takeDamageSFX;
 
+    // SFX
     [SerializeField] private AudioClip throwSound;
     [SerializeField] private AudioClip explosionSound;
     [SerializeField] private AudioClip punchSound;
@@ -47,13 +46,14 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip trapOpenSound;
     [SerializeField] private AudioClip enemySpawnSpellSound;
     [SerializeField] private AudioClip enemyShootSpellSound;
-
-    // Ambience
-    [SerializeField] private AudioClip caveAmbience;
-
-    // Music
     [SerializeField] private AudioClip levelUpSound;
     [SerializeField] private AudioClip winSound;
+
+    // Ambience
+    private AudioSource caveAmbienceSource;
+
+    // Music
+    private AudioSource menuMusicSource;
 
     // Footstep tracker
     private float runStepTime = 0.33f;
@@ -66,21 +66,37 @@ public class SoundManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(gameObject);
             return;
         }
 
-        // Play ambience on loop
-        GameObject ambientObject = new GameObject("AudioSource");
-        AudioSource ambientSource = ambientObject.AddComponent<AudioSource>();
+        caveAmbienceSource = GetComponents<AudioSource>()[0];
+        menuMusicSource = GetComponents<AudioSource>()[1];
+    }
 
-        ambientSource.clip = caveAmbience;
-        ambientSource.loop = true;
-        ambientSource.Play();
+    public void PlayAmbience()
+    {
+        caveAmbienceSource.loop = true;
+        caveAmbienceSource.Play();
+    }
 
+    public void StopAmbience()
+    {
+        caveAmbienceSource.Stop();
+    }
+
+    public void PlayMusic()
+    {
+        menuMusicSource.loop = true;
+        menuMusicSource.Play();
+    }
+
+    public void StopMusic()
+    {
+        menuMusicSource.Stop();
     }
 
     public void PlaySprintSound(Vector3 position)

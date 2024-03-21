@@ -25761,7 +25761,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1813757513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25815,9 +25815,10 @@ MonoBehaviour:
   trapOpenSound: {fileID: 8300000, guid: d25700444c68f9a45a8ea7fddc002012, type: 3}
   enemySpawnSpellSound: {fileID: 8300000, guid: 9ae32f8e1a94c486c9929faca77ff03b, type: 3}
   enemyShootSpellSound: {fileID: 8300000, guid: e5e553d6c53b7b046845a60889007b2a, type: 3}
-  caveAmbience: {fileID: 8300000, guid: f74396619b7154fa5a38a1959cfa67ae, type: 3}
   levelUpSound: {fileID: 8300000, guid: c0cabce778ad54792bba3a0ca6765417, type: 3}
   winSound: {fileID: 8300000, guid: 9b1cde0c2a6be405ba097772a687b5ae, type: 3}
+  caveAmbience: {fileID: 8300000, guid: f74396619b7154fa5a38a1959cfa67ae, type: 3}
+  menuMusic: {fileID: 0}
 --- !u!4 &1813757514
 Transform:
   m_ObjectHideFlags: 0
