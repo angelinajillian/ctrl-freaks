@@ -7,6 +7,7 @@ Armed with nothing but your bare hands and your knowledge of fist-based spells, 
 With each enemy you defeat, you will accumulate valuable experience points bringing you closer to the next level. 
 As you level up, you’ll unlock the power to enhance your spellcasting mastery, upgrading your spells with newfound strength and versatility. 
 But remember, death lurks around every corner, and with it you’ll find yourself forced to restart your journey from the beginning.  
+<br>
 Will you emerge triumphant against the odds? Brace yourself, and prepare to roll with the punches in Spellfister. 
 
 ## Project Resources
@@ -25,10 +26,28 @@ Will you emerge triumphant against the odds? Brace yourself, and prepare to roll
 
 ## Gameplay Explanation ##
 
-**In this section, explain how the game should be played. Treat this as a manual within a game. Explaining the button mappings and the most optimal gameplay strategy is encouraged.**
+Our controls are as follows:
 
+WASD or Arrow Keys to move
 
-**Add it here if you did work that should be factored into your grade but does not fit easily into the proscribed roles! Please include links to resources and descriptions of game-related material that does not fit into roles here.**
+1 key is grenade 
+
+2 key is AOE
+
+Left Click is Shoot
+
+Right click is punch
+
+Jump is Space Bar
+
+ESC is the pause menu
+
+Shift is to run/sprint
+<br>
+#### Most optimal Gameplay Strategy
+The most optimal gameplay strategy definitely comes down to your timing and utilization of mana. In our game, there are different enemy waves with different strengths and attacks. In the cases where the enemies take multiple hits to defeat, the best strategy is to run away and conserve your mana. As the player becomes more familiar with the game, it is also ideal to note how many shots it takes for an enemy to be defeated so that no additional mana is wasted. The player also needs to be familiar with the map layout as hazardous situations occur at times. 
+<br> <br>
+As witnessed in the Final Session for class, the strategy to get to the final wave is to run around when you wait to charge your mana and try to destroy the little gray minions so that you can have enough XP to level up and recharge your health and mana. 
 
 # Main Roles #
 
