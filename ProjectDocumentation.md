@@ -265,9 +265,17 @@ There was no particular sound style I had in mind when making/gathering the asse
 ## Gameplay Testing
 ### Dhilan
 
-**Add a link to the full results of your gameplay tests.**
+[Observations and Playtester Comments](https://docs.google.com/document/d/1ZbwVK1ox4RtrnIiMOwFchhLVy_ZvNIFr_84Fk5zzwfA/edit#heading=h.7up1j2764gvb)
 
-**Summarize the key findings from your gameplay tests.**
+After reading and discussing the gameplay test results as a team, some of the key findings we saw were that the controls were clunky, mana regeneration was slower than expected, the projectile aim was slightly off, and the time to be able to upgrade needed to be modified. 
+
+First, many of the gameplay testers found the original controls difficult to use. Our player movement uses WASD keys and originally our binding for spells was on the other side of the keyboard like G and P, which made it difficult to play the game. We got a significant amount of feedback from our testers with this issue therefore we knew that we had to correct it. To address this issue, we changed the bindings for the grenade to 1 and the AOE spell to 2. The issues with the mouse were easily resolved by using a physical mouse rather than the touchpad on a laptop.
+
+Second, another common issue had to do with mana. I saw many of the testers spam spells which led to all of their mana being depleted, which made many say that mana regeneration needs to be faster, or be able to hold a large amount. To address this issue, we slightly increased the mana regeneration speed and also added a mana upgrade that players can take advantage of once they level up. One solution a tester suggested was that we should have a cooldown period before being able to use another spell so that all the mana can’t be wasted at one time. Though collectively we felt this idea wasn’t the best solution because the only way to defend yourself in the game without using a spell is right click (punch) though this doesn’t damage the enemies but rather punches them away. We didn’t like that for a certain cooldown period, the player wouldn’t be able to defend themselves hence we stuck with the first solution. 
+
+Third, during the gameplay testing and our own group testing it came to our attention that when you shoot a projectile it needs to appear more like it’s coming from the hand rather than the center of the screen. To fix this issue, Isaac added a crosshair at the center of the screen, and slightly moved where the projectile is shot from to the right, and after a few more adjustments it looked and felt much better and none of the other gameplay testers mentioned anything about it.
+
+Fourth, along with point 2, we felt it would be good if an upgrade system was implemented so that the player can upgrade things like mana, health, fist, and punch. This was one of the resolutions to mana depleting quickly, but the main reason we chose to have an upgrade system was because you have to upgrade the attributes so that the harder waves are possible. The issue we saw with our upgrade system was that testers felt that the timing wasn’t right. We were contemplating on whether the players should be able to upgrade after the player levels up or the wave gets completed. After doing numerous tests, we found that it’s best if we allow the player to upgrade once they level up. The reasoning for this is that the harder levels really require you to collect XP so that you can upgrade attributes and obtain full health and mana. If we were to keep it to be able to upgrade after the wave ends, the game would be a lot harder and to us it just didn’t make sense. 
 
 ## Narrative Design
 ### Jillian
