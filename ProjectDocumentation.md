@@ -71,6 +71,25 @@ Like many UI systems in Unity, our game uses a Canvas that contains all of our U
 
 This bar image was obtained from a public [GitHub repository](https://github.com/Brackeys/Health-Bar/tree/master) that allows and the owner of it mentions in the video that users can use the sprites that have already been created.
 
+![HealthBar](https://github.com/angelinajillian/ctrl-freaks/assets/130308162/fff51a38-8039-49c0-8886-6c7a31f7e7a5)
+
+The heart icon I obtained from this [source](https://www.vectorstock.com/royalty-free-vector/pixelated-heart-game-icon-vector-17724581) follows a Standard license and we’re allowed to use the heart vector for personal and commercial purposes. 
+
+Our game also needed a way to keep track of the player's mana, which is why we also needed a ManaBar. Similar to the HealthBar, the ManaBar follows the same structure style, except now isn’t filled with red but rather blue and contains a different icon. The `ManaBar` is only changed from the `MainScene` and is attached to the mana of the player. This picture shows our ManaBar:
+
+![ManaBar](https://github.com/angelinajillian/ctrl-freaks/assets/130308162/a445a16b-2275-4dac-b0a4-02ce23035eb8)
+
+The bar is the same as the one above except now it is filled with blue rather than red. This one also has a blue potion icon that was obtained from source following a Standard license and we’re allowed to use the blue potion vector for personal and commercial purposes. 
+
+A picture that shows the entire `MainScene`:
+
+![MainScene](https://github.com/angelinajillian/ctrl-freaks/assets/130308162/815dd27e-5b10-47ae-b670-0276318e4ca3)
+
+
+
+
+
+
 
 
 ## Terrain and Visuals
