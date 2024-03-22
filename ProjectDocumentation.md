@@ -11,9 +11,9 @@ Will you emerge triumphant against the odds? Brace yourself, and prepare to roll
 
 ## Project Resources
 
-[Web-playable version of your game.](https://itch.io/)  
-[Trailor](https://streamable.com/nyanvm)  
-[Press Kit](https://dopresskit.com/)
+[Web-playable version of your game.](https://ctrl-freaks.itch.io/spellfister)  
+[Trailor](https://www.youtube.com/watch?v=YUumzbIi_6k)  
+[Press Kit](https://ctrl-freaks.itch.io/spellfister)
 
 #### Documents
 [Initial Plan Documentation](https://docs.google.com/document/d/10zPOWlHNfYlPadxJgdxVSefUHD6V569NBV7gxjKpBHs/edit?usp=sharing)  
