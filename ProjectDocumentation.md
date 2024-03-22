@@ -66,7 +66,8 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 Like many UI systems in Unity, our game uses a Canvas that contains all of our UI elements. One of my first tasks under the UI and Input role was to create a health bar that would keep track of the player’s health. After the Canvas was created, I created an empty object called `HealthBar` which is simply just a way to keep the border and filler together. Then I created an image called `HealthBarBorder` which contained the image of the health bar that I found and another image called `FillBar` for filling this bar up. `HealthBar` used `Fill Rect` and a slider component to achieve the visualization of the bar actually going up or down. The `HealthBar` is only changed in the `MainScene`, and is attached to the health of the player. A picture of just the bar:
 
-![Bar](https://github.com/angelinajillian/ctrl-freaks/assets/130308162/3f9afa4f-13f5-4634-b3f3-146350224e6e)
+
+![FillableBar](https://github.com/angelinajillian/ctrl-freaks/assets/130308162/70c63407-0c25-4747-ba83-86d784b2229e)
 
 
 
