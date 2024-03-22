@@ -21,6 +21,7 @@ Will you emerge triumphant against the odds? Brace yourself, and prepare to roll
 [Progress Report 2](https://docs.google.com/document/d/1MOsCWhb4e3SDUedQHdNcxwlHtebMe4v3/edit?usp=sharing&ouid=113857950969725052767&rtpof=true&sd=true)  
 [Google Drive](https://docs.google.com/document/d/1_Mm54dNCrvG3azcWWluojf84rFJgtbZVd9N28lANZBI/edit?usp=sharing)  
 [Progress Schedule](https://docs.google.com/document/d/1_Ri-GoDNi_LWq0oq4sPKBULa1wjzyPijgvZrm3NrHjo/edit?usp=sharing)  
+[Observations and Playtester Comments](https://docs.google.com/document/d/1ZbwVK1ox4RtrnIiMOwFchhLVy_ZvNIFr_84Fk5zzwfA/edit#heading=h.7up1j2764gvb)
 
 ## Gameplay Explanation ##
 
