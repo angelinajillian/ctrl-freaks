@@ -69,6 +69,8 @@ Like many UI systems in Unity, our game uses a Canvas that contains all of our U
 
 ![FillableBar](https://github.com/angelinajillian/ctrl-freaks/assets/130308162/70c63407-0c25-4747-ba83-86d784b2229e)
 
+This bar image was obtained from a public [GitHub repository](https://github.com/Brackeys/Health-Bar/tree/master) that allows and the owner of it mentions in the video that users can use the sprites that have already been created.
+
 
 
 ## Terrain and Visuals
