@@ -290,13 +290,20 @@ Our game can run on PC’s and desktops with the same controls whether it is a W
 ## Game Feel and Polish
 ### Isaac
 **Game Feel**
-Most of my Game Feel was done while developing; as my main role was lead programmer, I tested and made sure everything felt right as I was implementing each new aspect of the game.
+Most of my Game Feel was done while developing; as my main role was lead programmer, I tested and made sure everything felt right as I was implementing each new aspect of the game. <br>
+
 **Balancing**
-One big aspect for game feel was balancing, I playtested our game dozens of times to find a good balance for many aspects of our game. A big example was the wave spawning; I playtested the game over and over adding and subtracting enemies from each stage until I found the right difficulty that our team was looking for, difficult but definitely winnable once you understand the core gameplay. Another big balancing was enemy values, which can be damage, attack distance, speed, attack cooldown, many different things. I essentially played the game in editor, adjusted values, replayed game in editor, and repeated over and over again.
+One big aspect for game feel was balancing, I playtested our game dozens of times to find a good balance for many aspects of our game. A big example was the wave spawning; I playtested the game over and over adding and subtracting enemies from each stage until I found the right difficulty that our team was looking for, difficult but definitely winnable once you understand the core gameplay. Another big balancing was enemy values, which can be damage, attack distance, speed, attack cooldown, many different things. I essentially played the game in editor, adjusted values, replayed game in editor, and repeated over and over again. <br>
+
 **The hand**
-One huge improvement to the game feel was changing the hand sprite, the early version of our game included a hand sprite with extremely limited animations, just one possible spell. I began searching for a new hand sprite online, but was not able to find any online... Until I stumbled across a Doom modding forum: how to mod your own hand into Doom. I began by taking tons of pictures of my hand using my cameras flash, and a dimly lit environment. Then, I opened a photo editor, scaled it down to a tiny size, so it became pixelated, and finished by replacing the new sprites pallette with the Doom pallette.
+One huge improvement to the game feel was changing the hand sprite, the early version of our game included a hand sprite with extremely limited animations, just one possible spell. I began searching for a new hand sprite online, but was not able to find any online... Until I stumbled across a Doom modding forum: how to mod your own hand into Doom. I began by taking tons of pictures of my hand using my cameras flash, and a dimly lit environment. Then, I opened a photo editor, scaled it down to a tiny size, so it became pixelated, and finished by replacing the new sprites pallette with the Doom pallette. <br>
+![FirstHand](https://github.com/angelinajillian/ctrl-freaks/blob/8b5c49a28b989631e2a0bc8090bd2786f73fc8ef/Screenshots/Isaac's/weaponspell2.png)
+![FinalHand](https://github.com/angelinajillian/ctrl-freaks/blob/8b5c49a28b989631e2a0bc8090bd2786f73fc8ef/Screenshots/Isaac's/hand_sprites_final_v1.png)
+![MyHand](https://github.com/angelinajillian/ctrl-freaks/blob/8b5c49a28b989631e2a0bc8090bd2786f73fc8ef/Screenshots/Isaac's/MyHand.png)
+
 **Other Game Feel**
 After playtesting at GDAC, getting peoples responses to our game, I implemented changes to our games feel. One example was that our spike pits killed the player instantly, which people found unfair, so I made them damage the player instead, definitely an improvement. Another change was that I added a crosshair that the fist travels to, as before it shot in a straight line that was off centered to the right a bit. Another one was the amount of barrels being shot into the arena, people found them to clutter up the game when too many would spawn in, so we decided to reduce them.
+
 
 ## Audio
 ### Vlad
