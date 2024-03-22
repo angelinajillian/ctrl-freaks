@@ -58,7 +58,7 @@ You should replay any **bold text** with your relevant information. Liberally us
 **Document the game states and game data you managed and the design patterns you used to complete your task.**
 
 ## User Interface and Input
-### Dhilan Patil
+### Dhilan Patel
 
 **Describe your user interface and how it relates to gameplay. This can be done via the template.**
 **Describe the default input configuration.**
