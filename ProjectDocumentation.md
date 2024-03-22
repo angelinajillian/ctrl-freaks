@@ -46,7 +46,55 @@ You should replay any **bold text** with your relevant information. Liberally us
 ## Producer
 ### Angelina (Jillian) Lim
 
-**Describe the steps you took in your role as producer. Typical items include group scheduling mechanisms, links to meeting notes, descriptions of team logistics problems with their resolution, project organization tools (e.g., timelines, dependency/task tracking, Gantt charts, etc.), and repository management methodology.**
+In my role as the Producer, my primary focus was to maximize communication and foster teamwork within our team, ensuring everyone is aligned with our project objectives. This involved providing constructive feedback and suggesting improvements to our workflow, while also maintaining organization of documentation and tasks. Throughout the project’s development, I oversaw individual contributions, ensured people were abiding by their assigned roles and made sure deadlines were met. Regular updates were facilitated through weekly meetings and group chats, while our streamlined GitHub workflow and comprehensive documentation facilitated smooth project management. <br>
+
+#### Group Scheduling Mechanisms 
+For our group’s scheduling mechanisms, we leveraged a group chat to maintain active communication. To establish official meeting times when we first began our ideation process, I utilized When2Meet to identify the most convenient time for a meeting. These meetings were important in shaping the initial concept of our game and I took charge to ensure completion of the Initial Plan Document and to ensure everyone was on the same page for our game. As the quarter progressed, we followed our Initial Plan’s schedule by assigning weekly tasks and convening for meetings after lectures on Tuesdays and Thursdays when necessary. During these sessions, each member provided updates on their tasks and together we planned future objectives and goals. This scheduling approach, with consistent communication and teamwork, created cohesion among team members and ensured that we stay on schedule before the deadline. <br> 
+
+#### Github Workflow 
+For our GitHub workflow, we employed distinct branches to work on various parts of the code. This approach was crucial in preventing code conflicts and ensuring focused development on different aspects of the project. To initialize this process, I emphasized the importance of creating a new branch for each new feature implementation. As a team decision, we designated Isaac, our lead programmer to oversee the main branch, responsible for merging additional branches upon completion. This structure allowed Isaac to concentrate on the game’s core functionalities while resolving any merge conflicts arising from the integration of other branches. We decided on this method to grant Isaac sole authority over the merging process, eliminating the need for intermediary approvals.
+
+#### Progress Tracking
+For progress tracking, we utilized our group chat to send updates whenever someone had completed a task. The chat served as a way we can share updates and also have opinions of people’s progress. Some examples of our group chat are below. 
+
+To keep tasks organized, I created each of our documents whenever we had to turn it in and sent them in the group chat and gave a deadline for everyone to complete a part of the document. I organized all of our documents in this Google Drive to better organize and this made it easier so that all of our documents were in one place. Once I sent the document, I would also send reminders to everyone when deadlines were coming up and make sure to see if people did their part and remind them if not. 
+
+For progress reports, I took charge in facilitating the process, creating documents and setting up times to meet with other teams. Going in person for the first one and on zoom in on the second one proved valuable in getting observed on our progress on our game and getting feedback as well as seeing where other groups were in their progress for their game. I made sure the progress report was completed and submitted and ensured that all group members were doing their part in the report. 
+
+To keep track of our progress, I had created a scheduling document so that we can keep track of our progress each week and also see the TODO’s for the following week. This was created usually during the end of the week and from progress in the group chat as well as our group meetings. Here is the schedule progress document. It was important that we were sticking to the schedule or making adjustments as necessary in order to be able to be on schedule with completing our game before the due date. 
+
+#### Assisting other roles
+
+As part of my job as the Producer, I also made sure that each person was doing their jobs and to reach out for help if needed. In order to do this, I made sure to check in with group members to see their progress. Here are some tasks that I did to help out on the programming or subroles.
+
+##### Gameplay Testing
+To assist with Gameplay Testing, I attended the GDAC Prototype and Playtesting Night in which people played our game. While utilizing the GDAC questions, I was able to get a lot of good intel on our game to share with Dhilan as well as some bugs and additions to bring up to the programmers. This was fun to attend because it was our first time showing off our game and it was very helpful to hear their comments and feedback. 
+
+##### Helping UI/UX
+For the UI/UX, I imported a font to fit the narrative design as well as creating an XP bar which increases when XP is gained and changes when the next level is reached. 
+
+##### Coin Prefab
+When we were going to implement the shop system, I also implemented a coin prefab and animations to have the coin spin in the game. 
+
+##### Assisting with developing enemy tasks 
+In assisting with enemy attacks, we wanted to implement attacks for enemies to make the game more exciting, so I implemented attacks for the Grey Bald guy and redhead.
+
+For the red enemy, I implemented it so that it would shoot a fist every x seconds, and damage the enemy.
+
+For the gray bald enemy, I implemented an attack so that every x seconds it will let out two minion copies of himself that have super speed to the enemy. 
+
+#### Description of Team logistics problems and solutions
+While our initial plan document contained ambitious ideas, certain aspects didn’t make it into the final game, but they were addressed and solved along the development journey. Below, I’ve documented the rationale behind some of our decisions. 
+
+**Roguelike Game**: We decided to scratch the idea of a Roguelike game and instead favored implementing progressively challenging levels. We wanted players to experience increasing difficulty with each round, but still implemented permadeath so upon death they had to restart the game from the beginning.
+<br>
+**Implementation of a Boss**: Initially, we planned for a boss level to conclude the game. However, we pivoted towards enhancing enemy attacks instead to provide challenge and excitement. By incorporating enemy attack features, each wave remained engaging and demanding. 
+
+**Shop/Upgrades**: Time constraints led us to abandon the idea of a shop system and instead we implemented an upgrade system. After leveling up, players could enhance their assets to give them the upper hand when battling tougher waves. 
+
+**Discussion on the Map**: Features of the map were also deeply discussed in order to fit the design of the game as well as the narrative story. The implementation of hazards had to be discussed in which the holes are too big, should the player be able to get out of them. Also in terms of lighting and placement of the textures of the map in which the perfect lighting and placement was discussed.  
+
+**Game balancing**: One thing that we had a tough time deciding is how to balance the game. This was determined by the knowledge that each enemy is more powerful than the previous one and to balance it would need to be a fit between strong and weak enemies as well as keeping in mind environmental hazards. The game balancing was mostly made from game testing and finding the perfect fit for the game. 
 
 ## Lead Programmer/Game Logic
 ### Isaac Craig
