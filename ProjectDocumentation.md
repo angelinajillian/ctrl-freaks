@@ -245,10 +245,17 @@ Once you click the `Back To Title` button in the top left corner, the script in 
 For our `MainMenu` and `CreditMenu` scenes I chose to stick with a simple design so that it isn’t too distracting. As for the font, the same one was for consistency that Jillian had imported for the levels. 
 
 
+For input configuration, our game uses keyboard and mouse with the following controls:
+* `WASD` keys for player movement which is also based on the built-in FPS controller unity package.
+* `1` throws a grenade
+* `2` is an AOE spell  
+* `Space` is jump
+* `esc` opens the pause menu
+* `shift` is sprint/run
+* `left` click on mouse is shoot
+* `right` click on mouse is punch
 
-
-
-
+Our game can run on PC’s and desktops with the same controls whether it is a Windows or Mac, as long as you keep the screen size and resolution the same (specific settings mentioned above).
 
 
 
