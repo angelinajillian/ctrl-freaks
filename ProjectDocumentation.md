@@ -86,6 +86,32 @@ A picture that shows the entire `MainScene`:
 ![MainScene](https://github.com/angelinajillian/ctrl-freaks/assets/130308162/815dd27e-5b10-47ae-b670-0276318e4ca3)
 
 
+The Wave number was implemented by Isaac and Jillian implemented the xp bar down at the bottom.
+
+After completing the UI for our `MainScene`, it was now time to make an `MainMenu` and a `CreditScene`. Like before, most UI in Unity needs a Canvas which is what I created and made it the size of our game view so that in play mode our entire screen would be displayed and nothing would get cut off.
+
+On this Canvas I added The title of our game, "Spellfister", along with a `Start` and `Credits` button. The background of the Canvas is where our game starts but it includes two enemies in front of the camera. These enemies were originally static but later modified by Isaac so that they are animated. Here is a picture of the `MainMenu` scene:
+
+![MainMenu](https://github.com/angelinajillian/ctrl-freaks/assets/130308162/f4b4998c-bbc9-4b55-b868-a392888636bf)
+
+In the image above, when the `Start` button is clicked, the script in the background for the button loads the `MainScene` which on our build setting is #2. Similarly, when the `Credits` button is clicked, the script in the background for the button loads the `CreditScene` which on our build settings is #1.
+
+After clicking the `Start` button we are led to the start of the game which looks like this:
+
+![BeginGame](https://github.com/angelinajillian/ctrl-freaks/assets/130308162/56a76810-e410-471b-a777-a3229b9be36e)
+
+
+After clicking the `Credits` button we are led to the `CreditScene` which looks like this:
+
+![CreditScene](https://github.com/angelinajillian/ctrl-freaks/assets/130308162/57616071-6c62-48ff-8d15-f40c602080a6)
+
+
+Once you click the `Back To Title` button in the top left corner, the script in the background for the button loads the `MainMenu` which on our build setting is #0.
+
+For our `MainMenu` and `CreditMenu` scenes I chose to stick with a simple design so that it isn’t too distracting. As for the font, the same one was for consistency that Jillian had imported for the levels. 
+
+
+
 
 
 
