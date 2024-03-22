@@ -280,7 +280,21 @@ Fourth, along with point 2, we felt it would be good if an upgrade system was im
 ## Narrative Design
 ### Jillian
 
-**Document how the narrative is present in the game via assets, gameplay systems, and gameplay.** 
+In terms of Narrative Design, SpellFister does a good job in following the theme that we desired. We wanted the player to feel like a wizard in a dark cave and have nothing but their spells to help them fight waves of enemies. <br>
+
+The narrative is present in the game through the UI/UX of the game in design choice of mana bar, XP bar and health bar in which they are all uniform and a simple design to fit. With the choice of font design which is apparent in the Start Screen, Credits, Pause Screen, Upgrades and Level, I wanted to have it be a wizadry theme in which the font fits with the wizardry feel of the game and I think I choose a very majestic magical font. <br>
+<img width="287" alt="Screenshot 2024-03-22 at 2 37 47 PM" src="https://github.com/angelinajillian/ctrl-freaks/assets/113663521/46c749fd-1f55-445b-8264-9e28ba346a7c">
+
+
+In the map terrain, we wanted it to be a dark atmosphere and feel of the game. William worked very well on the game map and worked well in working the lighting of the game to make it have the dark cave feel as well as sounds of Audio from Vlad in which create the cave feeling like footsteps and dripping noises. <br>
+<img width="658" alt="Screenshot 2024-03-22 at 2 39 35 PM" src="https://github.com/angelinajillian/ctrl-freaks/assets/113663521/633aae78-5982-4ad4-85ef-1ee71233b62e">
+
+For the enemies, we wanted to use the enemies from previous projects because it would be a nice appreciation for the class and the hard work that we put into our class exercises. With more additions to their animations and sound effects, the enemies were a nice touch for our project, and we were able to get creative with the enemy spells to add fun and creative twists to our story. We wanted to have our enemies have different strengths and their own spells, so that is shown in the various kinds of enemies that we included. <br>
+
+For the spells, we wanted to fit with the theme of roll with the punches in which each spell was related to fists or rolling in some kind of way, this was successful in our Grenade and AOE spell. This fit in our story with the wizard having spells and with the theme of the game. <br>
+
+For the user hand we took a doom-inspired approach to it, in which Isaac used animations of his own hand to create a more real feel to the game. This was a good addition to the story of our game because it created a more realistic first person pov and a more real feel to casting spells with their hands. <br>
+<img width="193" alt="Screenshot 2024-03-22 at 3 33 20 PM" src="https://github.com/angelinajillian/ctrl-freaks/assets/113663521/bc261421-73a0-4638-bb5a-70c12fa7e941">
 
 ## Press Kit and Trailer
 ### William 
