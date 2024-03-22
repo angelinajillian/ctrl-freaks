@@ -79,7 +79,7 @@ Our game also needed a way to keep track of the player's mana, which is why we a
 
 ![ManaBar](https://github.com/angelinajillian/ctrl-freaks/assets/130308162/a445a16b-2275-4dac-b0a4-02ce23035eb8)
 
-The bar is the same as the one above except now it is filled with blue rather than red. This one also has a blue potion icon that was obtained from source following a Standard license and we’re allowed to use the blue potion vector for personal and commercial purposes. 
+The bar is the same as the one above except now it is filled with blue rather than red. This one also has a blue potion icon that was obtained from [source](https://www.vectorstock.com/royalty-free-vector/mana-potion-pixel-art-blue-elixir-in-magic-phial-vector-46572163) following a Standard license and we’re allowed to use the blue potion vector for personal and commercial purposes. 
 
 A picture that shows the entire `MainScene`:
 
