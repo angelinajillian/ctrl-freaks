@@ -86,7 +86,7 @@ A picture that shows the entire `MainScene`:
 ![MainScene](https://github.com/angelinajillian/ctrl-freaks/assets/130308162/815dd27e-5b10-47ae-b670-0276318e4ca3)
 
 
-The Wave number was implemented by Isaac and Jillian implemented the xp bar down at the bottom.
+The Wave number was implemented by Isaac, and Jillian implemented the xp bar down at the bottom.
 
 After completing the UI for our `MainScene`, it was now time to make an `MainMenu` and a `CreditScene`. Like before, most UI in Unity needs a Canvas which is what I created and made it the size of our game view so that in play mode our entire screen would be displayed and nothing would get cut off.
 
