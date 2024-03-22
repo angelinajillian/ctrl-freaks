@@ -61,8 +61,8 @@ You should replay any **bold text** with your relevant information. Liberally us
 ## User Interface and Input
 ### Dhilan Patel
 
-**Describe your user interface and how it relates to gameplay. This can be done via the template.**
-**Describe the default input configuration.**
+It's important to note that this entire game has been built in Full HD (1920 x 1080) and to run it, these settings must be followed otherwise UI components will move around. 
+
 
 **Add an entry for each platform or input style your project supports.**
 
