@@ -218,9 +218,9 @@ MonoBehaviour:
   health: 20
   movementSpeed: 0.8
   xpOrbPrefab: {fileID: 1972077602081053956, guid: ed2403cf7029a2b4e8fe93dccdd0d3a4, type: 3}
-  damageStat: 1
+  damageStat: 0
   attackSpeed: 1
-  walkDistance: 1.5
+  walkDistance: 2.5
   originalColor: {r: 1, g: 1, b: 1, a: 1}
   hitColor: {r: 0.6415094, g: 0, b: 0, a: 1}
   isStunned: 0
@@ -275,7 +275,7 @@ NavMeshAgent:
   m_Acceleration: 7
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 0

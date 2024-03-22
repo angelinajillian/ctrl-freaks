@@ -7,10 +7,10 @@ using UnityEngine.UI;
 
 public class PlayerControllerExtended : MonoBehaviour
 {
-    public float maxHealth = 10f;
+    public float maxHealth;
     public float currHealth;
 
-    public float maxMana = 100f;
+    public float maxMana;
     public float currMana;
 
     private bool canTakeDamage = true;
@@ -39,6 +39,9 @@ public class PlayerControllerExtended : MonoBehaviour
 
     void Start()
     {
+        maxMana = 100f;
+        maxHealth = 10f;
+
         // Health is initially set to max value
         currHealth = maxHealth;
         // Update heath bar

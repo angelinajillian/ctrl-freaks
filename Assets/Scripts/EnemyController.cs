@@ -26,6 +26,7 @@ public class EnemyController : MonoBehaviour
     private Animator animator;
     public bool isStunned = false; // flag for if enemy is stunned or not
     public bool isPunched = false; // flag for if enemy was punched
+    // public bool canAttack = false;
 
     //  private PlayerControllerExtended playerController;
 
@@ -52,9 +53,13 @@ public class EnemyController : MonoBehaviour
             StartCoroutine(Die());
         }
 
-        if (attackTimer >= attackSpeed)
+        Vector3 directionToPlayer = player.transform.position - transform.position;
+        directionToPlayer.y = 0;
+        float distanceToPlayer = directionToPlayer.magnitude;
+
+        if (attackTimer >= attackSpeed & distanceToPlayer <= walkDistance)
         {
-            AttackIfInRange(2.5f);
+            AttackIfInRange(10f);
         }
 
         MoveTowardsPlayer();
@@ -224,12 +229,12 @@ public class EnemyController : MonoBehaviour
     public void AttackIfInRange(float attackRange)
     {
         // player is dead ahead because we are already looking at them
-        Vector3 directionToPlayer = transform.forward;
+        Vector3 directionToPlayer = (player.transform.position - transform.position).normalized;
 
         RaycastHit hit;
         
         // for testing, only visible in scene mode
-        Debug.DrawRay(transform.position, directionToPlayer * 3.0f, Color.green);
+        Debug.DrawRay(transform.position, directionToPlayer * attackRange, Color.green);
 
         if (Physics.Raycast(transform.position, directionToPlayer, out hit, attackRange))
         {

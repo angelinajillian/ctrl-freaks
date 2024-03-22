@@ -227,7 +227,7 @@ public class SpellFactory : MonoBehaviour
         {
             yield return new WaitForSeconds(1f / manaRegenerationRate);
             IncreaseMana(1);
-            playerControllerExtended.currMana = Mathf.Clamp(playerControllerExtended.currMana, 0f, 100f);
+            playerControllerExtended.currMana = Mathf.Clamp(playerControllerExtended.currMana, 0f, playerControllerExtended.maxMana);
         }
     }
 
