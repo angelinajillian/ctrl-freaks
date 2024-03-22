@@ -53,10 +53,48 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 **Document the game states and game data you managed and the design patterns you used to complete your task.**
 
-## Game Logic
+## Game Logic -> Player-Enemy Interaction
 ### Vlad
+As a disclaimer I’ve always had my title listed as game logic but pretty early on in the project my role felt established as the guy helping work on what the player can do and what the enemies do so I am calling that Player-Enemy Interaction.  
 
-**Document the game states and game data you managed and the design patterns you used to complete your task.**
+The main features I developed were the grenade spell, the push/punch ability, enemy basic attacks, enemy animations, enemy movement/pathing, and I touched on the hand animations here and there. The spells and abilities were developed using the factory pattern so that making new spells was always simple and they can all be found in one place. Spells that instantiate objects all have controller scripts for the objects they instantiate. Everything concerning the enemy I did was all done in the `EnemyController.cs` script, besides the animations because those animators were attached to the enemy prefabs themselves.
+
+### Grenade
+For the grenade, I implemented it as a hold and release spell, meaning when the player presses and holds the grenade button, they hold onto the grenade. Upon release, the grenade is then launched in the direction they are facing. The grenade has a fuse time of 2.75s and will detonate by calling `Explode()`. The explosion itself is a prefab using particles to give a nice visual effect (thanks to William). The explosion also instantiates a collider upon which enemies and the player can collide with and then take damage. I wanted it to work like some FPS games I've played in the past so while holding the grenade it is in an active state. Holding it too long will result in it blowing up in the characters face and taking damage. Everything in `HandGrenadeController.cs` handles these functions.
+
+
+### Punch
+The punch-push ability is the first ability I worked on. As a fun fact I planned this to be a “kick” ability but due to the lack of first person kick animations we opted to make some original punch animations (Isaac made the hand sprite sheets). Initially I had it implemented in the `PlayerControllerExtended.cs` script but moved it to the `SpellFactory.cs` just so all the player abilities could be found in one place. The reason it was initially found inside of `PlayerController.cs` was because I saw it not as a spell but as an ability. On top of that there was also no spell prefab being instantiated from said ability, but by having it in the factory along with all of the other player abilities/spells, it made things more digestible for the team and myself in terms of development.  
+
+Due to the punch not instantiating anything, all punch logic is found within `SpellFactory.cs` and works using raycast collision detection. Since the `SpellFactory.cs` resides on the player object it worked fine.  
+
+The push is a simple and effective move (at least while upgraded). When facing an enemy (or barrel but I will continue to only reference enemies) and in range with said enemy then that enemy will have force applied to them in the same direction that the player is looking, so behind the enemy.  
+
+Pushing an enemy into a wall will cause that enemy to be stunned. Stun detection was done through an enemy being put in the punched state due to the punch and then colliding into a wall while still in that punched state. The punched state was necessary because just using wall collisions for stun detection lead to enemies simply walking into walls getting stunned. The punch state lasts for 3.5s after an enemy is punched.
+
+![Stunned](https://github.com/angelinajillian/ctrl-freaks/blob/main/Screenshots/Vlad's/Image%20Sequence_003_0000.png)
+
+### Enemy Basic Attack
+The enemy basic attack lives up to its name because it is as basic of a melee attack there is. It ties directly into enemy movement which I will discuss soon. This attack has a few parameters so that enemies can differ a little bit. All enemies have a set attack range of 2.5, but their attack speed and attack range are both customizable. We did not really differ enemy attack speeds too much in the end and more so changed the damage value of enemy attacks. The purple headband enemy is our heaviest hitter with a damage of 2. Both the red headband and the gray enemy have a damage value of 1, and the tan enemy deals no melee damage at all as they are purely ranged. Finally the mini gray minions deal 0.5 damage because they are a swarming enemy type.
+
+
+### Enemy Animations
+The animations of the enemies were basic and taken from some exercise #1 sprite sheets because we used those enemy prefabs. Enemies have multiple states and animations for each one of those states. An enemy can either be idle, attacking, moving, dying, or dead, so there is an animation for each one of those states. I made an animator for each enemy type and then attached those to their respective prefabs. With the animator attached all that was left was to set off the transition logic in the `EnemyController.cs` appropriately.
+
+![Animator](https://github.com/angelinajillian/ctrl-freaks/blob/main/Screenshots/Vlad's/179_animator.png)
+![Animation](https://github.com/angelinajillian/ctrl-freaks/blob/main/Screenshots/Vlad's/179_animationClip.png)
+
+### Enemy movement/pathing
+We started most ideas in this project with the idea of simplicity in mind. Enemy movement is not an exception to that. In the beginning Isaac implemented enemy movement as enemies constantly chasing after the player's position by looking at the player and walking straight towards them. This felt surprisingly good and we stuck with it for a while, but once we made our arena more dynamic through the addition of traps opening up the ground we ran into an issue. The enemies simple movement started to not cut it because if you just stood behind a trap then the enemies would jump right in and die. I then did a little enemy movement overhaul by using the Unity `AI.navigation` package NavMesh tools. I made the floor a NavMesh surface and then attached NavMesh agent components on the enemy prefabs. In order for the NavMesh surface to react to the traps opening up I had to cut out that area of the NavMesh as they opened. This was done by instantiating a prefab of slightly larger trap proportions, and then attaching a Nav Mesh Obstacle to it with carve setting active.  
+
+The enemies still follow the same logic as before where they are always trying to get as close as they can to the players position so they may be in attack range. The difference is that by making the enemies Nav Mesh Agents we were now more easily able to set enemies move speed and stopping distance from the player. This way we set our ranged enemy to stop further away while keeping all of the melees stop distance from the player close.  
+
+The only issue I ran into when converting to the Nav Mesh method was that I could no longer punch enemies into the holes because they would hit the wall of the Nav Mesh obstacle and not fall into the hole. The way I got around this was by altering the enemies behavior while they were in their punched state. What I did was disable the agent component while the enemy was in the punched state and then switched them to their old simple movement while they were in the punched state. I also made enemies stop moving while they were not in contact with the ground (in the air falling) so that they would more easily and smoothly fall into the hole.
+
+![NavMeshSurface](https://github.com/angelinajillian/ctrl-freaks/blob/main/Screenshots/Vlad's/179_NavMeshSurface.png)
+![NavMeshAgent](https://github.com/angelinajillian/ctrl-freaks/blob/main/Screenshots/Vlad's/179_NavMeshAgent.png)  
+
+Outside of these main features I tested and tweaked whatever I could in terms of combat and movement from what my team mates added.
 
 ## User Interface and Input
 ### Dhilan Patel
@@ -135,12 +173,46 @@ For our `MainMenu` and `CreditMenu` scenes I chose to stick with a simple design
 
 ## Audio
 ### Vlad
+#### Footsteps  
+https://assetstore.unity.com/packages/audio/sound-fx/foley/footsteps-essentials-189879  
+License: Standard Unity Asset Store EULA  
 
-**List your assets, including their sources and licenses.**
+#### Explosion  
+https://assetstore.unity.com/packages/audio/sound-fx/grenade-sound-fx-147490  
+License: Standard Unity Asset Store EULA  
 
-**Describe the implementation of your audio system.**
+#### Punch Hit, Cannon Fire, AOE Spell  
+https://assetstore.unity.com/packages/audio/sound-fx/free-sound-effects-pack-155776  
+License: Standard Unity Asset Store EULA  
 
-**Document the sound style.** 
+#### Punch Whoosh, Left Click Spell  
+https://assetstore.unity.com/packages/audio/sound-fx/free-deadly-kombat-228835  
+License: Standard Unity Asset Store EULA  
+
+#### Cave Ambience, Level Up Sound, Enemy Spawn Spell  
+https://assetstore.unity.com/packages/audio/sound-fx/fantasy-sfx-32833  
+License: Standard Unity Asset Store EULA  
+
+#### Rock Explosion  
+https://pixabay.com/sound-effects/rock-destroy-6409/  
+License: Pixabay Content License  
+
+#### Enemy Shoot Spell  
+https://mixkit.co/free-sound-effects/fire/  
+License: Mixit License  
+
+#### Implementation
+I implemented our audio system to be able to play sounds from any targeted position spatially or not spatially (non spatial sounds for all sounds not directly attached to an object: leveling up, music, etc…).  
+
+Taking inspiration from sound managers I have seen in our previous projects, I did a similar approach. I made a `SoundManager.cs` script handling the playing of all sounds. This script operates as each sound being a unique function that can be called anytime in the other scripts by using `FindObjectOfType<SoundManager>()` since the sound manager would always be in the scene. All of these unique functions for each sound use a struct I made to hold all of the different sound settings that can be altered. I was then able to hard code all the settings for each unique sound so that they sounded good in the scene. All of these unique sound functions then call `PlaySound(SoundSettings settings, Vector3 position)` so that the sound would play at the desired position with its desired settings.  
+
+This script I then attached to an empty game object that I called `SoundManager`. This `SoundManager` was placed in our Main Menu scene because that is where our scene starts. I made it a singleton object so only one ever exists during runtime, and also used `DontDestroyOnLoad(gameObject)` in the `Awake()` function so that swapping scenes does not destroy our `SoundManager` object.   
+
+Playing the ambience and music was done a little bit differently than all of the other sounds. Whereas other sounds’ function calls would play the audio clip fully and then stop, music and ambience needed to be looped and stop/resume on scene changes. Due to this I attached the music and ambience as audio sources directly onto the `SoundManager` object and then called upon them in the `SoundManager.cs` script using the stop and play functions upon switching scenes.
+
+#### Sound Style  
+There was no particular sound style I had in mind when making/gathering the assets. As long as the sound made the game feel better and did not seem out of place then I would put it in.
+
 
 ## Gameplay Testing
 ### Dhilan
