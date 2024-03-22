@@ -265,7 +265,7 @@ There was no particular sound style I had in mind when making/gathering the asse
 ## Gameplay Testing
 ### Dhilan
 
-**Add a link to the full results of your gameplay tests.**
+[Observations and Playtester Comments](https://docs.google.com/document/d/1ZbwVK1ox4RtrnIiMOwFchhLVy_ZvNIFr_84Fk5zzwfA/edit#heading=h.7up1j2764gvb)
 
 **Summarize the key findings from your gameplay tests.**
 
