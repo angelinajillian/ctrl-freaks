@@ -63,6 +63,7 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 **It's important to note that this entire game has been built in Full HD (1920 x 1080) and to run it, these settings must be followed otherwise UI components will move around.**
 
+Like many UI systems in Unity, our game uses a Canvas that contains all of our UI elements. One of my first tasks under the UI and Input role was to create a health bar that would keep track of the player’s health. After the Canvas was created, I created an empty object called “HealthBar” which is simply just a way to keep the border and filler together. Then I created an image called “HealthBarBorder” which contained the image of the health bar that I found and another image called “FillBar” for filling this bar up. “HealthBar” used “Fill Rect” and a slider component to achieve the visualization of the bar actually going up or down. The “HealthBar” is only changed in the `MainScene`, and is attached to the health of the player. A picture of just the bar:
 
 
 
