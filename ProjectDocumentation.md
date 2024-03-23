@@ -26,24 +26,20 @@ Will you emerge triumphant against the odds? Brace yourself, and prepare to roll
 
 ## Gameplay Explanation ##
 
-Our controls are as follows:
+For input configuration, our game uses keyboard and mouse with the following controls:
+* `WASD` keys for player movement which is also based on the built-in FPS controller unity package.
+* `1` throws a grenade
+* `2` is an AOE spell  
+* `Space` is jump
+* `esc` opens the pause menu
+* `shift` is sprint/run
+* `left` click on mouse is shoot
+* `right` click on mouse is punch
 
-WASD or Arrow Keys to move
+Our game can run on PC’s and desktops with the same controls whether it is a Windows or Mac, as long as you keep the screen size and resolution the same (specific settings mentioned above).
 
-1 key is grenade 
-
-2 key is AOE
-
-Left Click is Shoot
-
-Right click is punch
-
-Jump is Space Bar
-
-ESC is the pause menu
-
-Shift is to run/sprint
 <br>
+
 #### Most optimal Gameplay Strategy
 The most optimal gameplay strategy definitely comes down to your timing and utilization of mana. In our game, there are different enemy waves with different strengths and attacks. In the cases where the enemies take multiple hits to defeat, the best strategy is to run away and conserve your mana. As the player becomes more familiar with the game, it is also ideal to note how many shots it takes for an enemy to be defeated so that no additional mana is wasted. The player also needs to be familiar with the map layout as hazardous situations occur at times. 
 <br> <br>
