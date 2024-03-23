@@ -315,7 +315,7 @@ License: Creative Commons 4.0
 
 **Describe how your work intersects with game feel, graphic design, and world-building. Include your visual style guide if one exists.**
 
-### Connections to Game Feel
+### Connections to Game Feel (see folder for screenshots)
 My work interacts heavily with game feel by showing that the player has to pay as much attention to the hostile environment as they do to the enemies because of the hazards that appear every few waves. 
 
 I implemented the TrapController script for our game. I programmed it so that every 2 waves, a random floor trap is revealed, and falling into it will deal damage to both players and enemies alike. The damage happens when a player or enemy collides with a plane I put underneath the map. I also made it so every 3 waves, cannons positioned outside of the map will instantiate and launch explosive barrels into the arena. This continues until the player has beat the final wave.
@@ -330,9 +330,10 @@ I tried to optimize for performance issues by using Unity’s Occlusion Culling 
 
 This is the map with occlusion culling:
 
+
 This is the map without occlusion culling:
 
-### Graphic Design
+### Graphic Design (see folder for screenshots)
 My work involves graphic design by making use of existing assets, modifying them, or creating new ones to portray a specific aesthetic that fits our game. I used the rock prefabs from the Low Poly Environment Starter Pack to create stone walls, like something you would see in a cave or crypt. 
 
 For creating the floor traps, I exported the floor plane to Blender and used Booleans to cut holes for the player to fall through. After importing it back into Unity, I added decorations like cube walls with stone textures and spike traps to fit the design of the map more than just holes in the ground. 
@@ -345,9 +346,11 @@ I also created some basic particle effects for the game. The explosion effect us
 
 I also created the particle effect of the trap door breaking open. First, I had to create my own triangle mesh in Blender because Unity did not have a mesh renderer for just triangles already. Once I did that, I adjusted the particle settings until it looked like there were triangles shooting out in a circular burst, which resembles the trap cover breaking into pieces, and those pieces flying out in all directions. I used a dust explosion from the Unity Particle Pack to supplement this effect, where it looks like the explosion caused the trap to break open.
 
+![]()
+
 I also created some particle effects for the player’s spells. For the AOE spell, I used only 1 particle system with a fast particle spawn rate and a quick decrease in size over lifetime. I wanted the fist to have something like a rocket effect, where the spheres represented the fist shooting out magical flames as it was being propelled. I also reused the sparks from the explosion effect for the fist grenade. I felt that this would be a better indicator for the spell’s purpose than before, as it was not entirely obvious what the spell did for players until the hand exploded.
 
-### World-Building
+### World-Building (see folder for screenshots)
 In terms of world-building, I wanted to create an environment that really showed hostility to the player, so my thought was to make a dark, intense map. I thought a cave or labyrinth setting would be suitable for this goal, so I designed the map around that setting in mind.
 
 To emphasize the dark environment, I used a black directional light pointing away from the map so that it would look like night time. The light had to be oriented away so that the skybox would not appear, and a black colored light would make the rock wall’s shadows darker. 
@@ -472,6 +475,8 @@ I also wanted to highlight the ways that players can use our systems to create s
 Towards the end of the trailer, I showed an extreme example of the waves increasing in difficulty, and the reward that the player should expect for beating the game. The ending clip was actually a bug that happened because there was no logic that stopped the next wave system from continuing past the final wave, but you can recreate the feeling of what happened by using the sandbox commands you have access to after winning.
 
 I chose these screenshots on our presskit for the following reasons:
+
+(see folder for screenshots)
 
 This screenshot highlighted the stunning mechanic in our game.
 
