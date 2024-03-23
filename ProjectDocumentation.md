@@ -13,7 +13,7 @@ Will you emerge triumphant against the odds? Brace yourself, and prepare to roll
 ## Project Resources
 
 [Web-playable version of your game.](https://ctrl-freaks.itch.io/spellfister)  
-[Trailor](https://www.youtube.com/watch?v=YUumzbIi_6k)  
+[Trailer](https://www.youtube.com/watch?v=YUumzbIi_6k)  
 [Press Kit](https://ctrl-freaks.itch.io/spellfister)
 
 #### Documents
@@ -282,7 +282,85 @@ Our game can run on PC’s and desktops with the same controls whether it is a W
 
 **List your assets, including their sources and licenses.**
 
+#### Skeleton
+[Source](https://assetstore.unity.com/packages/3d/characters/low-poly-skeleton-162347)
+
+License: Standard Unity Asset Store EULA
+
+#### Unity Particle Pack
+[Source](https://assetstore.unity.com/packages/vfx/particles/particle-pack-127325)
+
+License: Standard Unity Asset Store EULA
+
+#### Barrels
+[Source](https://assetstore.unity.com/packages/3d/props/wooden-barrel-pack-256618)
+
+License: Standard Unity Asset Store EULA
+
+#### Low Poly Environment Starter Pack
+[Source](https://assetstore.unity.com/packages/3d/environments/low-poly-environment-starter-pack-228606)
+
+License: Standard Unity Asset Store EULA
+
+#### Low Poly Rocks
+[Source](https://assetstore.unity.com/packages/3d/environments/lowpoly-rocks-137970)
+
+License: Standard Unity Asset Store EULA
+
+#### Magic Circle
+[Source](https://skfb.ly/6TP9H)
+
+License: Creative Commons 4.0
+
+#### Spike Trap
+[Source](https://commons.wikimedia.org/wiki/File:Magic_Circle.png)
+
+License: Creative Commons 4.0
+
 **Describe how your work intersects with game feel, graphic design, and world-building. Include your visual style guide if one exists.**
+
+### Connections to Game Feel
+My work interacts heavily with game feel by showing that the player has to pay as much attention to the hostile environment as they do to the enemies because of the hazards that appear every few waves. 
+
+I implemented the TrapController script for our game. I programmed it so that every 2 waves, a random floor trap is revealed, and falling into it will deal damage to both players and enemies alike. The damage happens when a player or enemy collides with a plane I put underneath the map. I also made it so every 3 waves, cannons positioned outside of the map will instantiate and launch explosive barrels into the arena. This continues until the player has beat the final wave.
+
+I also implemented the controller script for the barrel. These barrels have their own health and fuse mechanics. Damaging a barrel will activate its fuse, which acts as a timer for the barrel to explode. The barrel explodes if it takes too much damage or if the fuse runs out. When a barrel is created, it has a 5% chance of having its fuse already lit. These barrels deal damage to both players and enemies who are within the blast radius, which is determined by a collision sphere that spawns at the barrel. The player can also move barrels around without exploding or damaging them by using their right mouse attack. It is also possible for barrels to have chain reaction explosions, where if one barrel explodes next to another barrel, it will also detonate that barrel too. I added these features to the barrel because I felt like it would allow for more unique gameplay strategies that the player could use.
+
+I also modified the player and enemy controllers to do the proper damage events when they collided with the plane and explosion spheres.
+
+I deliberately chose low-poly assets for creating the map so that it would not be hard for lower end computers to play the game, though it is still pretty intense for laptops to render the whole map.
+
+I tried to optimize for performance issues by using Unity’s Occlusion Culling system, where it will not render objects that are not in view of the camera. It will also cull objects that are hidden from view by other objects. This saves GPU power because it will not have to render objects that the player will not see. To use this system, I marked various object renderers as either occluders, occludees, or both, and then baked the occlusion data accordingly. Occluders are objects that can hide other objects, and occludees are objects that can be hidden by others. 
+
+This is the map with occlusion culling:
+
+This is the map without occlusion culling:
+
+### Graphic Design
+My work involves graphic design by making use of existing assets, modifying them, or creating new ones to portray a specific aesthetic that fits our game. I used the rock prefabs from the Low Poly Environment Starter Pack to create stone walls, like something you would see in a cave or crypt. 
+
+For creating the floor traps, I exported the floor plane to Blender and used Booleans to cut holes for the player to fall through. After importing it back into Unity, I added decorations like cube walls with stone textures and spike traps to fit the design of the map more than just holes in the ground. 
+
+To create the trap walls, I took a cube in Blender, deleted the top face, and inverted the face normals. This allows the player to fall into the cube, and also only see the inner faces of the cube, so I didn’t have to do extra work with duplicating planes in Unity to form the walls.
+
+I used a spike trap I found on Sketchfab to decorate the pit, as well as a skeleton from the Unity Store to indicate that the trap has worked on someone before.
+
+I also created some basic particle effects for the game. The explosion effect used in the barrels and fist grenades is something I made by following a [Youtube tutorial](https://www.youtube.com/watch?v=dOnQY0t3TBM), where they used 3 different particle systems for creating the sparks, smoke, and actual explosion. 
+
+I also created the particle effect of the trap door breaking open. First, I had to create my own triangle mesh in Blender because Unity did not have a mesh renderer for just triangles already. Once I did that, I adjusted the particle settings until it looked like there were triangles shooting out in a circular burst, which resembles the trap cover breaking into pieces, and those pieces flying out in all directions. I used a dust explosion from the Unity Particle Pack to supplement this effect, where it looks like the explosion caused the trap to break open.
+
+I also created some particle effects for the player’s spells. For the AOE spell, I used only 1 particle system with a fast particle spawn rate and a quick decrease in size over lifetime. I wanted the fist to have something like a rocket effect, where the spheres represented the fist shooting out magical flames as it was being propelled. I also reused the sparks from the explosion effect for the fist grenade. I felt that this would be a better indicator for the spell’s purpose than before, as it was not entirely obvious what the spell did for players until the hand exploded.
+
+### World-Building
+In terms of world-building, I wanted to create an environment that really showed hostility to the player, so my thought was to make a dark, intense map. I thought a cave or labyrinth setting would be suitable for this goal, so I designed the map around that setting in mind.
+
+To emphasize the dark environment, I used a black directional light pointing away from the map so that it would look like night time. The light had to be oriented away so that the skybox would not appear, and a black colored light would make the rock wall’s shadows darker. 
+
+I used yellowish colored point lights around the area to give a feeling of torch light illuminating the cave. If I had more time, I would have either found torch assets or modeled torches in Blender to place them around the map, but I opted for just point lights. 
+
+I also added a black fog using the lighting settings as a way of limiting the player’s viewing distance so that the map looked darker than it really was.
+
+
 
 # Sub-Roles
 
@@ -386,4 +464,27 @@ For the user hand we took a doom-inspired approach to it, in which Isaac used an
 
 **Include links to your presskit materials and trailer.**
 
+[Trailor](https://www.youtube.com/watch?v=YUumzbIi_6k)  
+[Press Kit](https://ctrl-freaks.itch.io/spellfister)
+
 **Describe how you showcased your work. How did you choose what to show in the trailer? Why did you choose your screenshots?**
+
+My thought process for choosing what to show in the trailer was that I need to show examples of the main gameplay features. Some of the clips after the intro were simple showcases of the wave defense loop. I also included a clip of a playtester using the upgrade system. Other clips showed the spells and trap systems we implemented in our game. I also included a clip of someone dying to show that all progress resets upon death. 
+
+I also wanted to highlight the ways that players can use our systems to create some impressive emergent gameplay. Most of this in the trailer was pushing enemies into pits, using barrels against enemies, pushing enemies into walls to stun them, and even one instance where someone damaged a barrel and punched it towards an enemy, killing them with the timed explosion. 
+
+Towards the end of the trailer, I showed an extreme example of the waves increasing in difficulty, and the reward that the player should expect for beating the game. The ending clip was actually a bug that happened because there was no logic that stopped the next wave system from continuing past the final wave, but you can recreate the feeling of what happened by using the sandbox commands you have access to after winning.
+
+I chose these screenshots on our presskit for the following reasons:
+
+This screenshot highlighted the stunning mechanic in our game.
+
+This screenshot showcased the purpose and effectiveness of the AOE spell.
+
+This screenshot showed the upgrade system in our game.
+
+This screenshot showed the fist grenade spell in our game.
+
+This screenshot shows the chaos that the player should expect as they move on to higher waves.
+
+This screenshot shows off the general gameplay loop.
